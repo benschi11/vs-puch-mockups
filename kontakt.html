@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kontakt | Volksschule Puch</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Lexend:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#c0caac", "surface-bright": "#f9fbed", "on-tertiary-container": "#faffe9",
+                        "surface": "#f9fbed", "primary-container": "#e90900", "inverse-primary": "#ffb4a8",
+                        "tertiary-fixed": "#dce7c7", "surface-container": "#edefe2", "on-tertiary-fixed": "#161e0b",
+                        "secondary-fixed": "#ceee9a", "background": "#f9fbed", "inverse-surface": "#2e3229",
+                        "surface-dim": "#d9dbcf", "on-secondary-container": "#526d28", "surface-variant": "#e2e4d7",
+                        "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#364e0b", "primary": "#bb0600",
+                        "outline-variant": "#eabcb4", "on-primary-fixed": "#410100", "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6", "inverse-on-surface": "#f0f2e5", "secondary-container": "#ceee9a",
+                        "secondary": "#4d6622", "on-surface": "#1a1d15", "surface-container-high": "#e7e9dc",
+                        "primary-fixed-dim": "#ffb4a8", "on-primary-fixed-variant": "#920400", "on-error": "#ffffff",
+                        "tertiary": "#565f47", "surface-container-low": "#f3f5e8", "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#414a33", "on-surface-variant": "#5f3f39",
+                        "on-secondary-fixed": "#121f00", "surface-tint": "#bf0600", "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a", "tertiary-container": "#6e785e", "on-primary-container": "#fffbff",
+                        "on-background": "#1a1d15", "outline": "#946e67", "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#b2d180", "surface-container-highest": "#e2e4d7", "primary-fixed": "#ffdad4"
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                    fontFamily: { "headline": ["Plus Jakarta Sans"], "body": ["Lexend"], "label": ["Lexend"] }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; line-height: 1; }
+        .glass-nav { background: rgba(249, 251, 237, 0.8); backdrop-filter: blur(12px); }
+        .poppy-gradient { background: linear-gradient(135deg, #bb0600 0%, #e90900 100%); }
+        .meadow-shadow { box-shadow: 0 20px 40px -15px rgba(77, 102, 34, 0.08); }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav shadow-xl shadow-stone-200/40">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+            <div class="flex items-center gap-3">
+                <img alt="Logo" class="h-12 w-12 object-contain" src="logo-new.png" />
+                <span class="text-2xl font-bold text-stone-900 tracking-tighter font-headline">Volksschule Puch</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] tracking-tight text-sm font-medium">
+                <a class="text-stone-600 hover:text-red-700 transition-colors" href="index.html">Schulprofil</a>
+                <a class="text-stone-600 hover:text-red-700 transition-colors" href="klassen.html">Klassen</a>
+                <a class="text-stone-600 hover:text-red-700 transition-colors" href="projekte.html">Projekte</a>
+                <a class="text-stone-600 hover:text-red-700 transition-colors" href="termine.html">Termine</a>
+                <a class="text-red-700 font-bold border-b-2 border-red-700/20 pb-1" href="#">Kontakt</a>
+            </div>
+            <button class="poppy-gradient text-on-primary px-6 py-2.5 rounded-full font-label text-sm font-bold uppercase tracking-wider hover:scale-95 duration-200">Anmelden</button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+
+        <!-- Hero -->
+        <section class="relative px-6 pt-16 pb-20 bg-surface overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <span class="inline-block text-secondary font-bold tracking-widest uppercase text-xs mb-6 px-4 py-1.5 bg-secondary-container rounded-full">Wir freuen uns von Ihnen zu hören</span>
+                <h1 class="text-6xl md:text-8xl font-headline font-extrabold tracking-tighter leading-[0.88] mb-8 max-w-4xl">
+                    Immer <span class="text-primary italic">für Sie</span><br />da.
+                </h1>
+                <p class="text-lg text-tertiary max-w-xl leading-relaxed">
+                    Ob Frage, Anliegen oder Idee — das Team der Volksschule Puch ist gerne Ihr Ansprechpartner.
+                </p>
+            </div>
+            <div class="absolute -top-10 right-0 w-96 h-96 bg-secondary-container/20 blur-3xl rounded-full pointer-events-none"></div>
+        </section>
+
+        <!-- Hauptkontakt & Formular -->
+        <section class="px-6 py-16 bg-surface-container-low">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <!-- Kontaktdaten -->
+                    <div class="space-y-6">
+                        <div class="bg-secondary text-on-secondary rounded-xl p-10 meadow-shadow">
+                            <h2 class="text-3xl font-headline font-extrabold mb-8">Sekretariat</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-5">
+                                    <div class="bg-on-secondary/10 p-3 rounded-full flex-shrink-0">
+                                        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-lg mb-1">Adresse</p>
+                                        <p class="opacity-80">Schulstraße 12<br />5412 Puch bei Hallein<br />Österreich</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-5">
+                                    <div class="bg-on-secondary/10 p-3 rounded-full flex-shrink-0">
+                                        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">call</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-lg mb-1">Telefon</p>
+                                        <a href="tel:+436245123456" class="opacity-80 hover:opacity-100 underline underline-offset-4">+43 6245 12345</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-5">
+                                    <div class="bg-on-secondary/10 p-3 rounded-full flex-shrink-0">
+                                        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">mail</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-lg mb-1">E-Mail</p>
+                                        <a href="mailto:direktion@vs-puch.at" class="opacity-80 hover:opacity-100 underline underline-offset-4">direktion@vs-puch.at</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Öffnungszeiten -->
+                        <div class="bg-surface-container-lowest rounded-xl p-8 meadow-shadow">
+                            <h3 class="text-xl font-headline font-bold mb-6 flex items-center gap-3">
+                                <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">schedule</span>
+                                Sekretariat Öffnungszeiten
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center py-2 border-b border-surface-container">
+                                    <span class="font-medium">Montag – Donnerstag</span>
+                                    <span class="text-tertiary text-sm">7:30 – 12:00 Uhr</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-surface-container">
+                                    <span class="font-medium">Freitag</span>
+                                    <span class="text-tertiary text-sm">7:30 – 11:00 Uhr</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2">
+                                    <span class="font-medium text-tertiary">Samstag & Sonntag</span>
+                                    <span class="bg-surface-container text-tertiary text-xs font-bold px-3 py-1 rounded-full">Geschlossen</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-tertiary mt-4">In den Schulferien gelten abweichende Zeiten. Bitte vorab telefonisch anfragen.</p>
+                        </div>
+                    </div>
+
+                    <!-- Formular -->
+                    <div class="bg-surface-container-lowest rounded-xl p-10 meadow-shadow">
+                        <h2 class="text-3xl font-headline font-extrabold mb-2">Nachricht senden</h2>
+                        <p class="text-tertiary text-sm mb-8">Wir antworten in der Regel innerhalb eines Schultages.</p>
+                        <form class="space-y-5">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-bold mb-2 text-tertiary">Vorname</label>
+                                    <input class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none" type="text" placeholder="Maria" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold mb-2 text-tertiary">Nachname</label>
+                                    <input class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none" type="text" placeholder="Mustermann" />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-tertiary">E-Mail Adresse</label>
+                                <input class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none" type="email" placeholder="ihre@email.at" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-tertiary">Betreff</label>
+                                <select class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none text-on-surface">
+                                    <option value="">Bitte wählen…</option>
+                                    <option>Allgemeine Anfrage</option>
+                                    <option>Schuleinschreibung</option>
+                                    <option>Abwesenheitsmeldung</option>
+                                    <option>Elterngespräch</option>
+                                    <option>Projektidee</option>
+                                    <option>Sonstiges</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-tertiary">Ihre Nachricht</label>
+                                <textarea class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none" rows="5" placeholder="Schreiben Sie uns…"></textarea>
+                            </div>
+                            <button class="w-full poppy-gradient text-on-primary py-4 rounded-full font-label text-sm font-bold uppercase tracking-widest shadow-lg shadow-primary/10 hover:translate-y-[-2px] transition-transform" type="submit">
+                                Nachricht absenden
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Direktansprechpartner -->
+        <section class="px-6 py-24 bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-12">
+                    <span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Team</span>
+                    <h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight">Ihre <span class="italic text-secondary">Ansprechpartner</span></h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 meadow-shadow">
+                        <div class="w-14 h-14 rounded-full bg-secondary flex items-center justify-center text-on-secondary mb-5">
+                            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">person</span>
+                        </div>
+                        <p class="text-xs text-tertiary font-bold uppercase tracking-widest mb-1">Schulleitung</p>
+                        <h3 class="text-xl font-headline font-bold mb-3">Mag. Christine Berger</h3>
+                        <p class="text-tertiary text-sm leading-relaxed mb-5">Direktorin der Volksschule Puch. Für übergeordnete Anliegen und persönliche Gespräche bitte vorab per Telefon einen Termin vereinbaren.</p>
+                        <a href="mailto:direktion@vs-puch.at" class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline underline-offset-4">
+                            direktion@vs-puch.at
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 meadow-shadow">
+                        <div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-5">
+                            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+                        </div>
+                        <p class="text-xs text-tertiary font-bold uppercase tracking-widest mb-1">Sekretariat</p>
+                        <h3 class="text-xl font-headline font-bold mb-3">Renate Fuchs</h3>
+                        <p class="text-tertiary text-sm leading-relaxed mb-5">Erste Anlaufstelle für Abwesenheiten, administrative Fragen, Formulare und allgemeine Schulinformationen.</p>
+                        <a href="tel:+436245123456" class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline underline-offset-4">
+                            +43 6245 12345
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 meadow-shadow">
+                        <div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container mb-5">
+                            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
+                        </div>
+                        <p class="text-xs text-tertiary font-bold uppercase tracking-widest mb-1">Elternverein</p>
+                        <h3 class="text-xl font-headline font-bold mb-3">Elternverein VS Puch</h3>
+                        <p class="text-tertiary text-sm leading-relaxed mb-5">Der Elternverein ist Brücke zwischen Schule und Familien — für Feste, Projekte und gemeinsames Engagement.</p>
+                        <a href="mailto:elternverein@vs-puch.at" class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline underline-offset-4">
+                            elternverein@vs-puch.at
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Anfahrt -->
+        <section class="px-6 py-16 bg-surface-container-low">
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="p-10 lg:p-14 flex flex-col justify-center">
+                            <span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Anfahrt</span>
+                            <h2 class="text-3xl font-headline font-extrabold mb-6">So finden Sie uns</h2>
+                            <div class="space-y-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container flex-shrink-0 mt-0.5">
+                                        <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold mb-1">Mit dem Auto</p>
+                                        <p class="text-tertiary text-sm leading-relaxed">Von Hallein stadtauswärts Richtung Puch — nach der Kirche rechts in die Schulstraße. Parkplätze direkt vor dem Schulgelände.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container flex-shrink-0 mt-0.5">
+                                        <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">directions_bus</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold mb-1">Mit dem Bus</p>
+                                        <p class="text-tertiary text-sm leading-relaxed">Linie 140 ab Hallein Bahnhof — Haltestelle „Puch Schule", direkt vor der Schule.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container flex-shrink-0 mt-0.5">
+                                        <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">pedal_bike</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold mb-1">Mit dem Fahrrad</p>
+                                        <p class="text-tertiary text-sm leading-relaxed">Fahrradabstellplätze befinden sich am Südeingang des Schulgeländes. Wir freuen uns über jeden, der klimafreundlich anreist!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h-80 lg:h-auto overflow-hidden grayscale opacity-60 relative">
+                            <img class="w-full h-full object-cover" alt="Karte Puch bei Hallein"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIjYY6FL7vwRgFC_b3r7bpqdYJ_gvcofcVnByO3eqO5i5T3-6Q2VdkurnG_YVS3MW2yq8JN3PtGOd-AowxeggRleBNSYkcedE49hrUbl9h-GXFglOgmwut0ikb_ni5V9oC1xKiOXb2xBell6mw-GgbDpt8m9j9ot9mQkVImj6kw9RHIaKr1UfGrZTRtK1Cz4OAZfgq91lrPYrSnOv1_X_gZ3PORrEmeZuPTcMe86ONLkwHeHAHLxgn3Ywdg03Z6nZ6LUjn0Iq6dsQr" />
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="bg-surface-container-lowest/95 backdrop-blur-sm rounded-xl px-6 py-4 meadow-shadow text-center">
+                                    <p class="font-headline font-bold text-on-surface">Schulstraße 12</p>
+                                    <p class="text-tertiary text-sm">5412 Puch bei Hallein</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-100 w-full rounded-t-[3rem] mt-20">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-12 py-16 gap-8">
+            <div class="flex flex-col gap-4 text-center md:text-left">
+                <span class="text-lg font-semibold text-green-900 font-headline">Volksschule Puch</span>
+                <p class="font-['Lexend'] text-sm text-stone-500">© Volksschule Puch - Mit Liebe zum Lernen gewachsen.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 font-['Lexend'] text-sm">
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline underline-offset-4" href="#">Impressum</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline underline-offset-4" href="#">Datenschutz</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline underline-offset-4" href="#">Kontakt</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline underline-offset-4" href="#">Anfahrt</a>
+            </div>
+            <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-stone-600">share</span>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-stone-600">mail</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

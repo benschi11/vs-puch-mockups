@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Volksschule Puch | Wo Natur und Lernen aufblühen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c0caac",
+                        "surface-bright": "#f9fbed",
+                        "on-tertiary-container": "#faffe9",
+                        "surface": "#f9fbed",
+                        "primary-container": "#e90900",
+                        "inverse-primary": "#ffb4a8",
+                        "tertiary-fixed": "#dce7c7",
+                        "surface-container": "#edefe2",
+                        "on-tertiary-fixed": "#161e0b",
+                        "secondary-fixed": "#ceee9a",
+                        "background": "#f9fbed",
+                        "inverse-surface": "#2e3229",
+                        "surface-dim": "#d9dbcf",
+                        "on-secondary-container": "#526d28",
+                        "surface-variant": "#e2e4d7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#364e0b",
+                        "primary": "#bb0600",
+                        "outline-variant": "#eabcb4",
+                        "on-primary-fixed": "#410100",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f0f2e5",
+                        "secondary-container": "#ceee9a",
+                        "secondary": "#4d6622",
+                        "on-surface": "#1a1d15",
+                        "surface-container-high": "#e7e9dc",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "on-primary-fixed-variant": "#920400",
+                        "on-error": "#ffffff",
+                        "tertiary": "#565f47",
+                        "surface-container-low": "#f3f5e8",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#414a33",
+                        "on-surface-variant": "#5f3f39",
+                        "on-secondary-fixed": "#121f00",
+                        "surface-tint": "#bf0600",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#6e785e",
+                        "on-primary-container": "#fffbff",
+                        "on-background": "#1a1d15",
+                        "outline": "#946e67",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#b2d180",
+                        "surface-container-highest": "#e2e4d7",
+                        "primary-fixed": "#ffdad4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Lexend"],
+                        "label": ["Lexend"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .glass-nav {
+            background: rgba(249, 251, 237, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .poppy-gradient {
+            background: linear-gradient(135deg, #bb0600 0%, #e90900 100%);
+        }
+
+        .meadow-shadow {
+            box-shadow: 0 20px 40px -15px rgba(77, 102, 34, 0.08);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background font-body text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 glass-nav shadow-xl shadow-stone-200/40 dark:shadow-none">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+            <div class="flex items-center gap-3">
+                <img alt="Logo" class="h-12 w-12 object-contain"
+                    data-alt="Stylized apple logo for Volksschule Puch with a modern friendly design and soft organic edges"
+                    src="logo-new.png" />
+                <span
+                    class="text-2xl font-bold text-stone-900 dark:text-stone-50 tracking-tighter font-headline">Volksschule
+                    Puch</span>
+            </div>
+            <div
+                class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] tracking-tight text-sm font-medium">
+                <a class="text-red-700 dark:text-red-500 font-bold border-b-2 border-red-700/20 pb-1"
+                    href="#">Schulprofil</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-red-700 transition-colors" href="klassen.html">Klassen</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-red-700 transition-colors" href="projekte.html">Projekte</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-red-700 transition-colors" href="termine.html">Termine</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-red-700 transition-colors" href="kontakt.html">Kontakt</a>
+            </div>
+            <button
+                class="bg-primary poppy-gradient text-on-primary px-6 py-2.5 rounded-full font-label text-sm font-bold uppercase tracking-wider hover:scale-95 duration-200 ease-in-out">
+                Anmelden
+            </button>
+        </div>
+    </nav>
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative px-6 pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 z-10">
+                    <span
+                        class="inline-block text-secondary font-bold tracking-widest uppercase text-xs mb-6 px-4 py-1.5 bg-secondary-container rounded-full">Willkommen
+                        in unserer Gemeinschaft</span>
+                    <h1
+                        class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8">
+                        Wo Natur und <span class="text-primary italic">Lernen</span> aufblühen.
+                    </h1>
+                    <p class="text-lg text-tertiary max-w-lg mb-10 leading-relaxed">
+                        Wir begleiten Kinder in einer behüteten Atmosphäre dabei, ihre Talente zu entdecken und im
+                        Einklang mit der Natur über sich hinauszuwachsen.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button
+                            class="poppy-gradient text-on-primary px-8 py-4 rounded-full font-label text-sm font-bold uppercase tracking-widest shadow-lg shadow-primary/20 hover:translate-y-[-2px] transition-transform">
+                            Unsere Philosophie entdecken
+                        </button>
+                        <button
+                            class="bg-surface-container-high text-on-surface px-8 py-4 rounded-full font-label text-sm font-bold uppercase tracking-widest hover:bg-surface-container-highest transition-colors">
+                            Virtueller Rundgang
+                        </button>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 relative">
+                    <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden meadow-shadow rotate-2">
+                        <img class="w-full h-full object-cover"
+                            data-alt="Group of diverse elementary school children laughing and exploring a lush wildflower meadow in the sun, bright natural lighting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgDtqT8YKcv_op_y0ScSVLVTzV3p618QO4XZ8ZMO_OtDIVVqwFDVUA2mszKaP0_bxVnGy6Xd10e9bKGai_Ez5R_QbG5d3JIJ9_RKl-0LPKgTuEWA9BETBLsRFSBugtAWLFZ3S5mEeZFntXZiEhbc1ZJfvGSKXJUPAUiGQmCvQed6BJpqwE3SkgPM1TqZGNjNz-wo1YJRnX26ICjjkpqAqwbngDOlsr7_sQAt1sb6SGFym17-bo124gv0FkDHIs6X10No3iMbVRRG6T" />
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary-container/40 blur-3xl rounded-full">
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-64 h-64 bg-primary-container/10 blur-3xl rounded-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Schnellzugriffe (Bento Grid Style) -->
+        <section class="px-6 py-12 bg-surface-container-low">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a class="group p-8 bg-surface-container-lowest rounded-lg meadow-shadow hover:scale-[1.02] transition-all flex flex-col justify-between h-64 border-none"
+                        href="termine.html">
+                        <div
+                            class="bg-secondary-container w-14 h-14 rounded-full flex items-center justify-center text-on-secondary-container">
+                            <span class="material-symbols-outlined text-3xl">calendar_month</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-headline font-bold mb-2">Ferientermine</h3>
+                            <p class="text-tertiary text-sm">Alle wichtigen Daten für Ihre Urlaubsplanung auf einen
+                                Blick.</p>
+                        </div>
+                    </a>
+                    <a class="group p-8 bg-secondary text-on-secondary rounded-lg meadow-shadow hover:scale-[1.02] transition-all flex flex-col justify-between h-64 border-none"
+                        href="#">
+                        <div class="bg-on-secondary/10 w-14 h-14 rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-3xl">schedule</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-headline font-bold mb-2">Stundenplan</h3>
+                            <p class="text-on-secondary/80 text-sm">Aktuelle Unterrichtszeiten und Fächerübersicht der
+                                Klassen.</p>
+                        </div>
+                    </a>
+                    <a class="group p-8 bg-surface-container-lowest rounded-lg meadow-shadow hover:scale-[1.02] transition-all flex flex-col justify-between h-64 border-none"
+                        href="#">
+                        <div
+                            class="bg-primary-fixed w-14 h-14 rounded-full flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-3xl"
+                                style="font-variation-settings: 'FILL' 1;">favorite</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-headline font-bold mb-2">Unser Leitbild</h3>
+                            <p class="text-tertiary text-sm">Erfahren Sie mehr über unsere pädagogischen Grundwerte.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Aktuelles vom Schulhof -->
+        <section class="px-6 py-24 bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-2xl">
+                        <span
+                            class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Neuigkeiten</span>
+                        <h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight">Aktuelles vom <span
+                                class="italic text-secondary">Schulhof</span></h2>
+                    </div>
+                    <a class="text-secondary font-bold flex items-center gap-2 hover:underline underline-offset-8"
+                        href="#">
+                        Alle Beiträge ansehen
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- News Card 1 -->
+                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow border-none group">
+                        <div class="h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                data-alt="Dappled sunlight filtering through a dense beech forest canopy in spring with fresh green leaves"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDKOLnB5Lhq7EBXoPwJ7Sh5bkzHoF19DetI-37pk-TRyJV-djD5weMCH3hC6XfoiWi2KTEPLvSs7aVteE62wi8DSZXbnviBba7cMEaEXw4UzpbHsWCSTCDutbUno1P0UchvT9FZ9Rrr6nsmqSwcSBo0U6Rx9yYILQOyV4aqWi6eMHkIUnBQk3xWV1P3Zm04sB5mlYysGmMedYZehPOuY60PXXHmEX6M13X8H1Lvh4m-KgqpB6Ld3uTKT2w3Gp_8GxNBpdwEr41yZ9K" />
+                        </div>
+                        <div class="p-8">
+                            <span
+                                class="text-xs font-bold text-secondary-container bg-secondary px-3 py-1 rounded-full uppercase">Outdoor</span>
+                            <h3 class="text-2xl font-headline font-bold mt-4 mb-3">Waldtag im Mai</h3>
+                            <p class="text-tertiary text-sm leading-relaxed mb-6">Gemeinsam erkunden wir die Geheimnisse
+                                der heimischen Flora und Fauna direkt vor unserer Schultür.</p>
+                            <span class="text-xs text-on-surface-variant/60 font-medium">12. Mai 2024</span>
+                        </div>
+                    </div>
+                    <!-- News Card 2 -->
+                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow border-none group">
+                        <div class="h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                data-alt="Macro close up of a bright red poppy flower in a field, soft morning light with morning dew"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcj7KNLn_rGV_0_hMNgKhRuzkbhEBTPMqw_hKJiCINVtjqQH-jRapurA6T9_hDKK_7r6JGu6d8Q7F-Rz_Qvjv35zflnkpzZ-gzaPre_EyUJuh3BBNmUteqERskNqUt52Hve5EeUu69ieGRK2dW8p8_yQHV_5PBVzLgTcMkSvhDkBQ4_J96_B87XdKilbVQ9rx9ScIrMKKS8mkZXG9UfT6dYO1YQLCP2qCuQs97zKSGyUbDHy7WCuLCplOpG37bOcoyblGcM17-RBVZ" />
+                        </div>
+                        <div class="p-8">
+                            <span
+                                class="text-xs font-bold text-primary-fixed bg-primary px-3 py-1 rounded-full uppercase">Projekt</span>
+                            <h3 class="text-2xl font-headline font-bold mt-4 mb-3">Das Mohn-Projekt</h3>
+                            <p class="text-tertiary text-sm leading-relaxed mb-6">Künstlerisches Gestalten und Botanik
+                                verschmelzen in unserem großen Sommerprojekt zum Thema Mohn.</p>
+                            <span class="text-xs text-on-surface-variant/60 font-medium">05. Juni 2024</span>
+                        </div>
+                    </div>
+                    <!-- News Card 3 -->
+                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow border-none group">
+                        <div class="h-56 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                data-alt="Cozy school library corner with soft pillows, fairy lights, and stacks of colorful children's books"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbh5mOczSc0XXb5amPwi68A7IFuXPTFfrLG9g0IXoZjgZZPTGptBQ9SceUATzuU_H4PuXPsmcfoXGtzZNIChR3ApVyC1jLi3kXIQXtvqY021CJiW41W5DEfntkIXdQBZeOn3Q8--C6CgMamIhVc_XO3sRgyEPz2EU5PfSD6NoTKFfqS3UIWY9x-jkNy1wK7MedhmonQwq6Q39i3xbDfVj7PyopVYPLVRFBNPw4iOSvgkNrnxHYqaetiwMPn99WlZKcQrMWnuCGthOq" />
+                        </div>
+                        <div class="p-8">
+                            <span
+                                class="text-xs font-bold text-tertiary-fixed-dim bg-tertiary px-3 py-1 rounded-full uppercase">Event</span>
+                            <h3 class="text-2xl font-headline font-bold mt-4 mb-3">Magische Lesenacht</h3>
+                            <p class="text-tertiary text-sm leading-relaxed mb-6">Mit Taschenlampen und Fantasie tauchen
+                                wir eine ganze Nacht lang in ferne Welten ein.</p>
+                            <span class="text-xs text-on-surface-variant/60 font-medium">18. Juni 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Quote Section -->
+        <section class="relative py-32 bg-primary text-on-primary overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div
+                    class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-[120px] translate-x-1/2 translate-y-1/2">
+                </div>
+            </div>
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                <span class="material-symbols-outlined text-6xl mb-8 opacity-40"
+                    style="font-variation-settings: 'FILL' 1;">format_quote</span>
+                <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tight mb-8">
+                    „Gemeinsam wachsen in der <span
+                        class="italic underline decoration-on-primary/30 underline-offset-8">Natur</span>“
+                </h2>
+                <p class="text-xl opacity-80 font-medium">Unser täglicher Kompass für ein lebendiges Lernen.</p>
+            </div>
+        </section>
+        <!-- Einblicke & Projekte (Gallery) -->
+        <section class="px-6 py-24 bg-surface-container-low">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span
+                        class="text-secondary font-bold tracking-widest uppercase text-xs mb-4 block">Impressionen</span>
+                    <h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight">Einblicke &amp;
+                        Projekte</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div
+                        class="col-span-2 row-span-2 aspect-square rounded-tl-xl rounded-br-xl overflow-hidden meadow-shadow">
+                        <img class="w-full h-full object-cover"
+                            data-alt="Children working together in a school garden, planting small seedlings in rich soil, soft afternoon sunlight"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG6bf6jBYPsZg_dRwjuO9bu26DZdDmUMtcltzEco_TgnbXeVfE9c1MynLMAhAQgUT2_QbAQTiu70cNeOs5Iw-Ks3NyMnwpnKdNyEClS5SYdHNHnJ8MBNNd5P4xHzIjLAwszXt-LVkoJeeyHJ1tA_XauLKRwoHn6AGtgHEquMDEvuTDC3VVxKPRG66yB6Bry0KbEJjuG5Vu5nIcDAxuuSm6xi3XLbMs9_DsnZIqv0aPFCll7Ohh-7HpVeBqqklXDdPxW0kqxiSVycMx" />
+                    </div>
+                    <div class="aspect-square rounded-tr-xl overflow-hidden meadow-shadow">
+                        <img class="w-full h-full object-cover"
+                            data-alt="Portrait of a smiling young girl holding a magnifying glass in nature, educational context"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjCeC1zlByfi9EdoWPgkRje0KKTFW77VF314tAhJf6Z3B5xiWgV1ufh0drGzLU4Rz9iy1xKKlsOgjQqB8ZqsFbaTTiVWtCYKNa7lFCII39kMU3tpr6e2fiLr5wjx_or3fp8tn5-0qsfDtmjVSRcbSoN1_ShjkumjvpQdXL5hqNuWJeBYlKr4Zbl2NjG59bT-jNuYivBV4dHySfOfMYSoez-d-YmPVKxGLmLmmVyzoDgJLEY9NE2500A2S4kuckQH99KNo7TvoghzFD" />
+                    </div>
+                    <div class="aspect-square rounded-bl-xl overflow-hidden meadow-shadow">
+                        <img class="w-full h-full object-cover"
+                            data-alt="Overhead shot of children's hands painting vibrant flower patterns on large paper on a wooden table"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEbrkskb1xrmUtTgETSF5tVXtPM0NemdWDujrnUI4LRCboDCrdxh_ngvvVmtifkPHx781q3YzvUx0lkLa2MuEJJRnGFfXL_lxoHIPOCCAccKHqq6HaZ1__9fpHPhFG1OrON7Pw-YtOKNeUFZH5dAhunTWAbD_3oJg9y2MUej5lWT7uQ84hdwTbx95usZW7VvroG9_KEe9VaEDj5Iz8VcMS8pd8ArWDmPR5VR9daLWeYbmy5H0T9wMkhhIZ3-fdTTzC_ao6kBDss-HN" />
+                    </div>
+                    <div class="col-span-2 aspect-[16/9] rounded-xl overflow-hidden meadow-shadow mt-0 md:mt-2">
+                        <img class="w-full h-full object-cover"
+                            data-alt="Warm sunny school hallway with large windows and colorful artwork hanging on the walls"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdlpu6SOpO4oQcRIZE4vwGv07KPvcBvqjMbaOjn1sfW7fKPbRdCQl2sM5PzFS_GvnnN3hEz0yNvL5dUeHJLdLHmzxJiMy9PHiV3roi4HY1lqAZaFNhrelf651fN3e2VpFrZ2vEm8XEYRuim5uErYVzPU7eAC9EPuXh4OiSm05AuoqmK7a2tuQlX0tDfwt5BqRPxQDxir0wTP6_J_WngDmIw9JX6NKMkrPtvbftV4qmPZzrQQwmWGfLSLMLaiSHuHzUCgUR_zeucv6D" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Kontaktbereich -->
+        <section class="px-6 py-24 bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <div
+                    class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow flex flex-col lg:flex-row">
+                    <div class="lg:w-1/2 p-12 bg-secondary text-on-secondary">
+                        <h2 class="text-4xl font-headline font-extrabold mb-12">Kontaktieren Sie uns</h2>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-6">
+                                <div class="bg-on-secondary/10 p-3 rounded-full">
+                                    <span class="material-symbols-outlined text-2xl">location_on</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Adresse</h4>
+                                    <p class="opacity-80">Schulstraße 12, 5412 Puch bei Hallein, Österreich</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6">
+                                <div class="bg-on-secondary/10 p-3 rounded-full">
+                                    <span class="material-symbols-outlined text-2xl">call</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Telefon</h4>
+                                    <p class="opacity-80">+43 6245 12345</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6">
+                                <div class="bg-on-secondary/10 p-3 rounded-full">
+                                    <span class="material-symbols-outlined text-2xl">mail</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">E-Mail</h4>
+                                    <p class="opacity-80">direktion@vs-puch.at</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-20 h-48 rounded-lg overflow-hidden grayscale opacity-40">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Abstract map representation of a small European village with green areas and simple streets"
+                                data-location="Puch bei Hallein"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIjYY6FL7vwRgFC_b3r7bpqdYJ_gvcofcVnByO3eqO5i5T3-6Q2VdkurnG_YVS3MW2yq8JN3PtGOd-AowxeggRleBNSYkcedE49hrUbl9h-GXFglOgmwut0ikb_ni5V9oC1xKiOXb2xBell6mw-GgbDpt8m9j9ot9mQkVImj6kw9RHIaKr1UfGrZTRtK1Cz4OAZfgq91lrPYrSnOv1_X_gZ3PORrEmeZuPTcMe86ONLkwHeHAHLxgn3Ywdg03Z6nZ6LUjn0Iq6dsQr" />
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 p-12">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-bold mb-2 text-tertiary">Vorname</label>
+                                    <input
+                                        class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none"
+                                        type="text" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold mb-2 text-tertiary">Nachname</label>
+                                    <input
+                                        class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none"
+                                        type="text" />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-tertiary">E-Mail Adresse</label>
+                                <input
+                                    class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none"
+                                    type="email" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-tertiary">Ihre Nachricht</label>
+                                <textarea
+                                    class="w-full bg-surface-container-high border-none rounded-md px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all outline-none"
+                                    rows="5"></textarea>
+                            </div>
+                            <button
+                                class="w-full poppy-gradient text-on-primary py-4 rounded-full font-label text-sm font-bold uppercase tracking-widest shadow-lg shadow-primary/10 hover:translate-y-[-2px] transition-transform"
+                                type="submit">
+                                Nachricht absenden
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-stone-100 dark:bg-stone-950 w-full rounded-t-[3rem] mt-20">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-12 py-16 gap-8">
+            <div class="flex flex-col gap-4 text-center md:text-left">
+                <span class="text-lg font-semibold text-green-900 dark:text-green-100 font-headline">Volksschule
+                    Puch</span>
+                <p class="font-['Lexend'] text-sm text-stone-500 dark:text-stone-400">© Volksschule Puch - Mit Liebe zum
+                    Lernen gewachsen.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 font-['Lexend'] text-sm">
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline decoration-green-700/30 underline-offset-4"
+                    href="#">Impressum</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline decoration-green-700/30 underline-offset-4"
+                    href="#">Datenschutz</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline decoration-green-700/30 underline-offset-4"
+                    href="kontakt.html">Kontakt</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline decoration-green-700/30 underline-offset-4"
+                    href="#">Anfahrt</a>
+            </div>
+            <div class="flex gap-4">
+                <div
+                    class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-stone-600">share</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-stone-600">mail</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

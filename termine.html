@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Termine | Volksschule Puch</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Lexend:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#c0caac", "surface-bright": "#f9fbed", "on-tertiary-container": "#faffe9",
+                        "surface": "#f9fbed", "primary-container": "#e90900", "inverse-primary": "#ffb4a8",
+                        "tertiary-fixed": "#dce7c7", "surface-container": "#edefe2", "on-tertiary-fixed": "#161e0b",
+                        "secondary-fixed": "#ceee9a", "background": "#f9fbed", "inverse-surface": "#2e3229",
+                        "surface-dim": "#d9dbcf", "on-secondary-container": "#526d28", "surface-variant": "#e2e4d7",
+                        "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#364e0b", "primary": "#bb0600",
+                        "outline-variant": "#eabcb4", "on-primary-fixed": "#410100", "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6", "inverse-on-surface": "#f0f2e5", "secondary-container": "#ceee9a",
+                        "secondary": "#4d6622", "on-surface": "#1a1d15", "surface-container-high": "#e7e9dc",
+                        "primary-fixed-dim": "#ffb4a8", "on-primary-fixed-variant": "#920400", "on-error": "#ffffff",
+                        "tertiary": "#565f47", "surface-container-low": "#f3f5e8", "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#414a33", "on-surface-variant": "#5f3f39",
+                        "on-secondary-fixed": "#121f00", "surface-tint": "#bf0600", "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a", "tertiary-container": "#6e785e", "on-primary-container": "#fffbff",
+                        "on-background": "#1a1d15", "outline": "#946e67", "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#b2d180", "surface-container-highest": "#e2e4d7", "primary-fixed": "#ffdad4"
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                    fontFamily: { "headline": ["Plus Jakarta Sans"], "body": ["Lexend"], "label": ["Lexend"] }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; line-height: 1; }
+        .glass-nav { background: rgba(249, 251, 237, 0.8); backdrop-filter: blur(12px); }
+        .poppy-gradient { background: linear-gradient(135deg, #bb0600 0%, #e90900 100%); }
+        .meadow-shadow { box-shadow: 0 20px 40px -15px rgba(77, 102, 34, 0.08); }
+        .event-row { transition: background 0.15s ease; }
+        .event-row:hover { background: #f3f5e8; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav shadow-xl shadow-stone-200/40">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+            <div class="flex items-center gap-3">
+                <img alt="Logo" class="h-12 w-12 object-contain" src="logo-new.png" />
+                <span class="text-2xl font-bold text-stone-900 tracking-tighter font-headline">Volksschule Puch</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] tracking-tight text-sm font-medium">
+                <a class="text-stone-600 hover:text-red-700 transition-colors" href="index.html">Schulprofil</a>
+                <a class="text-stone-600 hover:text-red-700 transition-colors" href="klassen.html">Klassen</a>
+                <a class="text-stone-600 hover:text-red-700 transition-colors" href="projekte.html">Projekte</a>
+                <a class="text-red-700 font-bold border-b-2 border-red-700/20 pb-1" href="#">Termine</a>
+                <a class="text-stone-600 hover:text-red-700 transition-colors" href="kontakt.html">Kontakt</a>
+            </div>
+            <button class="poppy-gradient text-on-primary px-6 py-2.5 rounded-full font-label text-sm font-bold uppercase tracking-wider hover:scale-95 duration-200">Anmelden</button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+
+        <!-- Hero -->
+        <section class="relative px-6 pt-16 pb-20 bg-surface-container-low overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+                    <div class="lg:col-span-8">
+                        <span class="inline-block text-secondary font-bold tracking-widest uppercase text-xs mb-6 px-4 py-1.5 bg-secondary-container rounded-full">Schuljahr 2024/25</span>
+                        <h1 class="text-6xl md:text-8xl font-headline font-extrabold tracking-tighter leading-[0.88] mb-8">
+                            Termine &amp;<br /><span class="text-primary italic">Ferien</span>
+                        </h1>
+                        <p class="text-lg text-tertiary max-w-xl leading-relaxed">
+                            Alle wichtigen Daten auf einen Blick — damit Sie Urlaube, Veranstaltungen und Schulveranstaltungen bestens planen können.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-4">
+                        <div class="bg-primary text-on-primary rounded-xl p-8 meadow-shadow">
+                            <p class="text-xs font-bold uppercase tracking-widest opacity-70 mb-2">Nächstes Ereignis</p>
+                            <p class="text-3xl font-headline font-extrabold mb-1">18. Juni</p>
+                            <p class="font-bold text-lg opacity-90">Magische Lesenacht</p>
+                            <p class="text-sm opacity-70 mt-1">3a & 4a · ab 19:00 Uhr</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-secondary-container/30 blur-3xl rounded-full pointer-events-none"></div>
+        </section>
+
+        <!-- Ferientermine -->
+        <section class="px-6 py-24 bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-12">
+                    <span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Österreich · Salzburg</span>
+                    <h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight">Ferien&shy;termine <span class="italic text-secondary">2024/25</span></h2>
+                </div>
+                <div class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow">
+                    <div class="grid grid-cols-12 px-8 py-4 bg-surface-container-low border-b border-surface-container">
+                        <span class="col-span-4 text-xs font-bold text-tertiary uppercase tracking-widest">Ferien</span>
+                        <span class="col-span-4 text-xs font-bold text-tertiary uppercase tracking-widest">Beginn</span>
+                        <span class="col-span-4 text-xs font-bold text-tertiary uppercase tracking-widest">Ende</span>
+                    </div>
+                    <div class="divide-y divide-surface-container">
+                        <div class="event-row grid grid-cols-12 px-8 py-5 items-center">
+                            <div class="col-span-4 flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-secondary flex-shrink-0"></div>
+                                <span class="font-medium">Herbstferien</span>
+                            </div>
+                            <span class="col-span-4 text-tertiary">Sa, 26. Oktober 2024</span>
+                            <span class="col-span-4 text-tertiary">So, 3. November 2024</span>
+                        </div>
+                        <div class="event-row grid grid-cols-12 px-8 py-5 items-center">
+                            <div class="col-span-4 flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-secondary flex-shrink-0"></div>
+                                <span class="font-medium">Weihnachtsferien</span>
+                            </div>
+                            <span class="col-span-4 text-tertiary">Sa, 28. Dezember 2024</span>
+                            <span class="col-span-4 text-tertiary">So, 5. Januar 2025</span>
+                        </div>
+                        <div class="event-row grid grid-cols-12 px-8 py-5 items-center">
+                            <div class="col-span-4 flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-secondary flex-shrink-0"></div>
+                                <span class="font-medium">Semesterferien</span>
+                            </div>
+                            <span class="col-span-4 text-tertiary">Sa, 1. Februar 2025</span>
+                            <span class="col-span-4 text-tertiary">So, 9. Februar 2025</span>
+                        </div>
+                        <div class="event-row grid grid-cols-12 px-8 py-5 items-center">
+                            <div class="col-span-4 flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-secondary flex-shrink-0"></div>
+                                <span class="font-medium">Osterferien</span>
+                            </div>
+                            <span class="col-span-4 text-tertiary">Sa, 12. April 2025</span>
+                            <span class="col-span-4 text-tertiary">Mo, 28. April 2025</span>
+                        </div>
+                        <div class="event-row grid grid-cols-12 px-8 py-5 items-center bg-secondary-container/20">
+                            <div class="col-span-4 flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-primary flex-shrink-0"></div>
+                                <span class="font-bold text-primary">Sommerferien</span>
+                            </div>
+                            <span class="col-span-4 text-tertiary">Sa, 5. Juli 2025</span>
+                            <span class="col-span-4 text-tertiary">So, 7. September 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schulveranstaltungen -->
+        <section class="px-6 py-24 bg-surface-container-low">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div>
+                        <span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Veranstaltungen</span>
+                        <h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight">Das Schuljahr im <span class="italic text-secondary">Überblick</span></h2>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+
+                    <!-- Mai -->
+                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow">
+                        <div class="bg-secondary text-on-secondary px-8 py-4 flex items-center gap-4">
+                            <span class="text-3xl font-headline font-extrabold opacity-40">05</span>
+                            <h3 class="text-xl font-headline font-bold">Mai 2025</h3>
+                        </div>
+                        <div class="divide-y divide-surface-container">
+                            <div class="event-row flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-8 py-5">
+                                <div class="flex items-center gap-3 md:w-32 flex-shrink-0">
+                                    <span class="text-2xl font-headline font-extrabold text-secondary">12.</span>
+                                    <span class="text-xs text-tertiary">Montag</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-on-surface">Waldtag · alle Klassen</p>
+                                    <p class="text-sm text-tertiary">Treffpunkt Schulhof · 8:00 Uhr · Rückkehr ca. 12:30 Uhr</p>
+                                </div>
+                                <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full uppercase w-fit">Outdoor</span>
+                            </div>
+                            <div class="event-row flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-8 py-5">
+                                <div class="flex items-center gap-3 md:w-32 flex-shrink-0">
+                                    <span class="text-2xl font-headline font-extrabold text-secondary">22.</span>
+                                    <span class="text-xs text-tertiary">Donnerstag</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-on-surface">Elternsprechtag</p>
+                                    <p class="text-sm text-tertiary">14:00–18:00 Uhr · Terminvereinbarung erforderlich</p>
+                                </div>
+                                <span class="bg-surface-container text-tertiary text-xs font-bold px-3 py-1 rounded-full uppercase w-fit">Schule</span>
+                            </div>
+                            <div class="event-row flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-8 py-5">
+                                <div class="flex items-center gap-3 md:w-32 flex-shrink-0">
+                                    <span class="text-2xl font-headline font-extrabold text-secondary">29.</span>
+                                    <span class="text-xs text-tertiary">Donnerstag</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-on-surface">Christi Himmelfahrt — <span class="text-primary">Schulfrei</span></p>
+                                    <p class="text-sm text-tertiary">Gesetzlicher Feiertag</p>
+                                </div>
+                                <span class="bg-primary-fixed text-primary text-xs font-bold px-3 py-1 rounded-full uppercase w-fit">Feiertag</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Juni -->
+                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow">
+                        <div class="bg-primary text-on-primary px-8 py-4 flex items-center gap-4">
+                            <span class="text-3xl font-headline font-extrabold opacity-40">06</span>
+                            <h3 class="text-xl font-headline font-bold">Juni 2025</h3>
+                        </div>
+                        <div class="divide-y divide-surface-container">
+                            <div class="event-row flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-8 py-5">
+                                <div class="flex items-center gap-3 md:w-32 flex-shrink-0">
+                                    <span class="text-2xl font-headline font-extrabold text-primary">5.</span>
+                                    <span class="text-xs text-tertiary">Donnerstag</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-on-surface">Schulfest „Blühende Wiese"</p>
+                                    <p class="text-sm text-tertiary">Schulhof · ab 14:00 Uhr · Alle Familien herzlich willkommen</p>
+                                </div>
+                                <span class="poppy-gradient text-on-primary text-xs font-bold px-3 py-1 rounded-full uppercase w-fit">Highlight</span>
+                            </div>
+                            <div class="event-row flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-8 py-5">
+                                <div class="flex items-center gap-3 md:w-32 flex-shrink-0">
+                                    <span class="text-2xl font-headline font-extrabold text-primary">9.</span>
+                                    <span class="text-xs text-tertiary">Montag</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-on-surface">Pfingstmontag — <span class="text-primary">Schulfrei</span></p>
+                                    <p class="text-sm text-tertiary">Gesetzlicher Feiertag</p>
+                                </div>
+                                <span class="bg-primary-fixed text-primary text-xs font-bold px-3 py-1 rounded-full uppercase w-fit">Feiertag</span>
+                            </div>
+                            <div class="event-row flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-8 py-5">
+                                <div class="flex items-center gap-3 md:w-32 flex-shrink-0">
+                                    <span class="text-2xl font-headline font-extrabold text-primary">18.</span>
+                                    <span class="text-xs text-tertiary">Mittwoch</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-on-surface">Magische Lesenacht · 3a & 4a</p>
+                                    <p class="text-sm text-tertiary">Aula · 19:00 Uhr bis Freitagmorgen · Schlafsack mitnehmen</p>
+                                </div>
+                                <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full uppercase w-fit">Event</span>
+                            </div>
+                            <div class="event-row flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-8 py-5">
+                                <div class="flex items-center gap-3 md:w-32 flex-shrink-0">
+                                    <span class="text-2xl font-headline font-extrabold text-primary">27.</span>
+                                    <span class="text-xs text-tertiary">Freitag</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-on-surface">Abschlussfeier 4a & Zeugnisverteilung</p>
+                                    <p class="text-sm text-tertiary">Turnhalle · 10:00 Uhr · alle Erziehungsberechtigten eingeladen</p>
+                                </div>
+                                <span class="poppy-gradient text-on-primary text-xs font-bold px-3 py-1 rounded-full uppercase w-fit">Abschluss</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Juli -->
+                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow">
+                        <div class="bg-secondary text-on-secondary px-8 py-4 flex items-center gap-4">
+                            <span class="text-3xl font-headline font-extrabold opacity-40">07</span>
+                            <h3 class="text-xl font-headline font-bold">Juli 2025</h3>
+                        </div>
+                        <div class="divide-y divide-surface-container">
+                            <div class="event-row flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-8 py-5">
+                                <div class="flex items-center gap-3 md:w-32 flex-shrink-0">
+                                    <span class="text-2xl font-headline font-extrabold text-secondary">5.</span>
+                                    <span class="text-xs text-tertiary">Samstag</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-on-surface text-primary">Beginn Sommerferien</p>
+                                    <p class="text-sm text-tertiary">Schulbeginn wieder am 8. September 2025</p>
+                                </div>
+                                <span class="bg-primary text-on-primary text-xs font-bold px-3 py-1 rounded-full uppercase w-fit">Ferien</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Wichtige Hinweise -->
+        <section class="px-6 py-16 bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-surface-container-lowest rounded-xl p-8 meadow-shadow flex flex-col gap-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+                            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+                        </div>
+                        <h3 class="text-xl font-headline font-bold">Schulbeginn täglich</h3>
+                        <p class="text-tertiary text-sm leading-relaxed">Unterricht beginnt um <strong class="text-on-surface">8:00 Uhr</strong>. Bitte achten Sie auf pünktliches Erscheinen Ihres Kindes.</p>
+                    </div>
+                    <div class="bg-surface-container-lowest rounded-xl p-8 meadow-shadow flex flex-col gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">notifications</span>
+                        </div>
+                        <h3 class="text-xl font-headline font-bold">Abwesenheit melden</h3>
+                        <p class="text-tertiary text-sm leading-relaxed">Bitte melden Sie Abwesenheiten <strong class="text-on-surface">bis 8:00 Uhr</strong> telefonisch oder per E-Mail im Schulsekretariat.</p>
+                    </div>
+                    <div class="bg-surface-container-lowest rounded-xl p-8 meadow-shadow flex flex-col gap-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+                            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">download</span>
+                        </div>
+                        <h3 class="text-xl font-headline font-bold">Jahresplanung</h3>
+                        <p class="text-tertiary text-sm leading-relaxed">Den vollständigen Jahreskalender als PDF finden Sie zum Download im Elternbereich.</p>
+                        <a href="#" class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline underline-offset-4 mt-auto">
+                            PDF herunterladen
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-100 w-full rounded-t-[3rem] mt-20">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-12 py-16 gap-8">
+            <div class="flex flex-col gap-4 text-center md:text-left">
+                <span class="text-lg font-semibold text-green-900 font-headline">Volksschule Puch</span>
+                <p class="font-['Lexend'] text-sm text-stone-500">© Volksschule Puch - Mit Liebe zum Lernen gewachsen.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 font-['Lexend'] text-sm">
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline underline-offset-4" href="#">Impressum</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline underline-offset-4" href="#">Datenschutz</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline underline-offset-4" href="kontakt.html">Kontakt</a>
+
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline underline-offset-4" href="#">Anfahrt</a>
+            </div>
+            <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-stone-600">share</span>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-stone-600">mail</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

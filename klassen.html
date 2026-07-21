@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Unsere Klassen | Volksschule Puch</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c0caac",
+                        "surface-bright": "#f9fbed",
+                        "on-tertiary-container": "#faffe9",
+                        "surface": "#f9fbed",
+                        "primary-container": "#e90900",
+                        "inverse-primary": "#ffb4a8",
+                        "tertiary-fixed": "#dce7c7",
+                        "surface-container": "#edefe2",
+                        "on-tertiary-fixed": "#161e0b",
+                        "secondary-fixed": "#ceee9a",
+                        "background": "#f9fbed",
+                        "inverse-surface": "#2e3229",
+                        "surface-dim": "#d9dbcf",
+                        "on-secondary-container": "#526d28",
+                        "surface-variant": "#e2e4d7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#364e0b",
+                        "primary": "#bb0600",
+                        "outline-variant": "#eabcb4",
+                        "on-primary-fixed": "#410100",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f0f2e5",
+                        "secondary-container": "#ceee9a",
+                        "secondary": "#4d6622",
+                        "on-surface": "#1a1d15",
+                        "surface-container-high": "#e7e9dc",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "on-primary-fixed-variant": "#920400",
+                        "on-error": "#ffffff",
+                        "tertiary": "#565f47",
+                        "surface-container-low": "#f3f5e8",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#414a33",
+                        "on-surface-variant": "#5f3f39",
+                        "on-secondary-fixed": "#121f00",
+                        "surface-tint": "#bf0600",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#6e785e",
+                        "on-primary-container": "#fffbff",
+                        "on-background": "#1a1d15",
+                        "outline": "#946e67",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#b2d180",
+                        "surface-container-highest": "#e2e4d7",
+                        "primary-fixed": "#ffdad4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Lexend"],
+                        "label": ["Lexend"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .glass-nav {
+            background: rgba(249, 251, 237, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .poppy-gradient {
+            background: linear-gradient(135deg, #bb0600 0%, #e90900 100%);
+        }
+
+        .meadow-shadow {
+            box-shadow: 0 20px 40px -15px rgba(77, 102, 34, 0.08);
+        }
+
+        .grade-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 900;
+            font-size: clamp(6rem, 18vw, 14rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: transparent;
+            -webkit-text-stroke: 2px currentColor;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .class-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 32px 56px -20px rgba(77, 102, 34, 0.14);
+        }
+
+        .class-card:hover .card-image img {
+            transform: scale(1.08);
+        }
+
+        .card-image img {
+            transition: transform 0.5s ease;
+        }
+
+        .filter-btn.active {
+            background: #4d6622;
+            color: #ffffff;
+        }
+
+        .filter-btn {
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:not(.active):hover {
+            background: #e7e9dc;
+        }
+
+        .class-section.hidden-section {
+            display: none;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+
+<body class="bg-background font-body text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 glass-nav shadow-xl shadow-stone-200/40 dark:shadow-none">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+            <div class="flex items-center gap-3">
+                <img alt="Logo" class="h-12 w-12 object-contain"
+                    src="logo-new.png" />
+                <span class="text-2xl font-bold text-stone-900 dark:text-stone-50 tracking-tighter font-headline">Volksschule Puch</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] tracking-tight text-sm font-medium">
+                <a class="text-stone-600 dark:text-stone-400 hover:text-red-700 transition-colors" href="index.html">Schulprofil</a>
+                <a class="text-red-700 dark:text-red-500 font-bold border-b-2 border-red-700/20 pb-1" href="#">Klassen</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-red-700 transition-colors" href="projekte.html">Projekte</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-red-700 transition-colors" href="termine.html">Termine</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-red-700 transition-colors" href="kontakt.html">Kontakt</a>
+            </div>
+            <button class="bg-primary poppy-gradient text-on-primary px-6 py-2.5 rounded-full font-label text-sm font-bold uppercase tracking-wider hover:scale-95 duration-200 ease-in-out">
+                Anmelden
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+
+        <!-- Hero Section -->
+        <section class="relative px-6 pt-16 pb-20 overflow-hidden bg-surface-container-low">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+                    <div class="lg:col-span-7 z-10 animate-fade-up delay-1">
+                        <span class="inline-block text-secondary font-bold tracking-widest uppercase text-xs mb-6 px-4 py-1.5 bg-secondary-container rounded-full">
+                            Schuljahr 2024/25
+                        </span>
+                        <h1 class="text-6xl md:text-8xl font-headline font-extrabold tracking-tighter text-on-surface leading-[0.88] mb-8">
+                            Unsere<br /><span class="text-primary italic">Klassen</span>
+                        </h1>
+                        <p class="text-lg text-tertiary max-w-xl leading-relaxed">
+                            Acht lebendige Lerngemeinschaften, vier Schulstufen — hier wachsen Kinder mit Freude, Neugier und gegenseitiger Wertschätzung.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-5 animate-fade-up delay-3">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-surface-container-lowest rounded-xl p-6 meadow-shadow text-center">
+                                <p class="text-4xl font-headline font-extrabold text-primary mb-1">5</p>
+                                <p class="text-xs text-tertiary font-medium uppercase tracking-wide">Klassen</p>
+                            </div>
+                            <div class="bg-secondary text-on-secondary rounded-xl p-6 meadow-shadow text-center">
+                                <p class="text-4xl font-headline font-extrabold mb-1">114</p>
+                                <p class="text-xs opacity-80 font-medium uppercase tracking-wide">Kinder</p>
+                            </div>
+                            <div class="bg-surface-container-lowest rounded-xl p-6 meadow-shadow text-center">
+                                <p class="text-4xl font-headline font-extrabold text-secondary mb-1">4</p>
+                                <p class="text-xs text-tertiary font-medium uppercase tracking-wide">Schulstufen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute -bottom-16 -right-16 w-72 h-72 bg-secondary-container/30 blur-3xl rounded-full pointer-events-none"></div>
+            <div class="absolute top-0 right-1/3 w-48 h-48 bg-primary/5 blur-3xl rounded-full pointer-events-none"></div>
+        </section>
+
+        <!-- Grade Filter -->
+        <section class="sticky top-20 z-40 bg-surface/90 backdrop-blur-md border-b border-surface-container px-6 py-4">
+            <div class="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto">
+                <span class="text-xs font-bold text-tertiary uppercase tracking-widest mr-2 whitespace-nowrap">Schulstufe:</span>
+                <button class="filter-btn active px-5 py-2 rounded-full font-label text-sm font-bold whitespace-nowrap" data-filter="all">Alle Klassen</button>
+                <button class="filter-btn bg-surface-container text-on-surface px-5 py-2 rounded-full font-label text-sm font-bold whitespace-nowrap" data-filter="1">1. Schulstufe</button>
+                <button class="filter-btn bg-surface-container text-on-surface px-5 py-2 rounded-full font-label text-sm font-bold whitespace-nowrap" data-filter="2">2. Schulstufe</button>
+                <button class="filter-btn bg-surface-container text-on-surface px-5 py-2 rounded-full font-label text-sm font-bold whitespace-nowrap" data-filter="3">3. Schulstufe</button>
+                <button class="filter-btn bg-surface-container text-on-surface px-5 py-2 rounded-full font-label text-sm font-bold whitespace-nowrap" data-filter="4">4. Schulstufe</button>
+            </div>
+        </section>
+
+        <!-- 1. Schulstufe -->
+        <section class="class-section px-6 py-20 bg-surface" data-grade="1">
+            <div class="max-w-7xl mx-auto">
+                <div class="relative flex items-end gap-6 mb-16 overflow-hidden">
+                    <span class="grade-number text-secondary/10 absolute -left-4 -bottom-6">1</span>
+                    <div class="relative z-10 pl-2">
+                        <span class="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Schulstufe</span>
+                        <h2 class="text-5xl md:text-6xl font-headline font-extrabold tracking-tight">Erste <span class="italic text-secondary">Klassen</span></h2>
+                        <p class="text-tertiary mt-3 max-w-lg">Der Beginn eines großen Abenteuers — Lesen, Schreiben und Rechnen erwachen zum Leben.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 1a -->
+                    <div class="class-card bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow">
+                        <div class="card-image h-64 overflow-hidden relative">
+                            <img class="w-full h-full object-cover" alt="Klasse 1a"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjCeC1zlByfi9EdoWPgkRje0KKTFW77VF314tAhJf6Z3B5xiWgV1ufh0drGzLU4Rz9iy1xKKlsOgjQqB8ZqsFbaTTiVWtCYKNa7lFCII39kMU3tpr6e2fiLr5wjx_or3fp8tn5-0qsfDtmjVSRcbSoN1_ShjkumjvpQdXL5hqNuWJeBYlKr4Zbl2NjG59bT-jNuYivBV4dHySfOfMYSoez-d-YmPVKxGLmLmmVyzoDgJLEY9NE2500A2S4kuckQH99KNo7TvoghzFD" />
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-headline font-extrabold text-3xl px-4 py-1 rounded-full tracking-tight">1a</span>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-headline font-bold mb-1">Klasse 1a</h3>
+                                    <p class="text-tertiary text-sm">Erdgeschoss · Raum 02</p>
+                                </div>
+                                <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full uppercase">22 Kinder</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-6 p-4 bg-surface-container-low rounded-DEFAULT">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary flex-shrink-0">
+                                    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">person</span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-tertiary font-medium uppercase tracking-wide">Klassenvorstand</p>
+                                    <p class="font-bold text-on-surface">Mag. Sonja Mayr</p>
+                                </div>
+                            </div>
+                            <p class="text-tertiary text-sm leading-relaxed mb-6">Mit viel Geduld und Kreativität begleitet Mag. Mayr die Erstklässler auf ihren ersten Lese- und Schreibabenteuern — stets mit Naturmaterialien und spielerischem Ansatz.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Lesen & Schreiben</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Mathematik</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Sachunterricht</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 1b -->
+                    <div class="class-card bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow">
+                        <div class="card-image h-64 overflow-hidden relative">
+                            <img class="w-full h-full object-cover" alt="Klasse 1b"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEbrkskb1xrmUtTgETSF5tVXtPM0NemdWDujrnUI4LRCboDCrdxh_ngvvVmtifkPHx781q3YzvUx0lkLa2MuEJJRnGFfXL_lxoHIPOCCAccKHqq6HaZ1__9fpHPhFG1OrON7Pw-YtOKNeUFZH5dAhunTWAbD_3oJg9y2MUej5lWT7uQ84hdwTbx95usZW7VvroG9_KEe9VaEDj5Iz8VcMS8pd8ArWDmPR5VR9daLWeYbmy5H0T9wMkhhIZ3-fdTTzC_ao6kBDss-HN" />
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-headline font-extrabold text-3xl px-4 py-1 rounded-full tracking-tight">1b</span>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-headline font-bold mb-1">Klasse 1b</h3>
+                                    <p class="text-tertiary text-sm">Erdgeschoss · Raum 04</p>
+                                </div>
+                                <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full uppercase">20 Kinder</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-6 p-4 bg-surface-container-low rounded-DEFAULT">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary flex-shrink-0">
+                                    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">person</span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-tertiary font-medium uppercase tracking-wide">Klassenvorstand</p>
+                                    <p class="font-bold text-on-surface">Claudia Steiner</p>
+                                </div>
+                            </div>
+                            <p class="text-tertiary text-sm leading-relaxed mb-6">Claudia Steiner setzt auf musikalische Früherziehung und rhythmisches Lernen, damit jedes Kind seinen eigenen Lernrhythmus finden und entfalten kann.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Lesen & Schreiben</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Musik & Rhythmus</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Werken</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Schulstufe -->
+        <section class="class-section px-6 py-20 bg-surface-container-low" data-grade="2">
+            <div class="max-w-7xl mx-auto">
+                <div class="relative flex items-end gap-6 mb-16 overflow-hidden">
+                    <span class="grade-number text-primary/10 absolute -left-4 -bottom-6">2</span>
+                    <div class="relative z-10 pl-2">
+                        <span class="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Schulstufe</span>
+                        <h2 class="text-5xl md:text-6xl font-headline font-extrabold tracking-tight">Zweite <span class="italic text-secondary">Klasse</span></h2>
+                        <p class="text-tertiary mt-3 max-w-lg">Wissen vertieft sich, Freundschaften wachsen — die Neugier auf die Welt nimmt Fahrt auf.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 2a -->
+                    <div class="class-card bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow flex flex-col md:flex-row lg:flex-col">
+                        <div class="card-image md:w-64 lg:w-full h-56 md:h-auto lg:h-64 overflow-hidden relative flex-shrink-0">
+                            <img class="w-full h-full object-cover" alt="Klasse 2a"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDKOLnB5Lhq7EBXoPwJ7Sh5bkzHoF19DetI-37pk-TRyJV-djD5weMCH3hC6XfoiWi2KTEPLvSs7aVteE62wi8DSZXbnviBba7cMEaEXw4UzpbHsWCSTCDutbUno1P0UchvT9FZ9Rrr6nsmqSwcSBo0U6Rx9yYILQOyV4aqWi6eMHkIUnBQk3xWV1P3Zm04sB5mlYysGmMedYZehPOuY60PXXHmEX6M13X8H1Lvh4m-KgqpB6Ld3uTKT2w3Gp_8GxNBpdwEr41yZ9K" />
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-headline font-extrabold text-3xl px-4 py-1 rounded-full tracking-tight">2a</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="poppy-gradient text-on-primary text-xs font-bold px-3 py-1 rounded-full uppercase">Schwerpunkt Natur</span>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-headline font-bold mb-1">Klasse 2a</h3>
+                                    <p class="text-tertiary text-sm">1. Obergeschoss · Raum 11</p>
+                                </div>
+                                <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full uppercase">24 Kinder</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-6 p-4 bg-surface-container-low rounded-DEFAULT">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary flex-shrink-0">
+                                    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">person</span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-tertiary font-medium uppercase tracking-wide">Klassenvorstand</p>
+                                    <p class="font-bold text-on-surface">Eva Huber, BEd</p>
+                                </div>
+                            </div>
+                            <p class="text-tertiary text-sm leading-relaxed mb-6">Der Schulgarten ist das zweite Klassenzimmer: Eva Huber integriert Naturbeobachtungen in alle Fächer und macht Lernen zu einem ganzheitlichen Erlebnis.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Naturkunde</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Mathematik</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Bildnerische Erziehung</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Schulstufe -->
+        <section class="class-section px-6 py-20 bg-surface" data-grade="3">
+            <div class="max-w-7xl mx-auto">
+                <div class="relative flex items-end gap-6 mb-16 overflow-hidden">
+                    <span class="grade-number text-secondary/10 absolute -left-4 -bottom-6">3</span>
+                    <div class="relative z-10 pl-2">
+                        <span class="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Schulstufe</span>
+                        <h2 class="text-5xl md:text-6xl font-headline font-extrabold tracking-tight">Dritte <span class="italic text-secondary">Klasse</span></h2>
+                        <p class="text-tertiary mt-3 max-w-lg">Englisch, Projekte, Eigenverantwortung — die Mitte der Volksschulzeit bringt neue Horizonte.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 3a -->
+                    <div class="class-card bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow flex flex-col md:flex-row lg:flex-col">
+                        <div class="card-image md:w-64 lg:w-full h-56 md:h-auto lg:h-64 overflow-hidden relative flex-shrink-0">
+                            <img class="w-full h-full object-cover" alt="Klasse 3a"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbh5mOczSc0XXb5amPwi68A7IFuXPTFfrLG9g0IXoZjgZZPTGptBQ9SceUATzuU_H4PuXPsmcfoXGtzZNIChR3ApVyC1jLi3kXIQXtvqY021CJiW41W5DEfntkIXdQBZeOn3Q8--C6CgMamIhVc_XO3sRgyEPz2EU5PfSD6NoTKFfqS3UIWY9x-jkNy1wK7MedhmonQwq6Q39i3xbDfVj7PyopVYPLVRFBNPw4iOSvgkNrnxHYqaetiwMPn99WlZKcQrMWnuCGthOq" />
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-headline font-extrabold text-3xl px-4 py-1 rounded-full tracking-tight">3a</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-secondary text-on-secondary text-xs font-bold px-3 py-1 rounded-full uppercase">Projektklasse</span>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-headline font-bold mb-1">Klasse 3a</h3>
+                                    <p class="text-tertiary text-sm">1. Obergeschoss · Raum 21</p>
+                                </div>
+                                <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full uppercase">23 Kinder</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-6 p-4 bg-surface-container-low rounded-DEFAULT">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary flex-shrink-0">
+                                    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">person</span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-tertiary font-medium uppercase tracking-wide">Klassenvorstand</p>
+                                    <p class="font-bold text-on-surface">Maria Schneider, BEd</p>
+                                </div>
+                            </div>
+                            <p class="text-tertiary text-sm leading-relaxed mb-6">Das „Mohn-Projekt" und der Waldtag entstammen der 3a — Maria Schneider fördert fächerübergreifendes Denken und lässt Kinder zu kleinen Forschenden werden.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Englisch</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Projektarbeit</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Sachunterricht</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Schulstufe -->
+        <section class="class-section px-6 py-20 bg-surface-container-low" data-grade="4">
+            <div class="max-w-7xl mx-auto">
+                <div class="relative flex items-end gap-6 mb-16 overflow-hidden">
+                    <span class="grade-number text-primary/10 absolute -left-4 -bottom-6">4</span>
+                    <div class="relative z-10 pl-2">
+                        <span class="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Schulstufe</span>
+                        <h2 class="text-5xl md:text-6xl font-headline font-extrabold tracking-tight">Vierte <span class="italic text-secondary">Klasse</span></h2>
+                        <p class="text-tertiary mt-3 max-w-lg">Der krönende Abschluss — Übergangsbegleitung und der stolze Schritt in die weiterführende Schule.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 4a -->
+                    <div class="class-card bg-surface-container-lowest rounded-xl overflow-hidden meadow-shadow flex flex-col md:flex-row lg:flex-col">
+                        <div class="card-image md:w-64 lg:w-full h-56 md:h-auto lg:h-64 overflow-hidden relative flex-shrink-0">
+                            <img class="w-full h-full object-cover" alt="Klasse 4a"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdlpu6SOpO4oQcRIZE4vwGv07KPvcBvqjMbaOjn1sfW7fKPbRdCQl2sM5PzFS_GvnnN3hEz0yNvL5dUeHJLdLHmzxJiMy9PHiV3roi4HY1lqAZaFNhrelf651fN3e2VpFrZ2vEm8XEYRuim5uErYVzPU7eAC9EPuXh4OiSm05AuoqmK7a2tuQlX0tDfwt5BqRPxQDxir0wTP6_J_WngDmIw9JX6NKMkrPtvbftV4qmPZzrQQwmWGfLSLMLaiSHuHzUCgUR_zeucv6D" />
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-headline font-extrabold text-3xl px-4 py-1 rounded-full tracking-tight">4a</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="poppy-gradient text-on-primary text-xs font-bold px-3 py-1 rounded-full uppercase">Abschlussklasse</span>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-headline font-bold mb-1">Klasse 4a</h3>
+                                    <p class="text-tertiary text-sm">2. Obergeschoss · Raum 31</p>
+                                </div>
+                                <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-3 py-1 rounded-full uppercase">25 Kinder</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-6 p-4 bg-surface-container-low rounded-DEFAULT">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary flex-shrink-0">
+                                    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">person</span>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-tertiary font-medium uppercase tracking-wide">Klassenvorstand</p>
+                                    <p class="font-bold text-on-surface">Mag. Petra Hofer</p>
+                                </div>
+                            </div>
+                            <p class="text-tertiary text-sm leading-relaxed mb-6">Mag. Hofer begleitet ihre Schützlinge mit viel Herz ins letzte Volksschuljahr — Übergangsberatung und Abschlussfeier sind besondere Meilensteine in ihrer Klasse.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Deutsch vertiefend</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Mathematik</span>
+                                <span class="bg-surface-container text-tertiary text-xs font-medium px-3 py-1 rounded-full">Englisch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Banner -->
+        <section class="relative py-24 bg-secondary text-on-secondary overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-[120px] translate-x-1/2 translate-y-1/2"></div>
+            </div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-1">
+                    <div class="lg:col-span-1 flex flex-col justify-center mb-10 lg:mb-0 lg:pr-12 lg:border-r border-on-secondary/20">
+                        <span class="text-on-secondary/60 font-bold tracking-widest uppercase text-xs mb-4 block">Der Weg durch die Schule</span>
+                        <h2 class="text-4xl font-headline font-extrabold tracking-tight leading-tight">Vier Jahre. Eine Reise.</h2>
+                    </div>
+                    <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-6 lg:pl-12">
+                        <div class="text-center">
+                            <div class="text-6xl font-headline font-extrabold mb-2 opacity-30">1.</div>
+                            <h3 class="font-bold text-lg mb-1">Entdecken</h3>
+                            <p class="text-on-secondary/70 text-sm">Lesen, Schreiben und die Welt erforschen</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-6xl font-headline font-extrabold mb-2 opacity-30">2.</div>
+                            <h3 class="font-bold text-lg mb-1">Vertiefen</h3>
+                            <p class="text-on-secondary/70 text-sm">Wissen wächst, Freundschaften gedeihen</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-6xl font-headline font-extrabold mb-2 opacity-30">3.</div>
+                            <h3 class="font-bold text-lg mb-1">Gestalten</h3>
+                            <p class="text-on-secondary/70 text-sm">Projekte, Englisch und Eigeninitiative</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-6xl font-headline font-extrabold mb-2 opacity-30">4.</div>
+                            <h3 class="font-bold text-lg mb-1">Aufbrechen</h3>
+                            <p class="text-on-secondary/70 text-sm">Abschluss mit Stolz, Vorfreude auf Neues</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Schulanmeldung -->
+        <section class="px-6 py-24 bg-surface">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="inline-block text-secondary font-bold tracking-widest uppercase text-xs mb-6 px-4 py-1.5 bg-secondary-container rounded-full">Schuleinschreibung 2025/26</span>
+                <h2 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight mb-6">
+                    Ihr Kind kommt in <span class="text-primary italic">die Schule?</span>
+                </h2>
+                <p class="text-lg text-tertiary mb-10 max-w-xl mx-auto leading-relaxed">
+                    Wir freuen uns auf jedes neue Gesicht in unserer Gemeinschaft. Informieren Sie sich über den Anmeldeprozess und vereinbaren Sie gerne einen Kennenlerntermin.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <button class="poppy-gradient text-on-primary px-8 py-4 rounded-full font-label text-sm font-bold uppercase tracking-widest shadow-lg shadow-primary/20 hover:translate-y-[-2px] transition-transform">
+                        Zur Schuleinschreibung
+                    </button>
+                    <button class="bg-surface-container-high text-on-surface px-8 py-4 rounded-full font-label text-sm font-bold uppercase tracking-widest hover:bg-surface-container-highest transition-colors">
+                        Informationsabend
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-100 dark:bg-stone-950 w-full rounded-t-[3rem] mt-20">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-12 py-16 gap-8">
+            <div class="flex flex-col gap-4 text-center md:text-left">
+                <span class="text-lg font-semibold text-green-900 dark:text-green-100 font-headline">Volksschule Puch</span>
+                <p class="font-['Lexend'] text-sm text-stone-500 dark:text-stone-400">© Volksschule Puch - Mit Liebe zum Lernen gewachsen.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 font-['Lexend'] text-sm">
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline decoration-green-700/30 underline-offset-4" href="#">Impressum</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline decoration-green-700/30 underline-offset-4" href="#">Datenschutz</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline decoration-green-700/30 underline-offset-4" href="kontakt.html">Kontakt</a>
+                <a class="text-stone-500 hover:text-green-700 transition-colors hover:underline decoration-green-700/30 underline-offset-4" href="#">Anfahrt</a>
+            </div>
+            <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-stone-600">share</span>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-stone-600">mail</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const sections = document.querySelectorAll('.class-section');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.classList.add('bg-surface-container', 'text-on-surface');
+                });
+                btn.classList.add('active');
+                btn.classList.remove('bg-surface-container', 'text-on-surface');
+
+                sections.forEach(section => {
+                    if (filter === 'all' || section.dataset.grade === filter) {
+                        section.classList.remove('hidden-section');
+                    } else {
+                        section.classList.add('hidden-section');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
