@@ -1,0 +1,1442 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsere Klassen – VS Puch bei Weiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:          #bb0600;
+      --red-dark:     #8a0400;
+      --red-light:    #fdf0ef;
+      --green:        #4d6622;
+      --green-dark:   #3a4e1a;
+      --green-light:  #eef3e5;
+      --forest:       #565f47;
+      --forest-light: #f0f1eb;
+
+      --bg:      #faf8f4;
+      --surface: #ffffff;
+      --fg:      #1c1c1a;
+      --fg-2:    #5a5958;
+      --border:  #e5e1d9;
+
+      --font: 'Nunito', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+      --r-sm: 10px;
+      --r-md: 18px;
+      --r-lg: 26px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    .nav {
+      background: var(--green);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+    }
+
+    .nav-inner {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr auto 1fr;
+      min-height: 88px;
+      position: relative;
+      transition: min-height .28s ease;
+    }
+
+    .nav-logo {
+      width: 118px;
+      height: 118px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      position: relative;
+      z-index: 3;
+      margin-bottom: -44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 6px solid var(--bg);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.26);
+      text-decoration: none;
+      color: white;
+      transition:
+        width .28s ease,
+        height .28s ease,
+        margin-bottom .28s ease,
+        border-width .28s ease,
+        transform .18s ease,
+        box-shadow .28s ease;
+    }
+
+    .nav-logo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 42px rgba(0,0,0,0.3);
+    }
+
+    .nav-logo-badge {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 10px;
+    }
+
+    .nav-logo-badge img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nav-logo-text {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 8px);
+      transform: translateX(-50%);
+      padding: 4px 13px;
+      background: var(--green);
+      color: white;
+      border-radius: 999px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+      white-space: nowrap;
+      transition: opacity .2s ease, transform .28s ease;
+    }
+
+    .nav-logo-text strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .nav-logo-text span {
+      display: none;
+    }
+
+    .nav.is-scrolled .nav-inner {
+      min-height: 68px;
+    }
+
+    .nav.is-scrolled .nav-logo {
+      width: 58px;
+      height: 58px;
+      margin-bottom: 0;
+      border-width: 3px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    }
+
+    .nav.is-scrolled .nav-logo-badge {
+      padding: 5px;
+    }
+
+    .nav.is-scrolled .nav-logo-text {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links-left {
+      justify-content: flex-start;
+      padding-right: 52px;
+    }
+
+    .nav-links-right {
+      justify-content: flex-end;
+      padding-left: 52px;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 9px 16px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14.5px;
+      border-radius: 999px;
+      transition: background .15s, color .15s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(255,255,255,0.18);
+      color: white;
+    }
+
+    .nav-burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: white;
+      line-height: 0;
+    }
+
+    .nav-mobile {
+      display: none;
+      background: var(--green-dark);
+    }
+
+    .nav-mobile.open { display: block; }
+
+    .nav-mobile a {
+      display: block;
+      padding: 13px 24px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background .12s;
+    }
+
+    .nav-mobile a:hover,
+    .nav-mobile a.active { background: rgba(255,255,255,0.1); }
+
+    @media (max-width: 860px) {
+      .nav-inner {
+        display: flex;
+        justify-content: center;
+        min-height: 78px;
+      }
+      .nav-links { display: none; }
+      .nav-logo {
+        width: 88px;
+        height: 88px;
+        margin-bottom: -30px;
+        border-width: 5px;
+      }
+      .nav.is-scrolled .nav-inner {
+        min-height: 64px;
+      }
+      .nav.is-scrolled .nav-logo {
+        width: 54px;
+        height: 54px;
+        margin-bottom: 0;
+        border-width: 3px;
+      }
+      .nav-logo-badge { padding: 7px; }
+      .nav-logo-text { display: none; }
+      .nav-burger {
+        display: block;
+        position: absolute;
+        right: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .nav-mobile.open {
+        display: block;
+        padding-top: 12px;
+      }
+    }
+
+    .page-hero {
+      background:
+        radial-gradient(circle at 12% 26%, rgba(255,255,255,0.14), transparent 30%),
+        linear-gradient(140deg, #212519 0%, #4d6622 55%, #6f8737 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 82px 0 78px;
+      color: white;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      top: -220px;
+      right: -160px;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.045);
+      bottom: -130px;
+      left: -70px;
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .breadcrumb a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .breadcrumb a:hover { color: white; }
+    .breadcrumb-sep { opacity: .55; }
+
+    .page-hero-eyebrow {
+      display: inline-block;
+      padding: 5px 16px;
+      background: rgba(255,255,255,0.16);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.24);
+    }
+
+    .page-hero p {
+      font-size: clamp(15px, 2vw, 19px);
+      opacity: .88;
+      max-width: 610px;
+      line-height: 1.55;
+    }
+
+    .hero-logo-card {
+      justify-self: end;
+      width: 230px;
+      min-height: 250px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.92);
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.22);
+      transform: rotate(2deg);
+    }
+
+    .hero-logo-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 22px;
+    }
+
+    .hero-logo-caption {
+      margin-top: 14px;
+      color: var(--forest);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 780px) {
+      .page-hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-logo-card {
+        justify-self: center;
+        width: 180px;
+        min-height: auto;
+        transform: rotate(0deg);
+      }
+    }
+
+    section { padding: 80px 0; }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 40px;
+      margin-bottom: 12px;
+    }
+
+    .badge-green { background: var(--green-light); color: var(--green); }
+    .badge-red { background: var(--red-light); color: var(--red); }
+    .badge-forest { background: var(--forest-light); color: var(--forest); }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      font-size: 16.5px;
+      color: var(--fg-2);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .schedule-key {
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      max-width: 720px;
+    }
+
+    .schedule-key span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border-radius: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--fg-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .schedule-key strong {
+      color: var(--green);
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .class-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: 0 3px 18px rgba(0,0,0,0.075);
+      transition: transform .18s, box-shadow .18s;
+    }
+
+    .class-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.12);
+    }
+
+    .class-photo {
+      min-height: 250px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .class-photo::before,
+    .class-photo::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .class-photo::before {
+      width: 240px;
+      height: 240px;
+      background: rgba(255,255,255,0.18);
+      top: -86px;
+      right: -40px;
+    }
+
+    .class-photo::after {
+      width: 170px;
+      height: 170px;
+      background: rgba(255,255,255,0.13);
+      bottom: -76px;
+      left: -42px;
+    }
+
+    .photo-1 { background: linear-gradient(135deg, #bb0600 0%, #d64525 100%); }
+    .photo-2 { background: linear-gradient(135deg, #4d6622 0%, #78923a 100%); }
+    .photo-3 { background: linear-gradient(135deg, #565f47 0%, #838d77 100%); }
+    .photo-4 { background: linear-gradient(135deg, #8a0400 0%, #bb0600 100%); }
+    .photo-5 { background: linear-gradient(135deg, #3a4e1a 0%, #4d6622 100%); }
+    .photo-6 { background: linear-gradient(135deg, #464f39 0%, #68735b 100%); }
+
+    .photo-inner {
+      width: min(72%, 310px);
+      min-height: 164px;
+      border: 2px solid rgba(255,255,255,0.44);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: white;
+      text-align: center;
+      padding: 22px;
+    }
+
+    .photo-inner img {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      background: white;
+      border-radius: 20px;
+      padding: 6px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .photo-label {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .class-body { padding: 28px 30px 30px; }
+
+    .class-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .class-level {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 22px;
+      background: var(--red-light);
+      color: var(--red);
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .class-teacher {
+      color: var(--fg-2);
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .class-card:nth-child(2n) .class-level {
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    .class-card:nth-child(3n) .class-level {
+      background: var(--forest-light);
+      color: var(--forest);
+    }
+
+    .class-title {
+      font-size: 25px;
+      font-weight: 800;
+      line-height: 1.18;
+      margin-bottom: 10px;
+    }
+
+    .class-text {
+      color: var(--fg-2);
+      font-size: 15.5px;
+      line-height: 1.64;
+    }
+
+    .class-focus {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .focus-chip {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 22px;
+      background: var(--bg);
+      color: var(--forest);
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+    }
+
+    .class-schedule {
+      margin-top: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: #fffdf9;
+      overflow: hidden;
+    }
+
+    .schedule-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px 12px;
+      background: linear-gradient(180deg, #ffffff 0%, #faf8f4 100%);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+
+    .schedule-head::-webkit-details-marker {
+      display: none;
+    }
+
+    .class-schedule[open] .schedule-head {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schedule-head::after {
+      content: '+';
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .class-schedule[open] .schedule-head::after {
+      content: '-';
+      background: var(--red-light);
+      color: var(--red);
+    }
+
+    .schedule-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--forest);
+      line-height: 1.2;
+    }
+
+    .schedule-note {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: var(--red-light);
+      border-radius: 24px;
+      padding: 4px 9px;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .schedule-panel {
+      overflow: hidden;
+    }
+
+    .schedule-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(46px, .76fr) repeat(5, minmax(0, 1fr));
+      font-size: clamp(10.5px, 1.35vw, 12.5px);
+    }
+
+    .schedule-cell {
+      min-height: 38px;
+      padding: 8px 4px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      color: var(--fg-2);
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .schedule-cell:nth-child(6n) { border-right: none; }
+    .schedule-cell:nth-last-child(-n+6) { border-bottom: none; }
+
+    .schedule-day,
+    .schedule-time {
+      font-weight: 800;
+      color: var(--forest);
+      background: var(--forest-light);
+    }
+
+    .schedule-time {
+      font-size: clamp(10px, 1.2vw, 11.5px);
+      color: var(--green);
+      background: var(--green-light);
+    }
+
+    .subject-main {
+      color: var(--fg);
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .subject-soft {
+      color: var(--forest);
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .schedule-cell abbr {
+      text-decoration: none;
+    }
+
+    @media (max-width: 820px) {
+      .class-grid { grid-template-columns: 1fr; }
+      .class-photo { min-height: 230px; }
+    }
+
+    @media (max-width: 520px) {
+      section { padding: 62px 0; }
+      .container { padding: 0 18px; }
+      .class-body { padding: 24px 22px 26px; }
+      .photo-inner { width: 82%; }
+      .schedule-head { padding: 13px 13px 11px; gap: 9px; }
+      .schedule-note { font-size: 10px; padding: 3px 7px; }
+      .schedule-head::after {
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
+      }
+      .schedule-grid {
+        grid-template-columns: minmax(38px, .7fr) repeat(5, minmax(0, 1fr));
+      }
+      .schedule-cell {
+        min-height: 34px;
+        padding: 6px 2px;
+      }
+    }
+
+    .note-band {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0;
+    }
+
+    .note-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .note-inner h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .note-inner p {
+      color: var(--fg-2);
+      max-width: 620px;
+      font-size: 15.5px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 24px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14.5px;
+      transition: transform .15s, background .15s, color .15s;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: white;
+      box-shadow: 0 5px 18px rgba(187,6,0,0.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--green);
+      color: var(--green);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--green);
+      color: white;
+    }
+
+    @media (max-width: 760px) {
+      .note-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .btn-row { justify-content: center; }
+    }
+
+    .footer {
+      background: var(--forest);
+      color: white;
+      padding: 60px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 46px;
+    }
+
+    @media (max-width: 760px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: white;
+      padding: 4px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .f-brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .f-brand-desc {
+      color: rgba(255,255,255,0.72);
+      font-size: 14.5px;
+      max-width: 330px;
+      line-height: 1.6;
+    }
+
+    .f-col-title {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .f-links {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+    }
+
+    .f-links a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-size: 14.5px;
+      transition: color .15s;
+    }
+
+    .f-links a:hover { color: white; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.16);
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      opacity: .6;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <ul class="nav-links nav-links-left" role="list">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="news.html">Aktuelles</a></li>
+      <li><a href="homepage.html#termine">Termine</a></li>
+    </ul>
+
+    <a href="homepage.html" class="nav-logo" aria-label="VS Puch bei Weiz – Startseite">
+      <div class="nav-logo-badge">
+        <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="Logo VS Puch">
+      </div>
+      <div class="nav-logo-text">
+        <strong>VS Puch bei Weiz</strong>
+        <span>Volksschule</span>
+      </div>
+    </a>
+
+    <ul class="nav-links nav-links-right" role="list">
+      <li><a href="klassen.html" class="active">Klassen</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="homepage.html#kontakt">Kontakt</a></li>
+    </ul>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-mobile">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+        <rect y="0" width="22" height="2.5" rx="1.25" fill="white"/>
+        <rect y="6.75" width="22" height="2.5" rx="1.25" fill="white"/>
+        <rect y="13.5" width="22" height="2.5" rx="1.25" fill="white"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile Navigation">
+    <a href="homepage.html">Home</a>
+    <a href="news.html">Aktuelles</a>
+    <a href="homepage.html#termine">Termine</a>
+    <a href="klassen.html" class="active">Klassen</a>
+    <a href="team.html">Team</a>
+    <a href="homepage.html#kontakt">Kontakt</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container page-hero-inner">
+    <div>
+      <div class="breadcrumb">
+        <a href="homepage.html">Startseite</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Unsere Klassen</span>
+      </div>
+      <div class="page-hero-eyebrow">Lernen in Gemeinschaft</div>
+      <h1>Unsere Klassen</h1>
+      <p>Jede Klasse hat ihren eigenen Rhythmus, ihre eigenen Stärken und viele gemeinsame Erlebnisse. Hier bekommen Eltern und Kinder einen schnellen Überblick über unsere Klassengemeinschaften.</p>
+    </div>
+    <div class="hero-logo-card" aria-label="VS Puch Logo">
+      <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="Logo VS Puch">
+      <div class="hero-logo-caption">VS Puch</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="s-classes">
+    <div class="container">
+      <div class="section-head">
+        <div class="badge badge-red">Klassenübersicht</div>
+        <h2 class="section-title">Ein Ort für jedes Kind</h2>
+        <p class="section-sub">Ob Schulstart, Projektarbeit oder Abschlussjahr: Jede Klasse bringt eigene Schwerpunkte mit und wächst als Gemeinschaft durchs Schuljahr.</p>
+        <div class="schedule-key" aria-label="Legende der Stundenplan-Kürzel">
+          <span><strong>GU</strong> Gesamtunterricht</span>
+          <span><strong>LÜ</strong> Leibesübungen</span>
+          <span><strong>REL</strong> Religion</span>
+          <span><strong>W</strong> Werken</span>
+        </div>
+      </div>
+
+      <div class="class-grid">
+        <article class="class-card">
+          <div class="class-photo photo-1" role="img" aria-label="Klassenfoto der Klasse 1a">
+            <div class="photo-inner">
+              <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="">
+              <div class="photo-label">Klassenfoto 1a</div>
+            </div>
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-level">Klasse 1a</span>
+              <span class="class-teacher">Thomas Berger</span>
+            </div>
+            <h3 class="class-title">Gut ankommen, mutig starten</h3>
+            <p class="class-text">In der 1a steht ein sanfter Schulstart im Mittelpunkt. Die Kinder üben Lesen, Schreiben und Rechnen Schritt für Schritt und lernen, als Gruppe zusammenzuwachsen.</p>
+            <div class="class-focus">
+              <span class="focus-chip">Schulstart</span>
+              <span class="focus-chip">Lesen</span>
+              <span class="focus-chip">Gemeinschaft</span>
+            </div>
+            <details class="class-schedule" aria-label="Muster-Stundenplan Klasse 1a">
+              <summary class="schedule-head">
+                <span class="schedule-title">Stundenplan 1a</span>
+                <span class="schedule-note">Muster</span>
+              </summary>
+              <div class="schedule-panel">
+                <div class="schedule-grid">
+                  <div class="schedule-cell schedule-day">Zeit</div>
+                  <div class="schedule-cell schedule-day">Mo</div>
+                  <div class="schedule-cell schedule-day">Di</div>
+                  <div class="schedule-cell schedule-day">Mi</div>
+                  <div class="schedule-cell schedule-day">Do</div>
+                  <div class="schedule-cell schedule-day">Fr</div>
+                  <div class="schedule-cell schedule-time">08:00</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">09:50</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Leibesübungen">LÜ</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Werken">W</abbr></div>
+                  <div class="schedule-cell schedule-time">11:45</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Religion">REL</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Werken">W</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="class-card">
+          <div class="class-photo photo-2" role="img" aria-label="Klassenfoto der Klasse 2b">
+            <div class="photo-inner">
+              <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="">
+              <div class="photo-label">Klassenfoto 2b</div>
+            </div>
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-level">Klasse 2b</span>
+              <span class="class-teacher">Eva Huber</span>
+            </div>
+            <h3 class="class-title">Sicher werden, Neues entdecken</h3>
+            <p class="class-text">Die 2b vertieft die Grundlagen und entdeckt neue Themen über Geschichten, Kreativaufgaben und kleine Forschungsfragen. Lernen darf hier sichtbar und lebendig sein.</p>
+            <div class="class-focus">
+              <span class="focus-chip">Kreativität</span>
+              <span class="focus-chip">Rechnen</span>
+              <span class="focus-chip">Erzählen</span>
+            </div>
+            <details class="class-schedule" aria-label="Muster-Stundenplan Klasse 2b">
+              <summary class="schedule-head">
+                <span class="schedule-title">Stundenplan 2b</span>
+                <span class="schedule-note">Muster</span>
+              </summary>
+              <div class="schedule-panel">
+                <div class="schedule-grid">
+                  <div class="schedule-cell schedule-day">Zeit</div>
+                  <div class="schedule-cell schedule-day">Mo</div>
+                  <div class="schedule-cell schedule-day">Di</div>
+                  <div class="schedule-cell schedule-day">Mi</div>
+                  <div class="schedule-cell schedule-day">Do</div>
+                  <div class="schedule-cell schedule-day">Fr</div>
+                  <div class="schedule-cell schedule-time">08:00</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">09:50</div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Religion">REL</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Leibesübungen">LÜ</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Werken">W</abbr></div>
+                  <div class="schedule-cell schedule-time">11:45</div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Religion">REL</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Werken">W</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="class-card">
+          <div class="class-photo photo-3" role="img" aria-label="Klassenfoto der Klasse 3a">
+            <div class="photo-inner">
+              <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="">
+              <div class="photo-label">Klassenfoto 3a</div>
+            </div>
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-level">Klasse 3a</span>
+              <span class="class-teacher">Sandra Koch</span>
+            </div>
+            <h3 class="class-title">Fragen stellen, Natur verstehen</h3>
+            <p class="class-text">Die 3a arbeitet gerne projektorientiert. Natur, Sachunterricht und gemeinsames Ausprobieren geben den Kindern Raum, eigene Beobachtungen zu machen.</p>
+            <div class="class-focus">
+              <span class="focus-chip">Natur</span>
+              <span class="focus-chip">Projekte</span>
+              <span class="focus-chip">Teamarbeit</span>
+            </div>
+            <details class="class-schedule" aria-label="Muster-Stundenplan Klasse 3a">
+              <summary class="schedule-head">
+                <span class="schedule-title">Stundenplan 3a</span>
+                <span class="schedule-note">Muster</span>
+              </summary>
+              <div class="schedule-panel">
+                <div class="schedule-grid">
+                  <div class="schedule-cell schedule-day">Zeit</div>
+                  <div class="schedule-cell schedule-day">Mo</div>
+                  <div class="schedule-cell schedule-day">Di</div>
+                  <div class="schedule-cell schedule-day">Mi</div>
+                  <div class="schedule-cell schedule-day">Do</div>
+                  <div class="schedule-cell schedule-day">Fr</div>
+                  <div class="schedule-cell schedule-time">08:00</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">09:50</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Leibesübungen">LÜ</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">11:45</div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Werken">W</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Religion">REL</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="class-card">
+          <div class="class-photo photo-4" role="img" aria-label="Klassenfoto der Klasse 3b">
+            <div class="photo-inner">
+              <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="">
+              <div class="photo-label">Klassenfoto 3b</div>
+            </div>
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-level">Klasse 3b</span>
+              <span class="class-teacher">Andreas Wagner</span>
+            </div>
+            <h3 class="class-title">Forschen, planen, präsentieren</h3>
+            <p class="class-text">In der 3b werden Aufgaben gerne gemeinsam gelöst. Die Kinder üben, Ideen zu ordnen, Ergebnisse zu zeigen und Verantwortung in kleinen Gruppen zu übernehmen.</p>
+            <div class="class-focus">
+              <span class="focus-chip">Forschen</span>
+              <span class="focus-chip">Digitales</span>
+              <span class="focus-chip">Präsentieren</span>
+            </div>
+            <details class="class-schedule" aria-label="Muster-Stundenplan Klasse 3b">
+              <summary class="schedule-head">
+                <span class="schedule-title">Stundenplan 3b</span>
+                <span class="schedule-note">Muster</span>
+              </summary>
+              <div class="schedule-panel">
+                <div class="schedule-grid">
+                  <div class="schedule-cell schedule-day">Zeit</div>
+                  <div class="schedule-cell schedule-day">Mo</div>
+                  <div class="schedule-cell schedule-day">Di</div>
+                  <div class="schedule-cell schedule-day">Mi</div>
+                  <div class="schedule-cell schedule-day">Do</div>
+                  <div class="schedule-cell schedule-day">Fr</div>
+                  <div class="schedule-cell schedule-time">08:00</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">09:50</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Leibesübungen">LÜ</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">11:45</div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Religion">REL</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Werken">W</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="class-card">
+          <div class="class-photo photo-5" role="img" aria-label="Klassenfoto der Klasse 4a">
+            <div class="photo-inner">
+              <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="">
+              <div class="photo-label">Klassenfoto 4a</div>
+            </div>
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-level">Klasse 4a</span>
+              <span class="class-teacher">Klaus Eder</span>
+            </div>
+            <h3 class="class-title">Selbstständig werden</h3>
+            <p class="class-text">Die 4a bereitet sich auf den nächsten Schulabschnitt vor. Neben den fachlichen Grundlagen zählen Selbstvertrauen, klare Abläufe und gegenseitige Unterstützung.</p>
+            <div class="class-focus">
+              <span class="focus-chip">Übergang</span>
+              <span class="focus-chip">Englisch</span>
+              <span class="focus-chip">Selbstvertrauen</span>
+            </div>
+            <details class="class-schedule" aria-label="Muster-Stundenplan Klasse 4a">
+              <summary class="schedule-head">
+                <span class="schedule-title">Stundenplan 4a</span>
+                <span class="schedule-note">Muster</span>
+              </summary>
+              <div class="schedule-panel">
+                <div class="schedule-grid">
+                  <div class="schedule-cell schedule-day">Zeit</div>
+                  <div class="schedule-cell schedule-day">Mo</div>
+                  <div class="schedule-cell schedule-day">Di</div>
+                  <div class="schedule-cell schedule-day">Mi</div>
+                  <div class="schedule-cell schedule-day">Do</div>
+                  <div class="schedule-cell schedule-day">Fr</div>
+                  <div class="schedule-cell schedule-time">08:00</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">09:50</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Leibesübungen">LÜ</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">11:45</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Werken">W</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Religion">REL</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="class-card">
+          <div class="class-photo photo-6" role="img" aria-label="Klassenfoto der Klasse 4b">
+            <div class="photo-inner">
+              <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="">
+              <div class="photo-label">Klassenfoto 4b</div>
+            </div>
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-level">Klasse 4b</span>
+              <span class="class-teacher">Lena Maier</span>
+            </div>
+            <h3 class="class-title">Gemeinsam das letzte Volksschuljahr gestalten</h3>
+            <p class="class-text">Die 4b verbindet konzentriertes Arbeiten mit vielen gemeinsamen Momenten. Lesen, Schreiben und Klassengemeinschaft begleiten das Abschlussjahr besonders stark.</p>
+            <div class="class-focus">
+              <span class="focus-chip">Lesen</span>
+              <span class="focus-chip">Abschlussjahr</span>
+              <span class="focus-chip">Miteinander</span>
+            </div>
+            <details class="class-schedule" aria-label="Muster-Stundenplan Klasse 4b">
+              <summary class="schedule-head">
+                <span class="schedule-title">Stundenplan 4b</span>
+                <span class="schedule-note">Muster</span>
+              </summary>
+              <div class="schedule-panel">
+                <div class="schedule-grid">
+                  <div class="schedule-cell schedule-day">Zeit</div>
+                  <div class="schedule-cell schedule-day">Mo</div>
+                  <div class="schedule-cell schedule-day">Di</div>
+                  <div class="schedule-cell schedule-day">Mi</div>
+                  <div class="schedule-cell schedule-day">Do</div>
+                  <div class="schedule-cell schedule-day">Fr</div>
+                  <div class="schedule-cell schedule-time">08:00</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">09:50</div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Leibesübungen">LÜ</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell schedule-time">11:45</div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Religion">REL</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-soft" title="Werken">W</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                  <div class="schedule-cell"><abbr class="subject-main" title="Gesamtunterricht">GU</abbr></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="note-band">
+    <div class="container note-inner">
+      <div>
+        <h2>Fragen zur Klasse oder zum Schulstart?</h2>
+        <p>Unser Team hilft gerne weiter, wenn Sie Informationen zur Klasseneinteilung, zum Unterrichtsalltag oder zu Gesprächsterminen benötigen.</p>
+      </div>
+      <div class="btn-row">
+        <a href="team.html" class="btn-outline">Zum Team</a>
+        <a href="homepage.html#kontakt" class="btn-primary">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="mp1pvbpp-vs-puch-logo-new.svg" alt="Logo VS Puch">
+          <div class="f-brand-name">VS Puch bei Weiz</div>
+        </div>
+        <p class="f-brand-desc">Die Volksschule Puch bei Weiz ist eine lebendige Bildungseinrichtung im Herzen der Steiermark.</p>
+      </div>
+      <div>
+        <div class="f-col-title">Schnellzugriff</div>
+        <ul class="f-links" role="list">
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="news.html">Aktuelles</a></li>
+          <li><a href="homepage.html#termine">Termine</a></li>
+          <li><a href="klassen.html">Unsere Klassen</a></li>
+          <li><a href="team.html">Unser Team</a></li>
+          <li><a href="homepage.html#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-title">Rechtliches</div>
+        <ul class="f-links" role="list">
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutzerklärung</a></li>
+          <li><a href="#">Barrierefreiheitserklärung</a></li>
+          <li><a href="#">Schulprogramm (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Volksschule Puch bei Weiz · Alle Rechte vorbehalten</p>
+      <p>Steiermark, Österreich</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var nav = document.querySelector('.nav');
+  function syncNavScrollState() {
+    if (!nav) return;
+    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  }
+  syncNavScrollState();
+  window.addEventListener('scroll', syncNavScrollState, { passive: true });
+
+  var burger = document.getElementById('nav-burger');
+  var mobile = document.getElementById('nav-mobile');
+
+  if (burger && mobile) {
+    burger.addEventListener('click', function () {
+      var isOpen = mobile.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mobile.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobile.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

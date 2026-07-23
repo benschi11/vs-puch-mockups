@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktuelles – VS Puch bei Weiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:          #bb0600;
+      --red-dark:     #8a0400;
+      --red-light:    #fdf0ef;
+      --green:        #4d6622;
+      --green-dark:   #3a4e1a;
+      --green-light:  #eef3e5;
+      --forest:       #565f47;
+      --forest-light: #f0f1eb;
+
+      --bg:      #faf8f4;
+      --surface: #ffffff;
+      --fg:      #1c1c1a;
+      --fg-2:    #5a5958;
+      --border:  #e5e1d9;
+
+      --font: 'Nunito', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+      --r-sm: 10px;
+      --r-md: 18px;
+      --r-lg: 26px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    .nav {
+      background: var(--green);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+    }
+
+    .nav-inner {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr auto 1fr;
+      min-height: 88px;
+      position: relative;
+      transition: min-height .28s ease;
+    }
+
+    .nav-logo {
+      width: 118px;
+      height: 118px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      position: relative;
+      z-index: 3;
+      margin-bottom: -44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 6px solid var(--bg);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.26);
+      text-decoration: none;
+      color: white;
+      transition:
+        width .28s ease,
+        height .28s ease,
+        margin-bottom .28s ease,
+        border-width .28s ease,
+        transform .18s ease,
+        box-shadow .28s ease;
+    }
+
+    .nav-logo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 42px rgba(0,0,0,0.3);
+    }
+
+    .nav-logo-badge {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 10px;
+    }
+
+    .nav-logo-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nav-logo-text {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 8px);
+      transform: translateX(-50%);
+      padding: 4px 13px;
+      background: var(--green);
+      color: white;
+      border-radius: 999px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+      white-space: nowrap;
+      transition: opacity .2s ease, transform .28s ease;
+    }
+
+    .nav-logo-text strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .nav-logo-text span {
+      display: none;
+    }
+
+    .nav.is-scrolled .nav-inner {
+      min-height: 68px;
+    }
+
+    .nav.is-scrolled .nav-logo {
+      width: 58px;
+      height: 58px;
+      margin-bottom: 0;
+      border-width: 3px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    }
+
+    .nav.is-scrolled .nav-logo-badge {
+      padding: 5px;
+    }
+
+    .nav.is-scrolled .nav-logo-text {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links-left {
+      justify-content: flex-start;
+      padding-right: 52px;
+    }
+
+    .nav-links-right {
+      justify-content: flex-end;
+      padding-left: 52px;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 9px 16px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14.5px;
+      border-radius: 999px;
+      transition: background .15s, color .15s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(255,255,255,0.18);
+      color: white;
+    }
+
+    .nav-burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: white;
+      line-height: 0;
+    }
+
+    .nav-mobile {
+      display: none;
+      background: var(--green-dark);
+    }
+
+    .nav-mobile.open { display: block; }
+
+    .nav-mobile a {
+      display: block;
+      padding: 13px 24px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background .12s;
+    }
+
+    .nav-mobile a:hover,
+    .nav-mobile a.active { background: rgba(255,255,255,0.1); }
+
+    @media (max-width: 860px) {
+      .nav-inner {
+        display: flex;
+        justify-content: center;
+        min-height: 78px;
+      }
+      .nav-links { display: none; }
+      .nav-logo {
+        width: 88px;
+        height: 88px;
+        margin-bottom: -30px;
+        border-width: 5px;
+      }
+      .nav.is-scrolled .nav-inner {
+        min-height: 64px;
+      }
+      .nav.is-scrolled .nav-logo {
+        width: 54px;
+        height: 54px;
+        margin-bottom: 0;
+        border-width: 3px;
+      }
+      .nav-logo-badge { padding: 7px; }
+      .nav-logo-text { display: none; }
+      .nav-burger {
+        display: block;
+        position: absolute;
+        right: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .nav-mobile.open {
+        display: block;
+        padding-top: 12px;
+      }
+    }
+
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      display: grid;
+      align-items: end;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(28,34,22,0.88) 0%, rgba(77,102,34,0.72) 42%, rgba(187,6,0,0.38) 100%),
+        url('https://images.unsplash.com/photo-1777056481869-feac70afe522?auto=format&fit=crop&w=1800&q=82') center / cover;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 42%;
+      background: linear-gradient(0deg, rgba(0,0,0,0.42), transparent);
+      pointer-events: none;
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 84px 0 76px;
+      max-width: 680px;
+    }
+
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.76);
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .breadcrumb a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .breadcrumb a:hover { color: white; }
+    .breadcrumb-sep { opacity: .55; }
+
+    .hero-kicker {
+      display: inline-block;
+      padding: 5px 16px;
+      background: rgba(255,255,255,0.16);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(38px, 7vw, 72px);
+      font-weight: 800;
+      line-height: 1.02;
+      margin-bottom: 18px;
+      max-width: 620px;
+      text-shadow: 0 3px 28px rgba(0,0,0,0.28);
+    }
+
+    .page-hero p {
+      font-size: clamp(16px, 2vw, 20px);
+      opacity: .9;
+      line-height: 1.55;
+      max-width: 560px;
+    }
+
+    .photo-credit {
+      position: absolute;
+      right: 20px;
+      bottom: 18px;
+      z-index: 2;
+      color: rgba(255,255,255,0.72);
+      font-size: 11px;
+      text-decoration: none;
+    }
+
+    .photo-credit:hover { color: white; }
+
+    section { padding: 82px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+
+    .section-head-text { max-width: 620px; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 40px;
+      margin-bottom: 12px;
+    }
+
+    .badge-green { background: var(--green-light); color: var(--green); }
+    .badge-red { background: var(--red-light); color: var(--red); }
+    .badge-forest { background: var(--forest-light); color: var(--forest); }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      color: var(--fg-2);
+      font-size: 16.5px;
+      max-width: 560px;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .filter-chip {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--forest);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .filter-chip.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+
+    .featured {
+      background: var(--surface);
+      border-radius: 30px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border: 1px solid rgba(229,225,217,0.8);
+    }
+
+    .featured-media {
+      position: relative;
+      min-height: 440px;
+      overflow: hidden;
+    }
+
+    .featured-media img,
+    .post-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .featured-media .image-credit,
+    .post-media .image-credit {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      color: rgba(255,255,255,0.78);
+      font-size: 10.5px;
+      text-decoration: none;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.45);
+    }
+
+    .featured-body {
+      padding: 44px 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .post-cat {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    .post-cat.red { background: var(--red-light); color: var(--red); }
+    .post-cat.forest { background: var(--forest-light); color: var(--forest); }
+
+    .post-date {
+      font-size: 13px;
+      color: var(--fg-2);
+      font-weight: 700;
+    }
+
+    .featured h2 {
+      font-size: clamp(26px, 3vw, 42px);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 14px;
+    }
+
+    .featured p,
+    .post-card p {
+      color: var(--fg-2);
+      font-size: 15.5px;
+      line-height: 1.65;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 44px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-family: var(--font);
+      font-weight: 800;
+      font-size: 14.5px;
+      text-decoration: none;
+      transition: transform .15s, background .15s, color .15s;
+    }
+
+    .btn-primary {
+      margin-top: 26px;
+      color: white;
+      background: var(--red);
+      box-shadow: 0 10px 24px rgba(187,6,0,0.18);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); background: var(--red-dark); }
+
+    .btn-outline {
+      color: var(--red);
+      border: 2px solid var(--red);
+      background: transparent;
+    }
+
+    .btn-outline:hover { background: var(--red); color: white; }
+
+    .s-posts { background: var(--bg); }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .post-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1px solid rgba(229,225,217,0.8);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.055);
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.11);
+    }
+
+    .post-media {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+      background: var(--forest-light);
+    }
+
+    .post-body {
+      padding: 22px 23px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .post-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.32;
+      margin-bottom: 10px;
+    }
+
+    .post-link {
+      margin-top: auto;
+      padding-top: 18px;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .post-link::after { content: ' →'; }
+
+    .archive-note {
+      margin-top: 44px;
+      padding: 24px 28px;
+      border-radius: var(--r-lg);
+      background: var(--green-light);
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .archive-note strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }
+
+    .archive-note p {
+      color: var(--forest);
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    .s-contact-band {
+      background:
+        radial-gradient(circle at 12% 20%, rgba(255,255,255,0.12), transparent 32%),
+        linear-gradient(135deg, var(--forest), var(--green-dark));
+      color: white;
+      padding: 72px 0;
+    }
+
+    .contact-band {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 34px;
+    }
+
+    .contact-band h2 {
+      font-size: clamp(27px, 4vw, 42px);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .contact-band p {
+      max-width: 560px;
+      opacity: .84;
+      font-size: 16px;
+    }
+
+    .contact-band .btn-primary {
+      margin-top: 0;
+      background: white;
+      color: var(--green-dark);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+      flex-shrink: 0;
+    }
+
+    .contact-band .btn-primary:hover {
+      background: var(--red-light);
+      color: var(--red-dark);
+    }
+
+    .footer {
+      background: var(--forest);
+      color: white;
+      padding: 60px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 44px;
+      padding-bottom: 46px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo {
+      width: 46px;
+      height: 46px;
+      padding: 3px;
+      border-radius: 13px;
+      background: white;
+      object-fit: contain;
+    }
+
+    .f-brand-name {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .f-brand-desc {
+      color: rgba(255,255,255,0.72);
+      max-width: 360px;
+      font-size: 14.5px;
+    }
+
+    .f-col-title {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .f-links {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .f-links a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .15s;
+    }
+
+    .f-links a:hover { color: white; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.14);
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      opacity: .62;
+    }
+
+    @media (max-width: 980px) {
+      .featured { grid-template-columns: 1fr; }
+      .featured-media { min-height: 360px; }
+      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-head { align-items: start; flex-direction: column; }
+      .filter-row { justify-content: flex-start; }
+    }
+
+    @media (max-width: 720px) {
+      .page-hero { min-height: 480px; }
+      .featured-body { padding: 34px 26px; }
+      .posts-grid { grid-template-columns: 1fr; }
+      .archive-note,
+      .contact-band {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 520px) {
+      .container { padding: 0 18px; }
+      section { padding: 64px 0; }
+      .page-hero-inner { padding: 72px 0 64px; }
+      .photo-credit { left: 18px; right: auto; }
+      .post-media { height: 190px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <ul class="nav-links nav-links-left" role="list">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="news.html" class="active">Aktuelles</a></li>
+      <li><a href="homepage.html#termine">Termine</a></li>
+    </ul>
+
+    <a href="homepage.html" class="nav-logo" aria-label="VS Puch bei Weiz – Startseite">
+      <div class="nav-logo-badge">
+        <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="Logo VS Puch">
+      </div>
+      <div class="nav-logo-text">
+        <strong>VS Puch bei Weiz</strong>
+        <span>Volksschule</span>
+      </div>
+    </a>
+
+    <ul class="nav-links nav-links-right" role="list">
+      <li><a href="klassen.html">Klassen</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="homepage.html#kontakt">Kontakt</a></li>
+    </ul>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-mobile">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+        <rect y="0" width="22" height="2.5" rx="1.25" fill="white"/>
+        <rect y="6.75" width="22" height="2.5" rx="1.25" fill="white"/>
+        <rect y="13.5" width="22" height="2.5" rx="1.25" fill="white"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile Navigation">
+    <a href="homepage.html">Home</a>
+    <a href="news.html" class="active">Aktuelles</a>
+    <a href="homepage.html#termine">Termine</a>
+    <a href="klassen.html">Klassen</a>
+    <a href="team.html">Team</a>
+    <a href="homepage.html#kontakt">Kontakt</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="homepage.html">Startseite</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Aktuelles</span>
+      </div>
+      <div class="hero-kicker">Schulblog</div>
+      <h1>Neuigkeiten aus der VS Puch</h1>
+      <p>Einblicke in Projekte, Ausflüge, Termine und kleine Momente aus dem Schulalltag — gesammelt an einem Ort für Eltern, Kinder und die Schulgemeinschaft.</p>
+    </div>
+  </div>
+  <a class="photo-credit" href="https://unsplash.com/photos/young-children-sitting-at-a-table-in-a-classroom-LgPGzbVmD-o" target="_blank" rel="noopener">Foto: Anna Zwiefel / Unsplash</a>
+</header>
+
+<main>
+  <section class="s-featured" id="top">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head-text">
+          <div class="badge badge-red">Im Fokus</div>
+          <h2 class="section-title">Der jüngste Beitrag</h2>
+          <p class="section-sub">Große Ereignisse, wichtige Informationen und besondere Momente bekommen hier mehr Raum.</p>
+        </div>
+      </div>
+
+      <article class="featured" id="sporttag-2025">
+        <div class="featured-media">
+          <img src="https://images.unsplash.com/photo-1771765812031-22653b4c70a6?auto=format&fit=crop&w=1300&q=78" alt="Kind beim kreativen Arbeiten im Unterricht">
+          <a class="image-credit" href="https://unsplash.com/photos/children-learning-and-creating-art-in-a-classroom-FxzoAr9QBKw" target="_blank" rel="noopener">Foto: Ahmadreza Rezaie / Unsplash</a>
+        </div>
+        <div class="featured-body">
+          <div class="post-meta">
+            <span class="post-cat red">Schulleben</span>
+            <time class="post-date" datetime="2025-05-08">8. Mai 2025</time>
+          </div>
+          <h2>Sporttag 2025 — gemeinsam in Bewegung</h2>
+          <p>Beim Sporttag stehen Freude an Bewegung, gegenseitiges Anfeuern und ein fairer Umgang miteinander im Mittelpunkt. Dieser Beispielbeitrag zeigt, wie ein aktueller Schulbericht später mit echtem Foto und kurzem Rückblick erscheinen kann.</p>
+          <a href="BlogPost.html" class="btn-primary">Beitrag lesen</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="s-posts" id="alle-beitraege">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head-text">
+          <div class="badge badge-green">Alle Beiträge</div>
+          <h2 class="section-title">Berichte &amp; Informationen</h2>
+          <p class="section-sub">Die Karten sind als redaktionelles Muster angelegt und können später mit echten Beiträgen aus dem Schuljahr befüllt werden.</p>
+        </div>
+        <div class="filter-row" aria-label="Beitragskategorien">
+          <span class="filter-chip active">Alle</span>
+          <span class="filter-chip">Schulleben</span>
+          <span class="filter-chip">Termine</span>
+          <span class="filter-chip">Elterninfo</span>
+        </div>
+      </div>
+
+      <div class="posts-grid">
+        <article class="post-card" id="einschulung-2025">
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1771765754567-e7b5bbf6a3b3?auto=format&fit=crop&w=900&q=76" alt="Kinder und Lehrperson beim gemeinsamen Arbeiten">
+            <a class="image-credit" href="https://unsplash.com/photos/children-learning-with-a-teacher-in-a-classroom-bIBc_jsNVOw" target="_blank" rel="noopener">Foto: Ahmadreza Rezaie / Unsplash</a>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="post-cat">Anmeldung</span>
+              <time class="post-date" datetime="2025-04-25">25. April 2025</time>
+            </div>
+            <h3>Einschulung 2025/26 — Informationen für Familien</h3>
+            <p>Ein kompakter Überblick für Eltern: Was zur Anmeldung mitzubringen ist, welche Schritte folgen und an wen sich Familien bei Fragen wenden können.</p>
+            <a class="post-link" href="#einschulung-2025">Beitrag öffnen</a>
+          </div>
+        </article>
+
+        <article class="post-card" id="elternabend">
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1623287072802-ca4ecbec4861?auto=format&fit=crop&w=900&q=76" alt="Schülerinnen und Schüler arbeiten konzentriert an Tischen">
+            <a class="image-credit" href="https://unsplash.com/photos/a-group-of-children-sitting-at-desks-in-a-classroom-qP3WBGkYnOQ" target="_blank" rel="noopener">Foto: Jerry Wang / Unsplash</a>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="post-cat forest">Elterninfo</span>
+              <time class="post-date" datetime="2025-04-15">15. April 2025</time>
+            </div>
+            <h3>Elternabend — gemeinsame Planung fürs Schuljahr</h3>
+            <p>Ein Beispieltext für organisatorische Informationen rund um Klassen, Termine, Materialien und die Zusammenarbeit zwischen Schule und Elternhaus.</p>
+            <a class="post-link" href="#elternabend">Beitrag öffnen</a>
+          </div>
+        </article>
+
+        <article class="post-card" id="lesewoche">
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=76" alt="Bunte Schulbücher und Hefte auf einem Tisch">
+            <a class="image-credit" href="https://unsplash.com/s/photos/school-books" target="_blank" rel="noopener">Foto: Unsplash</a>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="post-cat">Unterricht</span>
+              <time class="post-date" datetime="2025-03-27">27. März 2025</time>
+            </div>
+            <h3>Lesewoche — jeden Tag ein neues Lieblingsbuch</h3>
+            <p>Die Lesewoche zeigt, wie vielfältig Lesen sein kann: Vorlesen, Buchvorstellungen, stille Lesezeiten und kleine kreative Aufgaben.</p>
+            <a class="post-link" href="#lesewoche">Beitrag öffnen</a>
+          </div>
+        </article>
+
+        <article class="post-card" id="werken">
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=900&q=76" alt="Bunte Bastelmaterialien auf einem Tisch">
+            <a class="image-credit" href="https://unsplash.com/s/photos/art-classroom" target="_blank" rel="noopener">Foto: Unsplash</a>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="post-cat red">Kreativ</span>
+              <time class="post-date" datetime="2025-03-12">12. März 2025</time>
+            </div>
+            <h3>Werken im Frühling — Ideen mit Farbe und Form</h3>
+            <p>Ein kurzer Projektbericht kann hier später Arbeiten aus dem Werkunterricht zeigen und den Kindern eine kleine Bühne für ihre Ergebnisse geben.</p>
+            <a class="post-link" href="#werken">Beitrag öffnen</a>
+          </div>
+        </article>
+
+        <article class="post-card" id="pause">
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1588075592806-bbe6da990469?auto=format&fit=crop&w=900&q=76" alt="Kinder sitzen gemeinsam beim Essen an einem Tisch">
+            <a class="image-credit" href="https://unsplash.com/photos/children-sitting-on-chair-eating-oCvk4XaAEV0" target="_blank" rel="noopener">Foto: CDC / Unsplash</a>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="post-cat forest">Gemeinschaft</span>
+              <time class="post-date" datetime="2025-02-21">21. Februar 2025</time>
+            </div>
+            <h3>Gesunde Jause — gemeinsam gut in den Vormittag</h3>
+            <p>Hier kann die Schule einfache Informationen zu Jausenaktionen, gemeinsamer Pause oder besonderen Beiträgen von Eltern und Kindern teilen.</p>
+            <a class="post-link" href="#pause">Beitrag öffnen</a>
+          </div>
+        </article>
+
+        <article class="post-card" id="ausflug">
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=76" alt="Grüne Landschaft mit Weg in der Natur">
+            <a class="image-credit" href="https://unsplash.com/s/photos/nature-walk" target="_blank" rel="noopener">Foto: Unsplash</a>
+          </div>
+          <div class="post-body">
+            <div class="post-meta">
+              <span class="post-cat">Ausflug</span>
+              <time class="post-date" datetime="2025-02-05">5. Februar 2025</time>
+            </div>
+            <h3>Lernen im Freien — unterwegs rund um Puch</h3>
+            <p>Ein Platz für Berichte von Lehrausgängen: Natur entdecken, beobachten, Fragen stellen und Erlebnisse mit dem Unterricht verbinden.</p>
+            <a class="post-link" href="#ausflug">Beitrag öffnen</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="archive-note">
+        <div>
+          <strong>Archiv für ältere Beiträge</strong>
+          <p>Falls später viele echte Blogposts dazukommen, kann hier ein Monats- oder Schuljahrfilter ergänzt werden.</p>
+        </div>
+        <a class="btn-outline" href="homepage.html#kontakt">Beitrag melden</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-contact-band">
+    <div class="container contact-band">
+      <div>
+        <h2>Eine Nachricht fehlt?</h2>
+        <p>Für aktuelle Informationen, Fotos oder Terminänderungen kann die Schule später direkt über das Kontaktformular erreichbar bleiben.</p>
+      </div>
+      <a href="homepage.html#kontakt" class="btn-primary">Kontakt aufnehmen</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="mp1pvbpp-vs-puch-logo-new.svg" alt="Logo VS Puch">
+          <div class="f-brand-name">VS Puch bei Weiz</div>
+        </div>
+        <p class="f-brand-desc">Die Volksschule Puch bei Weiz ist eine lebendige Bildungseinrichtung im Herzen der Steiermark.</p>
+      </div>
+      <div>
+        <div class="f-col-title">Schnellzugriff</div>
+        <ul class="f-links" role="list">
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="news.html">Aktuelles</a></li>
+          <li><a href="homepage.html#termine">Termine</a></li>
+          <li><a href="klassen.html">Unsere Klassen</a></li>
+          <li><a href="team.html">Unser Team</a></li>
+          <li><a href="homepage.html#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-title">Kontakt</div>
+        <ul class="f-links" role="list">
+          <li>8182 Puch bei Weiz</li>
+          <li><a href="tel:+4331771234">+43 3177 1234</a></li>
+          <li><a href="mailto:direktion@vs-puch.at">direktion@vs-puch.at</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 VS Puch bei Weiz. Alle Rechte vorbehalten.</p>
+      <p>Konzeptdesign für die Schulhomepage</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var nav = document.querySelector('.nav');
+  function syncNavScrollState() {
+    if (!nav) return;
+    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  }
+  syncNavScrollState();
+  window.addEventListener('scroll', syncNavScrollState, { passive: true });
+
+  var burger = document.getElementById('nav-burger');
+  var mobile = document.getElementById('nav-mobile');
+
+  if (burger && mobile) {
+    burger.addEventListener('click', function () {
+      var open = mobile.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+</script>
+
+</body>
+</html>

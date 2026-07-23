@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sporttag 2025 - VS Puch bei Weiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:          #bb0600;
+      --red-dark:     #8a0400;
+      --red-light:    #fdf0ef;
+      --green:        #4d6622;
+      --green-dark:   #3a4e1a;
+      --green-light:  #eef3e5;
+      --forest:       #565f47;
+      --forest-light: #f0f1eb;
+
+      --bg:      #faf8f4;
+      --surface: #ffffff;
+      --fg:      #1c1c1a;
+      --fg-2:    #5a5958;
+      --border:  #e5e1d9;
+
+      --font: 'Nunito', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+      --r-sm: 10px;
+      --r-md: 18px;
+      --r-lg: 26px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    .nav {
+      background: var(--green);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+    }
+
+    .nav-inner {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr auto 1fr;
+      min-height: 88px;
+      position: relative;
+      transition: min-height .28s ease;
+    }
+
+    .nav-logo {
+      width: 118px;
+      height: 118px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      position: relative;
+      z-index: 3;
+      margin-bottom: -44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 6px solid var(--bg);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.26);
+      text-decoration: none;
+      color: white;
+      transition:
+        width .28s ease,
+        height .28s ease,
+        margin-bottom .28s ease,
+        border-width .28s ease,
+        transform .18s ease,
+        box-shadow .28s ease;
+    }
+
+    .nav-logo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 42px rgba(0,0,0,0.3);
+    }
+
+    .nav-logo-badge {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 10px;
+    }
+
+    .nav-logo-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nav-logo-text {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 8px);
+      transform: translateX(-50%);
+      padding: 4px 13px;
+      background: var(--green);
+      color: white;
+      border-radius: 999px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+      white-space: nowrap;
+      transition: opacity .2s ease, transform .28s ease;
+    }
+
+    .nav-logo-text strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .nav-logo-text span { display: none; }
+
+    .nav.is-scrolled .nav-inner {
+      min-height: 68px;
+    }
+
+    .nav.is-scrolled .nav-logo {
+      width: 58px;
+      height: 58px;
+      margin-bottom: 0;
+      border-width: 3px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    }
+
+    .nav.is-scrolled .nav-logo-badge {
+      padding: 5px;
+    }
+
+    .nav.is-scrolled .nav-logo-text {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links-left {
+      justify-content: flex-start;
+      padding-right: 52px;
+    }
+
+    .nav-links-right {
+      justify-content: flex-end;
+      padding-left: 52px;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 9px 16px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14.5px;
+      border-radius: 999px;
+      transition: background .15s, color .15s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(255,255,255,0.18);
+      color: white;
+    }
+
+    .nav-burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: white;
+      line-height: 0;
+    }
+
+    .nav-mobile {
+      display: none;
+      background: var(--green-dark);
+    }
+
+    .nav-mobile.open { display: block; }
+
+    .nav-mobile a {
+      display: block;
+      padding: 13px 24px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background .12s;
+    }
+
+    .nav-mobile a:hover,
+    .nav-mobile a.active { background: rgba(255,255,255,0.1); }
+
+    @media (max-width: 860px) {
+      .nav-inner {
+        display: flex;
+        justify-content: center;
+        min-height: 78px;
+      }
+      .nav-links { display: none; }
+      .nav-logo {
+        width: 88px;
+        height: 88px;
+        margin-bottom: -30px;
+        border-width: 5px;
+      }
+      .nav.is-scrolled .nav-inner {
+        min-height: 64px;
+      }
+      .nav.is-scrolled .nav-logo {
+        width: 54px;
+        height: 54px;
+        margin-bottom: 0;
+        border-width: 3px;
+      }
+      .nav-logo-badge { padding: 7px; }
+      .nav-logo-text { display: none; }
+      .nav-burger {
+        display: block;
+        position: absolute;
+        right: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .nav-mobile.open {
+        display: block;
+        padding-top: 12px;
+      }
+    }
+
+    .article-hero {
+      position: relative;
+      min-height: 620px;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(28,34,22,0.9) 0%, rgba(77,102,34,0.72) 46%, rgba(187,6,0,0.34) 100%),
+        url('https://images.unsplash.com/photo-1771765812031-22653b4c70a6?auto=format&fit=crop&w=1900&q=82') center / cover;
+    }
+
+    .article-hero::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 48%;
+      background: linear-gradient(0deg, rgba(0,0,0,0.48), transparent);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      padding: 118px 0 78px;
+    }
+
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.76);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .breadcrumb a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .breadcrumb a:hover { color: white; }
+    .breadcrumb-sep { opacity: .55; }
+
+    .post-cat {
+      display: inline-block;
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+      margin-bottom: 18px;
+    }
+
+    .article-hero h1 {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.05;
+      font-weight: 800;
+      max-width: 760px;
+      margin-bottom: 18px;
+      text-wrap: balance;
+    }
+
+    .hero-lead {
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.55;
+      max-width: 660px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .photo-credit {
+      position: absolute;
+      z-index: 2;
+      right: 24px;
+      bottom: 18px;
+      color: rgba(255,255,255,0.72);
+      font-size: 11.5px;
+      text-decoration: none;
+      background: rgba(0,0,0,0.22);
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 720px) 320px;
+      gap: 56px;
+      align-items: start;
+      padding: 76px 0 88px;
+    }
+
+    .article-meta-card,
+    .related-card,
+    .article-body,
+    .info-box {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      box-shadow: 0 3px 18px rgba(0,0,0,0.06);
+    }
+
+    .article-body {
+      padding: 44px 48px;
+    }
+
+    .article-body p {
+      color: var(--fg-2);
+      font-size: 17px;
+      line-height: 1.78;
+      margin-bottom: 22px;
+    }
+
+    .article-body .intro {
+      color: var(--fg);
+      font-size: 21px;
+      line-height: 1.58;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .article-body h2 {
+      font-size: clamp(26px, 3vw, 34px);
+      line-height: 1.15;
+      font-weight: 800;
+      margin: 42px 0 14px;
+      color: var(--fg);
+    }
+
+    .article-body blockquote {
+      margin: 36px 0;
+      padding: 28px 30px;
+      background: var(--green-light);
+      border-radius: var(--r-md);
+      color: var(--green-dark);
+      font-size: 22px;
+      line-height: 1.48;
+      font-weight: 800;
+    }
+
+    .article-gallery {
+      margin: 42px 0 10px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .gallery-kicker {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .article-gallery h2 {
+      margin: 0 0 8px;
+    }
+
+    .gallery-intro {
+      margin: 0 0 20px;
+      color: var(--fg-2);
+      font-size: 15.5px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      min-height: 220px;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      background: var(--forest-light);
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+      min-height: 456px;
+    }
+
+    .gallery-open {
+      width: 100%;
+      height: 100%;
+      display: block;
+      appearance: none;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
+
+    .gallery-open:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: -6px;
+      border-radius: var(--r-md);
+    }
+
+    .gallery-open img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .28s ease, filter .28s ease;
+    }
+
+    .gallery-open:hover img,
+    .gallery-open:focus-visible img {
+      transform: scale(1.035);
+      filter: saturate(1.08);
+    }
+
+    .image-credit {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.36);
+      color: rgba(255,255,255,0.82);
+      font-size: 10.5px;
+      text-decoration: none;
+    }
+
+    .lightbox[hidden] {
+      display: none;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      display: grid;
+      place-items: center;
+      padding: clamp(18px, 4vw, 48px);
+      background: rgba(20, 22, 16, .86);
+      backdrop-filter: blur(10px);
+    }
+
+    .lightbox-panel {
+      position: relative;
+      width: min(1040px, 100%);
+      max-height: calc(100vh - 72px);
+    }
+
+    .lightbox-image {
+      width: 100%;
+      max-height: calc(100vh - 150px);
+      object-fit: contain;
+      border-radius: var(--r-md);
+      background: #111;
+      box-shadow: 0 24px 80px rgba(0,0,0,.42);
+    }
+
+    .lightbox-caption {
+      margin-top: 12px;
+      color: rgba(255,255,255,.86);
+      font-size: 14px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .lightbox-count {
+      display: block;
+      width: max-content;
+      margin: 8px auto 0;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      color: rgba(255,255,255,.82);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.72);
+      background: rgba(255,255,255,.96);
+      color: var(--forest);
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-close:focus-visible {
+      transform: scale(1.05);
+      background: white;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.58);
+      background: rgba(255,255,255,.18);
+      color: white;
+      font-size: 32px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
+      transform: translateY(-50%);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+
+    .lightbox-prev { left: -68px; }
+    .lightbox-next { right: -68px; }
+
+    .lightbox-nav:hover,
+    .lightbox-nav:focus-visible {
+      background: rgba(255,255,255,.28);
+      border-color: rgba(255,255,255,.86);
+      transform: translateY(-50%) scale(1.05);
+      outline: none;
+    }
+
+    .info-box {
+      margin: 36px 0;
+      padding: 28px;
+      border-top: 5px solid var(--red);
+      box-shadow: none;
+      background: var(--red-light);
+    }
+
+    .info-box h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--red-dark);
+    }
+
+    .info-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .info-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid rgba(187,6,0,0.14);
+      padding-bottom: 9px;
+      font-size: 15px;
+      color: var(--fg-2);
+    }
+
+    .info-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .info-list strong { color: var(--fg); }
+
+    .article-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 38px;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 15px;
+      text-decoration: none;
+      transition: transform .15s, background .15s, color .15s;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: white;
+      box-shadow: 0 7px 20px rgba(187,6,0,0.24);
+    }
+
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn-outline { border: 2px solid var(--green); color: var(--green); }
+    .btn-outline:hover { background: var(--green); color: white; }
+
+    .sidebar {
+      display: grid;
+      gap: 22px;
+      position: sticky;
+      top: 128px;
+    }
+
+    .article-meta-card {
+      padding: 26px;
+      border-top: 5px solid var(--green);
+    }
+
+    .meta-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .meta-row {
+      display: grid;
+      gap: 3px;
+      padding: 13px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-row span {
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg-2);
+    }
+
+    .meta-row strong {
+      font-size: 15px;
+      color: var(--fg);
+    }
+
+    .related-card {
+      padding: 24px;
+    }
+
+    .related-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .related-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .related-list a {
+      display: block;
+      text-decoration: none;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .related-list li:last-child a { border-bottom: 0; padding-bottom: 0; }
+
+    .related-list strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+
+    .related-list span {
+      color: var(--fg-2);
+      font-size: 13px;
+    }
+
+    .footer { background: var(--forest); color: white; padding-top: 54px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 46px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: white;
+      padding: 4px;
+      object-fit: contain;
+    }
+
+    .f-brand-name { font-size: 20px; font-weight: 800; }
+    .f-brand-desc { color: rgba(255,255,255,0.72); max-width: 350px; font-size: 14.5px; }
+    .f-col-title {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .f-links {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+    }
+
+    .f-links a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-size: 14.5px;
+      transition: color .15s;
+    }
+
+    .f-links a:hover { color: white; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.16);
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p { font-size: 13px; opacity: .6; }
+
+    @media (max-width: 940px) {
+      .article-shell {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .sidebar {
+        position: static;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .article-hero { min-height: 560px; }
+      .hero-inner { padding: 96px 0 62px; }
+      .article-shell { padding: 58px 0 70px; }
+      .article-body { padding: 32px 24px; }
+      .gallery-grid,
+      .sidebar,
+      .footer-grid { grid-template-columns: 1fr; }
+      .info-list li { display: grid; gap: 2px; }
+    }
+
+    @media (max-width: 520px) {
+      .container { padding: 0 18px; }
+      .article-hero h1 { font-size: 36px; }
+      .photo-credit { left: 18px; right: auto; }
+      .gallery-item,
+      .gallery-item:first-child {
+        min-height: 180px;
+        grid-row: auto;
+      }
+      .lightbox {
+        padding: 16px;
+      }
+      .lightbox-nav {
+        width: 42px;
+        height: 42px;
+        background: rgba(20, 22, 16, .58);
+        font-size: 28px;
+      }
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+      .lightbox-close {
+        top: -10px;
+        right: -8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <ul class="nav-links nav-links-left" role="list">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="news.html" class="active">Aktuelles</a></li>
+      <li><a href="homepage.html#termine">Termine</a></li>
+    </ul>
+
+    <a href="homepage.html" class="nav-logo" aria-label="VS Puch bei Weiz - Startseite">
+      <div class="nav-logo-badge">
+        <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="Logo VS Puch">
+      </div>
+      <div class="nav-logo-text">
+        <strong>VS Puch bei Weiz</strong>
+        <span>Volksschule</span>
+      </div>
+    </a>
+
+    <ul class="nav-links nav-links-right" role="list">
+      <li><a href="klassen.html">Klassen</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="homepage.html#kontakt">Kontakt</a></li>
+    </ul>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-mobile">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+        <rect y="0" width="22" height="2.5" rx="1.25" fill="white"/>
+        <rect y="6.75" width="22" height="2.5" rx="1.25" fill="white"/>
+        <rect y="13.5" width="22" height="2.5" rx="1.25" fill="white"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile Navigation">
+    <a href="homepage.html">Home</a>
+    <a href="news.html" class="active">Aktuelles</a>
+    <a href="homepage.html#termine">Termine</a>
+    <a href="klassen.html">Klassen</a>
+    <a href="team.html">Team</a>
+    <a href="homepage.html#kontakt">Kontakt</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="homepage.html">Startseite</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="news.html">Aktuelles</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Sporttag 2025</span>
+      </div>
+      <div class="post-cat">Schulleben</div>
+      <h1>Sporttag 2025 - gemeinsam in Bewegung</h1>
+      <p class="hero-lead">Ein Tag voller Laufspiele, Teamstationen und kleiner Erfolgsmomente: Die Kinder der VS Puch zeigen, wie viel Freude Bewegung machen kann.</p>
+    </div>
+  </div>
+  <a class="photo-credit" href="https://unsplash.com/photos/children-learning-and-creating-art-in-a-classroom-FxzoAr9QBKw" target="_blank" rel="noopener">Foto: Ahmadreza Rezaie / Unsplash</a>
+</header>
+
+<main>
+  <div class="container article-shell">
+    <article class="article-body">
+      <p class="intro">Beim heurigen Sporttag standen nicht Bestzeiten im Vordergrund, sondern gemeinsames Ausprobieren, Anfeuern und fairer Umgang miteinander.</p>
+
+      <p>Schon am Morgen verwandelte sich der Schulhof in einen Bewegungsparcours. Jede Klasse startete in kleinen Gruppen und wanderte von Station zu Station: Zielwerfen, Geschicklichkeitslauf, Seilspringen, Balancieraufgaben und ein gemeinsames Staffelspiel sorgten für Abwechslung.</p>
+
+      <p>Besonders schön war zu sehen, wie ältere Kinder den jüngeren halfen und wie selbstverständlich Applaus auch für kleine Fortschritte da war. So wurde der Sporttag nicht nur ein bewegter Vormittag, sondern auch ein sichtbares Zeichen für die Gemeinschaft an unserer Schule.</p>
+
+      <blockquote>Bewegung stärkt nicht nur den Körper - sie macht Mut, schafft Vertrauen und verbindet Kinder über Klassengrenzen hinweg.</blockquote>
+
+      <h2>Stationen mit viel Abwechslung</h2>
+      <p>Die Aufgaben waren bewusst so geplant, dass jedes Kind mitmachen konnte. Manche Stationen brauchten Schnelligkeit, andere Konzentration, Teamarbeit oder ein gutes Gefühl für Rhythmus. Dadurch konnten viele unterschiedliche Stärken sichtbar werden.</p>
+
+      <h2>Danke an alle Helferinnen und Helfer</h2>
+      <p>Ein solcher Vormittag gelingt nur gemeinsam. Danke an das Schulteam, an unterstützende Eltern und an alle Kinder, die mit Freude, Fairness und Rücksicht dabei waren. Die Fotos und Eindrücke dieses Musterbeitrags können später durch echte Bilder der Schule ersetzt werden.</p>
+
+      <div class="info-box">
+        <h3>Kurz zusammengefasst</h3>
+        <ul class="info-list">
+          <li><strong>Wann</strong><span>8. Mai 2025</span></li>
+          <li><strong>Wo</strong><span>Schulhof und Sportplatz Puch</span></li>
+          <li><strong>Für wen</strong><span>Alle Klassen der VS Puch</span></li>
+          <li><strong>Schwerpunkt</strong><span>Bewegung, Teamgeist, Freude</span></li>
+        </ul>
+      </div>
+
+      <p>Für die echte Webseite kann dieser Beitrag später direkt mit Originalfotos, einem kurzen Zitat aus einer Klasse oder einem Download-Link zur Fotogalerie ergänzt werden.</p>
+
+      <section class="article-gallery" aria-labelledby="gallery-title">
+        <span class="gallery-kicker">Fotogalerie</span>
+        <h2 id="gallery-title">Eindrücke vom Vormittag</h2>
+        <p class="gallery-intro">Am Ende jedes Blogbeitrags kann eine Galerie stehen. Die Beispielbilder sind Platzhalter und lassen sich später durch echte Fotos der Schule ersetzen.</p>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <button class="gallery-open" type="button" data-lightbox-src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&w=1600&q=86" data-lightbox-alt="Kinder sitzen gemeinsam im Klassenzimmer" data-lightbox-caption="Kinder sitzen gemeinsam im Klassenzimmer">
+              <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&w=1100&q=78" alt="Kinder sitzen gemeinsam im Klassenzimmer">
+            </button>
+            <a class="image-credit" href="https://unsplash.com/s/photos/primary-school" target="_blank" rel="noopener">Foto: Unsplash</a>
+          </figure>
+          <figure class="gallery-item">
+            <button class="gallery-open" type="button" data-lightbox-src="https://images.unsplash.com/photo-1544776193-32d404ae608a?auto=format&fit=crop&w=1500&q=86" data-lightbox-alt="Kinder laufen im Freien" data-lightbox-caption="Kinder laufen im Freien">
+              <img src="https://images.unsplash.com/photo-1544776193-32d404ae608a?auto=format&fit=crop&w=900&q=78" alt="Kinder laufen im Freien">
+            </button>
+            <a class="image-credit" href="https://unsplash.com/s/photos/kids-running" target="_blank" rel="noopener">Foto: Unsplash</a>
+          </figure>
+          <figure class="gallery-item">
+            <button class="gallery-open" type="button" data-lightbox-src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1500&q=86" data-lightbox-alt="Schulklasse beim gemeinsamen Lernen" data-lightbox-caption="Schulklasse beim gemeinsamen Lernen">
+              <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=78" alt="Schulklasse beim gemeinsamen Lernen">
+            </button>
+            <a class="image-credit" href="https://unsplash.com/photos/students-sitting-on-chair-beside-tables-NAZVHOJw1TY" target="_blank" rel="noopener">Foto: Unsplash</a>
+          </figure>
+        </div>
+      </section>
+
+      <div class="article-actions">
+        <a href="news.html" class="btn-primary">Zurück zu Aktuelles</a>
+        <a href="homepage.html#kontakt" class="btn-outline">Kontakt aufnehmen</a>
+      </div>
+    </article>
+
+    <aside class="sidebar" aria-label="Beitragsinformationen">
+      <div class="article-meta-card">
+        <div class="meta-title">Beitragsdaten</div>
+        <div class="meta-row">
+          <span>Datum</span>
+          <strong>8. Mai 2025</strong>
+        </div>
+        <div class="meta-row">
+          <span>Kategorie</span>
+          <strong>Schulleben</strong>
+        </div>
+        <div class="meta-row">
+          <span>Lesedauer</span>
+          <strong>ca. 3 Minuten</strong>
+        </div>
+        <div class="meta-row">
+          <span>Autor</span>
+          <strong>VS Puch bei Weiz</strong>
+        </div>
+      </div>
+
+      <div class="related-card">
+        <h3>Weitere Beiträge</h3>
+        <ul class="related-list" role="list">
+          <li>
+            <a href="news.html#einschulung-2025">
+              <strong>Einschulung 2025/26</strong>
+              <span>Anmeldung</span>
+            </a>
+          </li>
+          <li>
+            <a href="news.html#lesewoche">
+              <strong>Lesewoche</strong>
+              <span>Unterricht</span>
+            </a>
+          </li>
+          <li>
+            <a href="news.html#ausflug">
+              <strong>Lernen im Freien</strong>
+              <span>Ausflug</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div class="lightbox" id="gallery-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption" hidden>
+  <figure class="lightbox-panel">
+    <button class="lightbox-close" type="button" aria-label="Galerie schließen">×</button>
+    <button class="lightbox-nav lightbox-prev" type="button" aria-label="Vorheriges Foto">‹</button>
+    <img class="lightbox-image" id="lightbox-image" src="" alt="">
+    <button class="lightbox-nav lightbox-next" type="button" aria-label="Nächstes Foto">›</button>
+    <figcaption class="lightbox-caption" id="lightbox-caption" aria-live="polite"></figcaption>
+    <span class="lightbox-count" id="lightbox-count" aria-live="polite"></span>
+  </figure>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img class="footer-logo" src="mp1pvbpp-vs-puch-logo-new.svg" alt="Logo VS Puch">
+          <div class="f-brand-name">VS Puch bei Weiz</div>
+        </div>
+        <p class="f-brand-desc">Die Volksschule Puch bei Weiz ist eine lebendige Bildungseinrichtung im Herzen der Steiermark.</p>
+      </div>
+      <div>
+        <div class="f-col-title">Schnellzugriff</div>
+        <ul class="f-links" role="list">
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="news.html">Aktuelles</a></li>
+          <li><a href="homepage.html#termine">Termine</a></li>
+          <li><a href="klassen.html">Unsere Klassen</a></li>
+          <li><a href="team.html">Unser Team</a></li>
+          <li><a href="homepage.html#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-title">Rechtliches</div>
+        <ul class="f-links" role="list">
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutzerklärung</a></li>
+          <li><a href="#">Barrierefreiheitserklärung</a></li>
+          <li><a href="#">Schulprogramm (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Volksschule Puch bei Weiz · Alle Rechte vorbehalten</p>
+      <p>Konzeptdesign für die Schulhomepage</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var nav = document.querySelector('.nav');
+  function syncNavScrollState() {
+    if (!nav) return;
+    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  }
+  syncNavScrollState();
+  window.addEventListener('scroll', syncNavScrollState, { passive: true });
+
+  var burger = document.getElementById('nav-burger');
+  var mobile = document.getElementById('nav-mobile');
+
+  if (burger && mobile) {
+    burger.addEventListener('click', function () {
+      var open = mobile.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  var lightbox = document.getElementById('gallery-lightbox');
+  var lightboxImage = document.getElementById('lightbox-image');
+  var lightboxCaption = document.getElementById('lightbox-caption');
+  var lightboxCount = document.getElementById('lightbox-count');
+  var lightboxClose = lightbox ? lightbox.querySelector('.lightbox-close') : null;
+  var lightboxPrev = lightbox ? lightbox.querySelector('.lightbox-prev') : null;
+  var lightboxNext = lightbox ? lightbox.querySelector('.lightbox-next') : null;
+  var galleryButtons = Array.prototype.slice.call(document.querySelectorAll('.gallery-open'));
+  var lastGalleryTrigger = null;
+  var currentGalleryIndex = 0;
+
+  function renderLightbox(index) {
+    if (!lightbox || !lightboxImage || !lightboxCaption || !galleryButtons.length) return;
+    currentGalleryIndex = (index + galleryButtons.length) % galleryButtons.length;
+    var button = galleryButtons[currentGalleryIndex];
+    lightboxImage.src = button.dataset.lightboxSrc || '';
+    lightboxImage.alt = button.dataset.lightboxAlt || '';
+    lightboxCaption.textContent = button.dataset.lightboxCaption || lightboxImage.alt;
+    if (lightboxCount) {
+      lightboxCount.textContent = (currentGalleryIndex + 1) + ' / ' + galleryButtons.length;
+    }
+  }
+
+  function openLightbox(index) {
+    if (!lightbox || !lightboxImage || !lightboxCaption) return;
+    lastGalleryTrigger = galleryButtons[index] || null;
+    renderLightbox(index);
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (lightboxClose) {
+      lightboxClose.focus();
+    }
+  }
+
+  function showPreviousImage() {
+    renderLightbox(currentGalleryIndex - 1);
+  }
+
+  function showNextImage() {
+    renderLightbox(currentGalleryIndex + 1);
+  }
+
+  function closeLightbox() {
+    if (!lightbox || !lightboxImage || !lightboxCaption) return;
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+    lightboxImage.removeAttribute('src');
+    lightboxImage.alt = '';
+    lightboxCaption.textContent = '';
+    if (lightboxCount) {
+      lightboxCount.textContent = '';
+    }
+    if (lastGalleryTrigger) {
+      lastGalleryTrigger.focus();
+    }
+  }
+
+  galleryButtons.forEach(function (button, index) {
+    button.addEventListener('click', function () {
+      openLightbox(index);
+    });
+  });
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+  }
+
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', showPreviousImage);
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener('click', showNextImage);
+  }
+
+  if (lightbox) {
+    lightbox.addEventListener('click', function (event) {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (!lightbox || lightbox.hidden) return;
+    if (event.key === 'Escape') {
+      closeLightbox();
+    } else if (event.key === 'ArrowLeft') {
+      showPreviousImage();
+    } else if (event.key === 'ArrowRight') {
+      showNextImage();
+    }
+  });
+</script>
+
+</body>
+</html>

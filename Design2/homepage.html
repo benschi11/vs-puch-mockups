@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS Puch bei Weiz – Volksschule</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Brand */
+      --red:          #bb0600;
+      --red-dark:     #8a0400;
+      --red-light:    #fdf0ef;
+      --green:        #4d6622;
+      --green-dark:   #3a4e1a;
+      --green-light:  #eef3e5;
+      --forest:       #565f47;
+      --forest-light: #f0f1eb;
+
+      /* Surface */
+      --bg:      #faf8f4;
+      --surface: #ffffff;
+      --fg:      #1c1c1a;
+      --fg-2:    #5a5958;
+      --border:  #e5e1d9;
+
+      /* Type */
+      --font: 'Nunito', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+      /* Radius */
+      --r-sm: 10px;
+      --r-md: 18px;
+      --r-lg: 26px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* ─── NAVIGATION ──────────────────────────────────────── */
+    .nav {
+      background: var(--green);
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+    }
+    .nav-inner {
+      display: grid; align-items: center;
+      grid-template-columns: 1fr auto 1fr;
+      min-height: 88px;
+      position: relative;
+      transition: min-height .28s ease;
+    }
+    .nav-logo {
+      width: 118px; height: 118px;
+      display: flex; align-items: center; justify-content: center;
+      justify-self: center;
+      position: relative; z-index: 3;
+      margin-bottom: -44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 6px solid var(--bg);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.26);
+      text-decoration: none; color: white;
+      transition:
+        width .28s ease,
+        height .28s ease,
+        margin-bottom .28s ease,
+        border-width .28s ease,
+        transform .18s ease,
+        box-shadow .28s ease;
+    }
+    .nav-logo:hover { transform: translateY(-2px); box-shadow: 0 16px 42px rgba(0,0,0,0.3); }
+    .nav-logo-badge {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: white;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      padding: 10px;
+    }
+    .nav-logo-badge img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .nav-logo-text {
+      position: absolute; left: 50%; top: calc(100% + 8px);
+      transform: translateX(-50%);
+      padding: 4px 13px;
+      background: var(--green);
+      color: white;
+      border-radius: 999px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+      white-space: nowrap;
+      transition: opacity .2s ease, transform .28s ease;
+    }
+    .nav-logo-text strong { display: block; font-size: 12px; font-weight: 800; line-height: 1.1; }
+    .nav-logo-text span  { display: none; }
+
+    .nav.is-scrolled .nav-inner {
+      min-height: 68px;
+    }
+    .nav.is-scrolled .nav-logo {
+      width: 58px; height: 58px;
+      margin-bottom: 0;
+      border-width: 3px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    }
+    .nav.is-scrolled .nav-logo-badge {
+      padding: 5px;
+    }
+    .nav.is-scrolled .nav-logo-text {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links-left { justify-content: flex-start; padding-right: 52px; }
+    .nav-links-right { justify-content: flex-end; padding-left: 52px; }
+    .nav-links a {
+      display: block; padding: 9px 16px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none; font-weight: 600; font-size: 14.5px;
+      border-radius: 999px;
+      transition: background .15s, color .15s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: rgba(255,255,255,0.18); color: white;
+    }
+
+    .nav-burger {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 8px; color: white; line-height: 0;
+    }
+    .nav-mobile { display: none; background: var(--green-dark); }
+    .nav-mobile.open { display: block; }
+    .nav-mobile a {
+      display: block; padding: 13px 24px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none; font-weight: 600; font-size: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background .12s;
+    }
+    .nav-mobile a:hover { background: rgba(255,255,255,0.08); }
+
+    @media (max-width: 860px) {
+      .nav-inner {
+        display: flex; justify-content: center;
+        min-height: 78px;
+      }
+      .nav-links { display: none; }
+      .nav-logo {
+        width: 88px; height: 88px;
+        margin-bottom: -30px;
+        border-width: 5px;
+      }
+      .nav.is-scrolled .nav-inner {
+        min-height: 64px;
+      }
+      .nav.is-scrolled .nav-logo {
+        width: 54px; height: 54px;
+        margin-bottom: 0;
+        border-width: 3px;
+      }
+      .nav-logo-badge { padding: 7px; }
+      .nav-logo-text { display: none; }
+      .nav-burger {
+        display: block;
+        position: absolute;
+        right: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .nav-mobile.open {
+        display: block;
+        padding-top: 12px;
+      }
+    }
+
+    /* ─── HERO SLIDER ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: min(84vh, 780px); min-height: 480px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .75s ease;
+      pointer-events: none;
+    }
+    .slide.active { opacity: 1; pointer-events: auto; }
+
+    /* Slide backgrounds */
+    .slide-1 { background: linear-gradient(140deg, #330000 0%, #bb0600 55%, #d94000 100%); }
+    .slide-photo {
+      background-image:
+        linear-gradient(90deg, rgba(28, 30, 22, 0.82) 0%, rgba(77, 102, 34, 0.58) 52%, rgba(187, 6, 0, 0.16) 100%),
+        url('https://images.unsplash.com/photo-1777056481869-feac70afe522?auto=format&fit=crop&w=1800&q=82');
+      background-size: cover;
+      background-position: center 48%;
+    }
+    .slide-2 { background: linear-gradient(140deg, #1b2e08 0%, #4d6622 55%, #6e8e30 100%); }
+    .slide-3 { background: linear-gradient(140deg, #212519 0%, #565f47 60%, #74806a 100%); }
+
+    /* Decorative circles */
+    .slide::before {
+      content: ''; position: absolute;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: rgba(255,255,255,0.065);
+      top: -260px; right: -200px;
+    }
+    .slide::after {
+      content: ''; position: absolute;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      bottom: -160px; left: -80px;
+    }
+    .slide-photo::before {
+      inset: 0; width: auto; height: auto; border-radius: 0;
+      top: 0; right: 0;
+      background:
+        radial-gradient(circle at 74% 20%, rgba(255,255,255,0.15), transparent 28%),
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.32));
+    }
+    .slide-photo::after {
+      width: 520px; height: 520px;
+      background: rgba(187,6,0,0.22);
+      bottom: -230px; left: -160px;
+    }
+
+    .slide-content {
+      position: relative; z-index: 1;
+      text-align: center; max-width: 780px; padding: 0 32px;
+      color: white;
+    }
+    .slide-photo .slide-content {
+      text-align: left;
+      max-width: 650px;
+      margin-right: auto;
+      margin-left: max(24px, calc((100vw - 1160px) / 2));
+    }
+    .slide-eyebrow {
+      display: inline-block; padding: 5px 16px;
+      background: rgba(255,255,255,0.16); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 40px; font-size: 12px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .slide-title {
+      font-size: clamp(34px, 7vw, 72px);
+      font-weight: 800; line-height: 1.05;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+    }
+    .slide-sub {
+      font-size: clamp(15px, 2vw, 20px);
+      opacity: .88; line-height: 1.55;
+      max-width: 560px; margin: 0 auto 36px;
+    }
+    .slide-photo .slide-sub { margin-left: 0; }
+    .slide-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .slide-photo .slide-ctas { justify-content: flex-start; }
+    .photo-credit {
+      position: absolute; right: 20px; bottom: 18px; z-index: 11;
+      color: rgba(255,255,255,0.68); font-size: 11px; font-weight: 600;
+      text-decoration: none;
+    }
+    .photo-credit:hover { color: white; }
+
+    .btn-light {
+      display: inline-block; padding: 13px 30px;
+      background: white; font-family: var(--font);
+      font-weight: 700; font-size: 15px;
+      border-radius: 40px; text-decoration: none;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-light:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.28); }
+
+    .btn-ghost {
+      display: inline-block; padding: 13px 30px;
+      background: rgba(255,255,255,0.14); backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255,255,255,0.38);
+      color: white; font-family: var(--font);
+      font-weight: 700; font-size: 15px;
+      border-radius: 40px; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+
+    /* Slider controls */
+    .slider-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 46px; height: 46px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255,255,255,0.3); color: white;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10; font-size: 22px; line-height: 1;
+      transition: background .15s;
+    }
+    .slider-arrow:hover { background: rgba(255,255,255,0.28); }
+    .slider-arrow.prev { left: 20px; }
+    .slider-arrow.next { right: 20px; }
+
+    .slider-dots {
+      position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 10px; z-index: 10;
+    }
+    .dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: rgba(255,255,255,0.4); border: none;
+      cursor: pointer; transition: background .2s, transform .2s;
+    }
+    .dot.active { background: white; transform: scale(1.35); }
+
+    @media (max-width: 600px) {
+      .slider-arrow { display: none; }
+      .hero { height: 72vh; min-height: 440px; }
+      .slide-photo {
+        background-position: 58% center;
+      }
+      .slide-photo .slide-content {
+        text-align: center;
+        margin-left: 0;
+        max-width: 100%;
+      }
+      .slide-photo .slide-sub { margin-left: auto; }
+      .slide-photo .slide-ctas { justify-content: center; }
+      .photo-credit { display: none; }
+    }
+
+    /* ─── SECTION COMMONS ─────────────────────────────────── */
+    section { padding: 88px 0; }
+
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .badge {
+      display: inline-block; padding: 4px 14px;
+      font-size: 11.5px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      border-radius: 40px; margin-bottom: 12px;
+    }
+    .badge-green  { background: var(--green-light);  color: var(--green); }
+    .badge-red    { background: var(--red-light);    color: var(--red); }
+    .badge-forest { background: var(--forest-light); color: var(--forest); }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 17px; color: var(--fg-2);
+      max-width: 500px; margin: 0 auto;
+    }
+
+    /* ─── NEWS / AKTUELLES ────────────────────────────────── */
+    .s-news { background: var(--bg); }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+    @media (max-width: 920px) { .news-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .news-grid { grid-template-columns: 1fr; } }
+
+    .news-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      display: flex; flex-direction: column;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .news-card:hover {
+      box-shadow: 0 10px 36px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
+    }
+    .news-thumb {
+      height: 175px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 60px; flex-shrink: 0;
+    }
+    .thumb-1 { background: linear-gradient(135deg, #ffe8e6, #ffc5c0); }
+    .thumb-2 { background: linear-gradient(135deg, #e8f0d8, #c8dfa0); }
+    .thumb-3 { background: linear-gradient(135deg, #e8ebdf, #cdd4c4); }
+
+    .news-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+    .news-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; }
+    .news-cat {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+      background: var(--green-light); color: var(--green);
+    }
+    .news-date { font-size: 13px; color: var(--fg-2); }
+    .news-title { font-size: 17.5px; font-weight: 700; line-height: 1.35; margin-bottom: 10px; }
+    .news-excerpt { font-size: 14.5px; color: var(--fg-2); line-height: 1.6; flex: 1; }
+    .news-link {
+      display: inline-block; margin-top: 18px;
+      color: var(--red); font-weight: 700; font-size: 14px;
+      text-decoration: none; transition: color .15s;
+    }
+    .news-link::after { content: ' →'; }
+    .news-link:hover { color: var(--red-dark); }
+
+    .news-footer { text-align: center; margin-top: 44px; }
+    .btn-outline {
+      display: inline-block; padding: 12px 28px;
+      border: 2px solid var(--red); color: var(--red);
+      font-family: var(--font); font-weight: 700; font-size: 15px;
+      border-radius: 40px; text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .btn-outline:hover { background: var(--red); color: white; }
+
+    /* ─── TERMINE ─────────────────────────────────────────── */
+    .s-termine { background: var(--green-light); }
+    .termine-list {
+      display: flex; flex-direction: column;
+      gap: 14px; max-width: 740px; margin: 0 auto;
+    }
+    .termine-item {
+      background: var(--surface); border-radius: var(--r-md);
+      padding: 18px 22px;
+      display: flex; align-items: center; gap: 18px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      transition: box-shadow .18s, transform .18s;
+    }
+    .termine-item:hover {
+      box-shadow: 0 5px 22px rgba(0,0,0,0.11);
+      transform: translateX(4px);
+    }
+    .termine-badge {
+      flex-shrink: 0; width: 58px; text-align: center;
+      border-radius: 12px; padding: 9px 4px;
+      background: var(--red); color: white;
+    }
+    .termine-badge.green { background: var(--green); }
+    .tb-day   { font-size: 22px; font-weight: 800; line-height: 1; }
+    .tb-month {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .05em; margin-top: 3px;
+    }
+    .termine-info { flex: 1; min-width: 0; }
+    .t-title { font-size: 15.5px; font-weight: 700; }
+    .t-detail { font-size: 13px; color: var(--fg-2); margin-top: 2px; }
+    .t-tag {
+      flex-shrink: 0;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; padding: 3px 10px; border-radius: 20px;
+      white-space: nowrap;
+    }
+    .tag-s { background: var(--red-light);    color: var(--red); }
+    .tag-e { background: var(--green-light);  color: var(--green); }
+    .tag-a { background: var(--forest-light); color: var(--forest); }
+    @media (max-width: 480px) { .t-tag { display: none; } }
+
+    /* ─── TEAM ────────────────────────────────────────────── */
+    .s-team { background: var(--bg); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 860px) { .team-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 520px) { .team-grid { grid-template-columns: 1fr; } }
+
+    .team-card {
+      background: var(--surface); border-radius: var(--r-lg);
+      padding: 30px 22px; text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      position: relative; overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .team-card:hover {
+      box-shadow: 0 10px 32px rgba(0,0,0,0.11);
+      transform: translateY(-4px);
+    }
+    .team-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+    }
+    .team-card:nth-child(3n+1)::before { background: var(--red); }
+    .team-card:nth-child(3n+2)::before { background: var(--green); }
+    .team-card:nth-child(3n)::before   { background: var(--forest); }
+
+    .team-avatar {
+      width: 84px; height: 84px; border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; font-weight: 800; color: white; letter-spacing: -.01em;
+    }
+    .team-card:nth-child(3n+1) .team-avatar { background: var(--red); }
+    .team-card:nth-child(3n+2) .team-avatar { background: var(--green); }
+    .team-card:nth-child(3n)   .team-avatar { background: var(--forest); }
+
+    .team-name { font-size: 17px; font-weight: 700; }
+    .team-role { font-size: 13.5px; color: var(--fg-2); margin-top: 4px; }
+
+    /* ─── KONTAKT ─────────────────────────────────────────── */
+    .s-kontakt { background: var(--forest-light); }
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.45fr;
+      gap: 60px; align-items: start;
+    }
+    @media (max-width: 780px) { .kontakt-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    .k-info-title { font-size: 22px; font-weight: 800; margin-bottom: 26px; }
+    .k-row {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 20px; font-size: 15px;
+    }
+    .k-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--green); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .k-text strong {
+      display: block; font-size: 11.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .07em;
+      color: var(--fg-2); margin-bottom: 2px;
+    }
+
+    .form-title { font-size: 22px; font-weight: 800; margin-bottom: 24px; }
+    .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 460px) { .form-row2 { grid-template-columns: 1fr; } }
+    .f-group { margin-bottom: 14px; }
+    .f-label {
+      display: block; font-size: 12.5px; font-weight: 700;
+      color: var(--fg); margin-bottom: 6px;
+    }
+    .f-input, .f-area {
+      width: 100%; padding: 11px 15px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-family: var(--font); font-size: 15px; color: var(--fg);
+      background: var(--surface); outline: none;
+      transition: border-color .15s;
+    }
+    .f-input:focus, .f-area:focus { border-color: var(--green); }
+    .f-area { min-height: 120px; resize: vertical; }
+    .btn-send {
+      width: 100%; padding: 14px;
+      background: var(--red); color: white;
+      font-family: var(--font); font-weight: 700; font-size: 16px;
+      border: none; border-radius: 40px; cursor: pointer;
+      transition: background .15s, transform .12s;
+    }
+    .btn-send:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    .footer { background: var(--forest); color: white; padding: 64px 0 32px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 30px; } }
+
+    .f-brand-name { font-size: 19px; font-weight: 800; margin-bottom: 10px; }
+    .f-brand-desc { font-size: 14px; opacity: .7; line-height: 1.65; max-width: 300px; }
+    .f-col-title {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; opacity: .55; margin-bottom: 14px;
+    }
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .f-links a {
+      color: rgba(255,255,255,0.78); text-decoration: none;
+      font-size: 14px; transition: color .12s;
+    }
+    .f-links a:hover { color: white; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.14);
+      padding-top: 22px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    .footer-bottom p { font-size: 13px; opacity: .55; }
+
+    /* ─── FORM SUCCESS STATE ──────────────────────────────── */
+    .form-success {
+      display: none; padding: 24px;
+      background: var(--green-light); border-radius: var(--r-md);
+      text-align: center; color: var(--green); font-weight: 700; font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <ul class="nav-links nav-links-left" role="list">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="news.html">Aktuelles</a></li>
+        <li><a href="#termine">Termine</a></li>
+      </ul>
+
+      <a href="#home" class="nav-logo" aria-label="VS Puch bei Weiz – Startseite">
+        <div class="nav-logo-badge">
+          <img src="mp1pvbpp-vs-puch-logo-new.svg" alt="Logo VS Puch">
+        </div>
+        <div class="nav-logo-text">
+          <strong>VS Puch bei Weiz</strong>
+          <span>Volksschule</span>
+        </div>
+      </a>
+
+      <ul class="nav-links nav-links-right" role="list">
+        <li><a href="klassen.html">Klassen</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+
+      <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-mobile">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="2" y1="5.5" x2="20" y2="5.5"/>
+          <line x1="2" y1="11" x2="20" y2="11"/>
+          <line x1="2" y1="16.5" x2="20" y2="16.5"/>
+        </svg>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile Navigation">
+      <a href="#home">Home</a>
+      <a href="news.html">Aktuelles</a>
+      <a href="#termine">Termine</a>
+      <a href="klassen.html">Klassen</a>
+      <a href="team.html">Team</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ─── HERO SLIDER ─────────────────────────────────────── -->
+<section class="hero" id="home" aria-label="Bildschirm-Slideshow">
+  <div class="slide slide-1 slide-photo active" role="group" aria-label="Folie 1 von 3">
+    <div class="slide-content">
+      <div class="slide-eyebrow">Herzlich willkommen</div>
+      <h1 class="slide-title">Volksschule<br>Puch bei Weiz</h1>
+      <p class="slide-sub">Gemeinsam lernen, wachsen und die Welt entdecken — bei uns fühlen sich Kinder und Familien zuhause.</p>
+      <div class="slide-ctas">
+        <a href="news.html" class="btn-light" style="color: var(--red-dark);">Aktuelles</a>
+        <a href="#kontakt" class="btn-ghost">Kontakt aufnehmen</a>
+      </div>
+    </div>
+    <a class="photo-credit" href="https://unsplash.com/photos/young-children-sitting-at-a-table-in-a-classroom-LgPGzbVmD-o" target="_blank" rel="noopener">Foto: Anna Zwiefel / Unsplash</a>
+  </div>
+  <div class="slide slide-2" role="group" aria-label="Folie 2 von 3">
+    <div class="slide-content">
+      <div class="slide-eyebrow">Schuljahr 2025 / 26</div>
+      <h1 class="slide-title">Einschulung<br>jetzt anmelden</h1>
+      <p class="slide-sub">Die Anmeldefrist für erstklässige Kinder ist offen. Alle Informationen für Familien auf einen Blick.</p>
+      <div class="slide-ctas">
+        <a href="news.html#einschulung-2025" class="btn-light" style="color: var(--green-dark);">Mehr erfahren</a>
+        <a href="#kontakt" class="btn-ghost">Termin anfragen</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide slide-3" role="group" aria-label="Folie 3 von 3">
+    <div class="slide-content">
+      <div class="slide-eyebrow">Unsere Werte</div>
+      <h1 class="slide-title">Lernen mit<br>Freude &amp; Neugier</h1>
+      <p class="slide-sub">Kreativität, Gemeinschaft und Respekt sind die Werte, die unseren Schulalltag täglich prägen.</p>
+      <div class="slide-ctas">
+        <a href="team.html" class="btn-light" style="color: var(--forest);">Unser Team</a>
+        <a href="#termine" class="btn-ghost">Termine ansehen</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="slider-arrow prev" id="slide-prev" aria-label="Vorherige Folie">&#8249;</button>
+  <button class="slider-arrow next" id="slide-next" aria-label="Nächste Folie">&#8250;</button>
+
+  <div class="slider-dots" role="tablist" aria-label="Folien-Navigation">
+    <button class="dot active" data-i="0" role="tab" aria-selected="true" aria-label="Folie 1"></button>
+    <button class="dot" data-i="1" role="tab" aria-selected="false" aria-label="Folie 2"></button>
+    <button class="dot" data-i="2" role="tab" aria-selected="false" aria-label="Folie 3"></button>
+  </div>
+</section>
+
+<!-- ─── NEWS / AKTUELLES ────────────────────────────────── -->
+<section class="s-news" id="aktuelles">
+  <div class="container">
+    <div class="section-head">
+      <div class="badge badge-green">Neuigkeiten</div>
+      <h2 class="section-title">Aktuelles aus der Schule</h2>
+      <p class="section-sub">Immer auf dem Laufenden — Berichte, Ankündigungen und Highlights aus dem Schulalltag.</p>
+    </div>
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="news-thumb thumb-1" aria-hidden="true">🏃</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-cat">Schulleben</span>
+            <time class="news-date" datetime="2025-05-08">8. Mai 2025</time>
+          </div>
+          <h3 class="news-title">Sporttag 2025 — Begeisterung bei allen!</h3>
+          <p class="news-excerpt">Ein unvergesslicher Tag für alle Schülerinnen und Schüler: Beim diesjährigen Sporttag zeigten die Kinder großen Einsatz und echten Teamgeist.</p>
+          <a href="BlogPost.html" class="news-link">Weiterlesen</a>
+        </div>
+      </article>
+      <article class="news-card">
+        <div class="news-thumb thumb-2" aria-hidden="true">🎒</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-cat">Anmeldung</span>
+            <time class="news-date" datetime="2025-04-25">25. April 2025</time>
+          </div>
+          <h3 class="news-title">Einschulung 2025/26 — Jetzt anmelden!</h3>
+          <p class="news-excerpt">Die Anmeldefrist für das Schuljahr 2025/26 ist geöffnet. Alle wichtigen Informationen und Fristen für Erstklässler-Eltern.</p>
+          <a href="news.html#einschulung-2025" class="news-link">Weiterlesen</a>
+        </div>
+      </article>
+      <article class="news-card">
+        <div class="news-thumb thumb-3" aria-hidden="true">👪</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-cat">Eltern</span>
+            <time class="news-date" datetime="2025-04-15">15. April 2025</time>
+          </div>
+          <h3 class="news-title">Elternabend — Wichtige Infos für alle Klassen</h3>
+          <p class="news-excerpt">Am kommenden Elternabend informieren wir über den Abschluss des Schuljahres, die Zeugnisvergabe und Planungen fürs neue Schuljahr.</p>
+          <a href="news.html#elternabend" class="news-link">Weiterlesen</a>
+        </div>
+      </article>
+    </div>
+    <div class="news-footer">
+      <a href="news.html" class="btn-outline">Alle Beiträge ansehen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TERMINE ─────────────────────────────────────────── -->
+<section class="s-termine" id="termine">
+  <div class="container">
+    <div class="section-head">
+      <div class="badge badge-red">Kalender</div>
+      <h2 class="section-title">Aktuelle Termine</h2>
+      <p class="section-sub">Alle wichtigen Schultermine für Eltern und Kinder auf einen Blick.</p>
+    </div>
+    <ul class="termine-list" role="list">
+      <li class="termine-item">
+        <div class="termine-badge" aria-hidden="true">
+          <div class="tb-day">15</div>
+          <div class="tb-month">Mai</div>
+        </div>
+        <div class="termine-info">
+          <div class="t-title">Sporttag der VS Puch</div>
+          <div class="t-detail">8:00 – 14:00 Uhr · Sportplatz Puch</div>
+        </div>
+        <span class="t-tag tag-s">Schule</span>
+      </li>
+      <li class="termine-item">
+        <div class="termine-badge" aria-hidden="true">
+          <div class="tb-day">20</div>
+          <div class="tb-month">Mai</div>
+        </div>
+        <div class="termine-info">
+          <div class="t-title">Elternabend 3. Klassen</div>
+          <div class="t-detail">19:00 Uhr · Aula der VS Puch</div>
+        </div>
+        <span class="t-tag tag-e">Eltern</span>
+      </li>
+      <li class="termine-item">
+        <div class="termine-badge" aria-hidden="true">
+          <div class="tb-day">6</div>
+          <div class="tb-month">Jun</div>
+        </div>
+        <div class="termine-info">
+          <div class="t-title">Schulausflug Klasse 1a &amp; 1b</div>
+          <div class="t-detail">Ganztägig · Ziel: Naturpark Almenland</div>
+        </div>
+        <span class="t-tag tag-s">Schule</span>
+      </li>
+      <li class="termine-item">
+        <div class="termine-badge" aria-hidden="true">
+          <div class="tb-day">13</div>
+          <div class="tb-month">Jun</div>
+        </div>
+        <div class="termine-info">
+          <div class="t-title">Tag der offenen Tür</div>
+          <div class="t-detail">9:00 – 12:00 Uhr · Alle herzlich eingeladen</div>
+        </div>
+        <span class="t-tag tag-a">Alle</span>
+      </li>
+      <li class="termine-item">
+        <div class="termine-badge green" aria-hidden="true">
+          <div class="tb-day">27</div>
+          <div class="tb-month">Jun</div>
+        </div>
+        <div class="termine-info">
+          <div class="t-title">Schulschlussfeier 2024/25</div>
+          <div class="t-detail">10:00 Uhr · Schulhof (bei Schönwetter) oder Turnsaal</div>
+        </div>
+        <span class="t-tag tag-a">Alle</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── TEAM ────────────────────────────────────────────── -->
+<section class="s-team" id="team">
+  <div class="container">
+    <div class="section-head">
+      <div class="badge badge-forest">Menschen</div>
+      <h2 class="section-title">Unser Team</h2>
+      <p class="section-sub">Engagierte Pädagoginnen und Pädagogen, die täglich für Ihre Kinder da sind.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" aria-hidden="true">MM</div>
+        <div class="team-name">Mag. Maria Müller</div>
+        <div class="team-role">Direktorin</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" aria-hidden="true">TB</div>
+        <div class="team-name">Thomas Berger</div>
+        <div class="team-role">Klassenlehrer 1a</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" aria-hidden="true">EH</div>
+        <div class="team-name">Eva Huber</div>
+        <div class="team-role">Klassenlehrerin 2b</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" aria-hidden="true">SK</div>
+        <div class="team-name">Sandra Koch</div>
+        <div class="team-role">Klassenlehrerin 3a</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" aria-hidden="true">KE</div>
+        <div class="team-name">Klaus Eder</div>
+        <div class="team-role">Klassenlehrer 4b</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" aria-hidden="true">PS</div>
+        <div class="team-name">Petra Steiner</div>
+        <div class="team-role">Hortbetreuung</div>
+      </div>
+    </div>
+    <div class="news-footer" style="margin-top: 44px;">
+      <a href="team.html" class="btn-outline">Alle Teammitglieder ansehen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KONTAKT ─────────────────────────────────────────── -->
+<section class="s-kontakt" id="kontakt">
+  <div class="container">
+    <div class="section-head">
+      <div class="badge badge-green">Erreichbarkeit</div>
+      <h2 class="section-title">Kontakt aufnehmen</h2>
+      <p class="section-sub">Wir freuen uns auf Ihre Nachricht — persönlich, telefonisch oder per E-Mail.</p>
+    </div>
+    <div class="kontakt-grid">
+      <div>
+        <h3 class="k-info-title">So finden Sie uns</h3>
+        <div class="k-row">
+          <div class="k-icon" aria-hidden="true">📍</div>
+          <div class="k-text">
+            <strong>Adresse</strong>
+            Hauptstraße 12<br>8182 Puch bei Weiz, Steiermark
+          </div>
+        </div>
+        <div class="k-row">
+          <div class="k-icon" aria-hidden="true">📞</div>
+          <div class="k-text">
+            <strong>Telefon</strong>
+            <a href="tel:+43317212345" style="color: inherit; text-decoration: none;">03172 / 12345</a>
+          </div>
+        </div>
+        <div class="k-row">
+          <div class="k-icon" aria-hidden="true">✉️</div>
+          <div class="k-text">
+            <strong>E-Mail</strong>
+            <a href="mailto:office@vs-puch.at" style="color: inherit; text-decoration: none;">office@vs-puch.at</a>
+          </div>
+        </div>
+        <div class="k-row">
+          <div class="k-icon" aria-hidden="true">🕐</div>
+          <div class="k-text">
+            <strong>Sekretariat</strong>
+            Montag – Freitag<br>7:30 – 13:00 Uhr
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="form-title">Schreiben Sie uns</h3>
+        <form id="contact-form" novalidate>
+          <div class="form-row2">
+            <div class="f-group">
+              <label class="f-label" for="f-fname">Vorname</label>
+              <input class="f-input" type="text" id="f-fname" name="fname" placeholder="Anna" autocomplete="given-name">
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="f-lname">Nachname</label>
+              <input class="f-input" type="text" id="f-lname" name="lname" placeholder="Mustermann" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="f-email">E-Mail-Adresse</label>
+            <input class="f-input" type="email" id="f-email" name="email" placeholder="anna@beispiel.at" autocomplete="email">
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="f-msg">Ihre Nachricht</label>
+            <textarea class="f-area" id="f-msg" name="message" placeholder="Wie können wir Ihnen helfen?"></textarea>
+          </div>
+          <button type="submit" class="btn-send">Nachricht absenden</button>
+        </form>
+        <div class="form-success" id="form-success" role="alert">
+          ✓ Danke! Ihre Nachricht wurde gesendet. Wir melden uns bald.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ──────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-brand-name">VS Puch bei Weiz</div>
+        <p class="f-brand-desc">Die Volksschule Puch bei Weiz ist eine lebendige Bildungseinrichtung im Herzen der Steiermark. Seit vielen Jahren begleiten wir Kinder auf ihrem ersten Bildungsweg.</p>
+      </div>
+      <div>
+        <div class="f-col-title">Schnellzugriff</div>
+        <ul class="f-links" role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="news.html">Aktuelles</a></li>
+          <li><a href="#termine">Termine</a></li>
+          <li><a href="klassen.html">Unsere Klassen</a></li>
+          <li><a href="team.html">Unser Team</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-title">Rechtliches</div>
+        <ul class="f-links" role="list">
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutzerklärung</a></li>
+          <li><a href="#">Barrierefreiheitserklärung</a></li>
+          <li><a href="#">Schulprogramm (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Volksschule Puch bei Weiz · Alle Rechte vorbehalten</p>
+      <p>Steiermark, Österreich</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Slider ─────────────────────────────────────────── */
+  var slides = Array.from(document.querySelectorAll('.slide'));
+  var dots   = Array.from(document.querySelectorAll('.dot'));
+  var cur = 0, timer;
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].setAttribute('aria-selected', 'false');
+    dots[cur].classList.remove('active');
+    cur = ((n % slides.length) + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].setAttribute('aria-selected', 'true');
+    dots[cur].classList.add('active');
+  }
+
+  function startAuto() { timer = setInterval(function () { goTo(cur + 1); }, 5200); }
+  function stopAuto()  { clearInterval(timer); }
+
+  document.getElementById('slide-prev').addEventListener('click', function () { stopAuto(); goTo(cur - 1); startAuto(); });
+  document.getElementById('slide-next').addEventListener('click', function () { stopAuto(); goTo(cur + 1); startAuto(); });
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () { stopAuto(); goTo(+d.dataset.i); startAuto(); });
+  });
+
+  var hero = document.querySelector('.hero');
+  hero.addEventListener('mouseenter', stopAuto);
+  hero.addEventListener('mouseleave', startAuto);
+
+  /* Touch swipe */
+  var touchX = 0;
+  hero.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  hero.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) { stopAuto(); goTo(cur + (dx < 0 ? 1 : -1)); startAuto(); }
+  }, { passive: true });
+
+  startAuto();
+
+  /* ── Sticky header shrink ───────────────────────────── */
+  var nav = document.querySelector('.nav');
+  function syncNavScrollState() {
+    if (!nav) return;
+    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  }
+  syncNavScrollState();
+  window.addEventListener('scroll', syncNavScrollState, { passive: true });
+
+  /* ── Mobile nav ─────────────────────────────────────── */
+  var burger = document.getElementById('nav-burger');
+  var mobileMenu = document.getElementById('nav-mobile');
+
+  burger.addEventListener('click', function () {
+    var open = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ── Scroll spy ─────────────────────────────────────── */
+  var navAs = document.querySelectorAll('.nav-links a');
+  var sectionIds = ['home', 'aktuelles', 'termine', 'team', 'kontakt'];
+  var sections = sectionIds.map(function (id) { return document.getElementById(id); });
+
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var id = e.target.id;
+      navAs.forEach(function (a) {
+        a.classList.toggle('active',
+          a.getAttribute('href') === '#' + id ||
+          (id === 'home' && a.getAttribute('href') === '#home')
+        );
+      });
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(function (s) { if (s) spy.observe(s); });
+
+  /* ── Contact form ───────────────────────────────────── */
+  var form = document.getElementById('contact-form');
+  var successMsg = document.getElementById('form-success');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    form.style.display = 'none';
+    successMsg.style.display = 'block';
+  });
+})();
+</script>
+</body>
+</html>
