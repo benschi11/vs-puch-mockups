@@ -1,0 +1,23 @@
+body { font-family: 'Nunito', sans-serif; }
+.font-display { font-family: 'Fredoka', sans-serif; }
+.fun-pattern {
+    background-image: radial-gradient(circle at 25% 25%, rgba(187,6,0,.04) 1px, transparent 1px),
+                      radial-gradient(circle at 75% 75%, rgba(77,102,34,.04) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+.page-hero { background: linear-gradient(135deg, #f3f5e8 0%, #f9fbed 65%, #fff 100%); }
+.bounce-slow { animation: pageBounce 3s ease-in-out infinite; }
+@keyframes pageBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+.wiggle { animation: pageWiggle 2.2s ease-in-out infinite; }
+@keyframes pageWiggle { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+.page-card { transition: transform .2s ease, box-shadow .2s ease; }
+.page-card:hover { transform: translateY(-4px); box-shadow: 0 18px 35px rgba(77,102,34,.12); }
+.nav-link { display: block; padding: .5rem .75rem; border-radius: .75rem; color: #1a1d15; font-size: .875rem; font-weight: 700; transition: color .2s, background .2s; }
+.nav-link:hover { color: #bb0600; background: #f3f5e8; }
+.mobile-link { display: block; padding: .75rem 0; border-bottom: 1px solid rgba(187,6,0,.08); color: #1a1d15; font-weight: 700; }
+.prose-school p { margin-top: 1rem; line-height: 1.75; color: rgba(86,95,71,.9); }
+.prose-school h2 { margin-top: 2rem; font-family: 'Fredoka', sans-serif; font-size: 1.75rem; font-weight: 700; }
+@media (prefers-reduced-motion: reduce) {
+    .bounce-slow, .wiggle { animation: none; }
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

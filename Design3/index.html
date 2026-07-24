@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Puch bei Weiz – Design 3 (kindgerecht)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#bb0600',
+                        'primary-dark': '#920400',
+                        secondary: '#4d6622',
+                        'secondary-dark': '#3a4e1a',
+                        tertiary: '#565f47',
+                        surface: '#f9fbed',
+                        'surface-alt': '#f3f5e8',
+                        'surface-card': '#ffffff',
+                        'on-surface': '#1a1d15',
+                        'secondary-container': '#ceee9a',
+                        'primary-container': '#e90900',
+                    },
+                    fontFamily: {
+                        display: ['Fredoka', 'sans-serif'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito', sans-serif; }
+        .font-display { font-family: 'Fredoka', sans-serif; }
+        .fun-pattern {
+            background-image: radial-gradient(circle at 25% 25%, rgba(187,6,0,0.04) 1px, transparent 1px),
+                              radial-gradient(circle at 75% 75%, rgba(77,102,34,0.04) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .bounce-slow { animation: bounce 3s ease-in-out infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .wiggle { animation: wiggle 2s ease-in-out infinite; }
+        @keyframes wiggle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased overflow-x-hidden">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b-2 border-primary/10 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-2xl flex items-center justify-center shadow-md">
+                    <img src="logo.svg" alt="Logo VS Puch" class="h-8 w-auto brightness-0 invert">
+                </div>
+                <div class="hidden sm:block">
+                    <p class="font-display font-bold text-xl text-primary">VS Puch</p>
+                    <p class="text-xs text-tertiary/70 -mt-0.5">bei Weiz</p>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-2">
+                <a href="index.html" class="px-4 py-2 text-sm font-semibold text-on-surface hover:text-primary hover:bg-surface-alt rounded-xl transition-all">🏠 Startseite</a>
+                <a href="schulprofil.html" class="px-4 py-2 text-sm font-semibold text-on-surface hover:text-primary hover:bg-surface-alt rounded-xl transition-all">🏫 Schule</a>
+                <a href="klassen.html" class="px-4 py-2 text-sm font-semibold text-on-surface hover:text-primary hover:bg-surface-alt rounded-xl transition-all">📚 Klassen</a>
+                <a href="news.html" class="px-4 py-2 text-sm font-semibold text-on-surface hover:text-primary hover:bg-surface-alt rounded-xl transition-all">📰 Aktuelles</a>
+                <a href="team.html" class="px-4 py-2 text-sm font-semibold text-on-surface hover:text-primary hover:bg-surface-alt rounded-xl transition-all">👩‍🏫 Team</a>
+                <a href="kontakt.html" class="ml-4 px-6 py-3 bg-primary text-white text-sm font-bold rounded-2xl hover:bg-primary-dark transition-all shadow-md flex items-center gap-2">
+                    📞 Kontakt
+                </a>
+            </nav>
+            <button class="md:hidden p-3 rounded-xl hover:bg-surface-alt transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center py-16 fun-pattern overflow-hidden">
+            <div class="absolute top-20 left-10 text-5xl opacity-15 wiggle">🎈</div>
+            <div class="absolute top-40 right-20 text-6xl opacity-10 bounce-slow">🌟</div>
+            <div class="absolute bottom-32 left-1/3 text-4xl opacity-15">📚</div>
+            <div class="absolute bottom-20 right-10 text-5xl opacity-10 wiggle" style="animation-delay: 1s">🌈</div>
+            <div class="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-6 py-3 bg-secondary-container text-secondary rounded-full font-display font-bold text-lg mb-6 shadow-sm">
+                            <span class="text-xl">🌱</span> Willkommen in unserer Schule!
+                        </div>
+                        <h1 class="font-display font-black text-5xl sm:text-6xl lg:text-7xl text-on-surface mb-6 leading-tight">
+                            Hier lernt <span class="text-primary">jedes Kind</span><br>
+                            <span class="text-secondary">glücklich</span> und<br>
+                            <span class="text-tertiary">selbstständig</span>.
+                        </h1>
+                        <p class="text-lg text-tertiary/80 max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
+                            Die VS Puch bei Weiz ist ein freundlicher Ort, wo Kinder mit Neugier lernen, spielerisch entdecken und gemeinsam wachsen.
+                        </p>
+                        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                            <a href="schulprofil.html" class="px-8 py-4 bg-primary text-white font-display font-bold text-lg rounded-2xl hover:bg-primary-dark transition-all shadow-md flex items-center gap-2">
+                                🎒 Schule entdecken
+                            </a>
+                            <a href="kontakt.html" class="px-8 py-4 bg-secondary text-white font-display font-bold text-lg rounded-2xl hover:bg-secondary-dark transition-all shadow-md flex items-center gap-2">
+                                📅 Termin vereinbaren
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="relative z-10">
+                            <div class="bg-white rounded-3xl p-8 shadow-xl border-4 border-dashed border-secondary/20">
+                                <img src="logo.svg" alt="" class="w-32 h-auto mx-auto mb-6">
+                                <div class="grid grid-cols-3 gap-4 text-center">
+                                    <div class="bg-primary/10 rounded-2xl p-4">
+                                        <p class="font-display font-black text-4xl text-primary">24</p>
+                                        <p class="text-xs text-tertiary/70 mt-1">🧒 Schüler</p>
+                                    </div>
+                                    <div class="bg-secondary/10 rounded-2xl p-4">
+                                        <p class="font-display font-black text-4xl text-secondary">2</p>
+                                        <p class="text-xs text-tertiary/70 mt-1">🏫 Klassen</p>
+                                    </div>
+                                    <div class="bg-tertiary/10 rounded-2xl p-4">
+                                        <p class="font-display font-black text-4xl text-tertiary">5+</p>
+                                        <p class="text-xs text-tertiary/70 mt-1">⭐ Auszeichn.</p>
+                                    </div>
+                                </div>
+                                <p class="text-center text-xs text-tertiary/60 mt-4">Seit 50+ Jahren Teil der Gemeinschaft</p>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center text-4xl bounce-slow">
+                            🎉
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Auszeichnungen -->
+        <section class="py-16 bg-secondary text-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="text-center mb-10">
+                    <h2 class="font-display font-black text-3xl mb-2">🏆 Unsere Auszeichnungen</h2>
+                    <p class="text-white/80">Wir sind stolz auf diese Anerkennungen!</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white/15 rounded-2xl p-6 text-center hover:bg-white/25 transition-all">
+                        <span class="text-4xl mb-3 block">🌿</span>
+                        <h3 class="font-display font-bold text-xl mb-1">Öko-Schule</h3>
+                        <p class="text-sm text-white/70">Umweltbewusst lernen</p>
+                    </div>
+                    <div class="bg-white/15 rounded-2xl p-6 text-center hover:bg-white/25 transition-all">
+                        <span class="text-4xl mb-3 block">⭐</span>
+                        <h3 class="font-display font-bold text-xl mb-1">Expert-Schule</h3>
+                        <p class="text-sm text-white/70">Exzellente Bildung</p>
+                    </div>
+                    <div class="bg-white/15 rounded-2xl p-6 text-center hover:bg-white/25 transition-all">
+                        <span class="text-4xl mb-3 block">🎵</span>
+                        <h3 class="font-display font-bold text-xl mb-1">Meistersinger</h3>
+                        <p class="text-sm text-white/70">Musik & Kunst</p>
+                    </div>
+                    <div class="bg-white/15 rounded-2xl p-6 text-center hover:bg-white/25 transition-all">
+                        <span class="text-4xl mb-3 block">💖</span>
+                        <h3 class="font-display font-bold text-xl mb-1">Glücksschule</h3>
+                        <p class="text-sm text-white/70">Wohlfühlatmosphäre</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aktuelles -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold text-primary uppercase tracking-widest">📰 Neuigkeiten</span>
+                    <h2 class="font-display font-black text-4xl lg:text-5xl mt-2">Was gibt's Neues?</h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="bg-surface-card rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group border-2 border-transparent hover:border-primary/20">
+                        <div class="aspect-[16/10] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&h=375&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-7">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">🎓 Abschluss</span>
+                                <span class="text-xs text-tertiary/60">15. März 2026</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-2 group-hover:text-primary transition-colors">Abschlussfeier der 4. Klasse</h3>
+                            <p class="text-tertiary text-sm leading-relaxed">Ein bewegender Tag für unsere Viertklässler – mit Stolz verabschieden wir sie in ihren nächsten Lebensabschnitt. 🎉</p>
+                        </div>
+                    </article>
+                    <article class="bg-surface-card rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group border-2 border-transparent hover:border-primary/20">
+                        <div class="aspect-[16/10] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&h=375&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-7">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-xs font-bold rounded-full">🌍 Projekt</span>
+                                <span class="text-xs text-tertiary/60">8. März 2026</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-2 group-hover:text-primary transition-colors">Projektwoche "Unsere Erde"</h3>
+                            <p class="text-tertiary text-sm leading-relaxed">Eine Woche lang tauchten die Kinder in die Themen Umwelt, Natur und Nachhaltigkeit ein – mit vielen praktischen Übungen. 🌱</p>
+                        </div>
+                    </article>
+                    <article class="bg-surface-card rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all group border-2 border-transparent hover:border-primary/20">
+                        <div class="aspect-[16/10] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=375&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-7">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">🎭 Fasching</span>
+                                <span class="text-xs text-tertiary/60">1. März 2026</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-2 group-hover:text-primary transition-colors">Fasching an der VS Puch</h3>
+                            <p class="text-tertiary text-sm leading-relaxed">Bunte Kostüme, fröhliche Gesichter und ein Tag voller Spiel und Spaß – so feiern wir Fasching! 🎪</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="aktuelles.html" class="inline-flex items-center gap-2 px-8 py-4 bg-secondary-container text-secondary font-display font-bold text-lg rounded-2xl hover:bg-secondary/20 transition-all">
+                        Alle Neuigkeiten ansehen 📖
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pädagogik -->
+        <section class="py-24 bg-tertiary text-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="text-xs font-bold text-white/50 uppercase tracking-widest">💡 Unser Ansatz</span>
+                        <h2 class="font-display font-black text-4xl lg:text-5xl mt-4 mb-6">
+                            Lernen durch <span class="italic">Spiel &</span> Entdecken
+                        </h2>
+                        <p class="text-white/80 text-lg leading-relaxed mb-8">
+                            Wir verstehen Kinder als neugierige Forscher! In unserer Schule entdecken die Kleinen die Welt durch spielerisches Lernen, kreative Projekte und viel Freiraum zum Ausprobieren.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="bg-white/10 rounded-2xl p-5 border-2 border-white/10">
+                                <p class="font-display font-black text-3xl text-white">100%</p>
+                                <p class="text-white/70 text-sm mt-1">🤗 Individuelle Förderung</p>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-5 border-2 border-white/10">
+                                <p class="font-display font-black text-3xl text-white">5+</p>
+                                <p class="text-white/70 text-sm mt-1">🏅 Auszeichnungen</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="aspect-square rounded-2xl overflow-hidden ring-4 ring-white/20">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=300&h=300&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-2xl overflow-hidden ring-4 ring-white/20 translate-y-6">
+                            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=300&h=300&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-2xl overflow-hidden ring-4 ring-white/20 -translate-y-4">
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=300&h=300&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-2xl overflow-hidden ring-4 ring-white/20">
+                            <img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=300&h=300&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="py-24 bg-surface-alt">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold text-secondary uppercase tracking-widest">👩‍🏫👨‍🏫 Unser Team</span>
+                    <h2 class="font-display font-black text-4xl lg:text-5xl mt-2">Menschen, die lieben</h2>
+                    <p class="text-tertiary text-lg mt-4">Engagierte Pädagoginnen und Pädagogen, die täglich mit Herz und Verstand für Ihre Kinder da sind.</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center group">
+                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-5 ring-4 ring-white shadow-lg group-hover:ring-primary transition-all">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-display font-bold text-lg">Lisa Müller</h3>
+                        <p class="text-sm text-tertiary/70">👑 Direktorin</p>
+                    </div>
+                    <div class="text-center group">
+                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-5 ring-4 ring-white shadow-lg group-hover:ring-primary transition-all">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-display font-bold text-lg">Stefanie Huber</h3>
+                        <p class="text-sm text-tertiary/70">📚 Klassenlehrerin 1a</p>
+                    </div>
+                    <div class="text-center group">
+                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-5 ring-4 ring-white shadow-lg group-hover:ring-primary transition-all">
+                            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=150&h=150&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-display font-bold text-lg">Thomas Berger</h3>
+                        <p class="text-sm text-tertiary/70">📚 Klassenlehrer 2b</p>
+                    </div>
+                    <div class="text-center group">
+                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-5 ring-4 ring-white shadow-lg group-hover:ring-primary transition-all">
+                            <img src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=150&h=150&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-display font-bold text-lg">Andrea Winkler</h3>
+                        <p class="text-sm text-tertiary/70">🧠 Sonderpädagogin</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="team.html" class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-display font-bold text-lg rounded-2xl hover:bg-primary-dark transition-all shadow-md">
+                        Unser volles Team kennenlernen 👋
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galerie -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold text-primary uppercase tracking-widest">📸 Galerie</span>
+                    <h2 class="font-display font-black text-4xl lg:text-5xl mt-2">Einblicke ins Schulleben</h2>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="aspect-square rounded-2xl overflow-hidden lg:col-span-2 lg:row-span-2">
+                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&h=600&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=300&h=300&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=300&h=300&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=300&h=300&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=300&h=300&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quicklinks -->
+        <section class="py-16 bg-primary">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <a href="termine.html" class="bg-white/15 text-white p-6 rounded-2xl hover:bg-white/25 transition-all text-center group">
+                        <span class="text-3xl mb-3 block">📅</span>
+                        <p class="font-display font-bold text-lg">Schuljahr 25/26</p>
+                        <p class="text-white/60 text-sm mt-1">Termine & Ferien</p>
+                    </a>
+                    <a href="klassen.html" class="bg-white/15 text-white p-6 rounded-2xl hover:bg-white/25 transition-all text-center group">
+                        <span class="text-3xl mb-3 block">📚</span>
+                        <p class="font-display font-bold text-lg">Unterricht</p>
+                        <p class="text-white/60 text-sm mt-1">Stundenpläne & Fächer</p>
+                    </a>
+                    <a href="downloads.html" class="bg-white/15 text-white p-6 rounded-2xl hover:bg-white/25 transition-all text-center group">
+                        <span class="text-3xl mb-3 block">📄</span>
+                        <p class="font-display font-bold text-lg">Downloads</p>
+                        <p class="text-white/60 text-sm mt-1">Formulare & Dokumente</p>
+                    </a>
+                    <a href="anfahrt.html" class="bg-white/15 text-white p-6 rounded-2xl hover:bg-white/25 transition-all text-center group">
+                        <span class="text-3xl mb-3 block">🗺️</span>
+                        <p class="font-display font-bold text-lg">Anfahrt</p>
+                        <p class="text-white/60 text-sm mt-1">Wie Sie uns finden</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <div>
+                        <span class="text-xs font-bold text-secondary uppercase tracking-widest">📬 Kontakt</span>
+                        <h2 class="font-display font-black text-4xl lg:text-5xl mt-2 mb-6">Wir freuen uns auf Sie!</h2>
+                        <p class="text-tertiary text-lg mb-10">Haben Sie Fragen zur Einschreibung, zum Schulalltag oder möchten Sie uns besuchen kommen? Wir sind gern für Sie da!</p>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl">
+                                    📍
+                                </div>
+                                <div>
+                                    <p class="font-display font-bold text-lg">Standort</p>
+                                    <p class="text-tertiary/70">Puch bei Weiz, Steiermark</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl">
+                                    📞
+                                </div>
+                                <div>
+                                    <p class="font-display font-bold text-lg">Telefon</p>
+                                    <p class="text-tertiary/70">+43 (0) 3172 1234</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl">
+                                    ✉️
+                                </div>
+                                <div>
+                                    <p class="font-display font-bold text-lg">E-Mail</p>
+                                    <p class="text-tertiary/70">office@vs-puch.at</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl">
+                                    🕐
+                                </div>
+                                <div>
+                                    <p class="font-display font-bold text-lg">Sekretariat</p>
+                                    <p class="text-tertiary/70">Mo–Fr, 7:30–13:00 Uhr</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-card rounded-3xl p-8 shadow-md border-2 border-primary/5">
+                        <h3 class="font-display font-bold text-2xl mb-8">📝 Schreiben Sie uns</h3>
+                        <form class="space-y-5">
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-bold text-on-surface mb-2">👤 Vorname</label>
+                                    <input type="text" class="w-full px-4 py-3 bg-surface-alt rounded-2xl border-0 focus:ring-2 focus:ring-primary/30 outline-none" placeholder="Anna">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-on-surface mb-2">👤 Nachname</label>
+                                    <input type="text" class="w-full px-4 py-3 bg-surface-alt rounded-2xl border-0 focus:ring-2 focus:ring-primary/30 outline-none" placeholder="Mustermann">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-on-surface mb-2">📧 E-Mail</label>
+                                <input type="email" class="w-full px-4 py-3 bg-surface-alt rounded-2xl border-0 focus:ring-2 focus:ring-primary/30 outline-none" placeholder="anna@beispiel.at">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-on-surface mb-2">💬 Nachricht</label>
+                                <textarea rows="5" class="w-full px-4 py-3 bg-surface-alt rounded-2xl border-0 focus:ring-2 focus:ring-primary/30 outline-none resize-none" placeholder="Wie können wir Ihnen helfen?"></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-8 py-4 bg-primary text-white font-display font-bold text-lg rounded-2xl hover:bg-primary-dark transition-all shadow-md flex items-center justify-center gap-2">
+                                Nachricht senden ✉️
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-on-surface text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-8 mb-12">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center">
+                        <img src="logo.svg" alt="" class="h-8 w-auto brightness-0 invert">
+                    </div>
+                    <div>
+                        <p class="font-display font-bold text-xl">VS Puch bei Weiz</p>
+                        <p class="text-white/50 text-sm">Volksschule mit Herz und Seele ❤️</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-8 text-sm text-white/60">
+                    <a href="index.html" class="hover:text-white transition-colors">🏠 Startseite</a>
+                    <a href="impressum.html" class="hover:text-white transition-colors">📄 Impressum</a>
+                    <a href="datenschutz.html" class="hover:text-white transition-colors">🔒 Datenschutz</a>
+                    <a href="kontakt.html" class="hover:text-white transition-colors">📬 Kontakt</a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
+                <p>© 2026 Volksschule Puch bei Weiz</p>
+                <p>Mit Liebe zum Lernen 🍎</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <script>
+        document.querySelector('.md\\:hidden').addEventListener('click', function(){
+            const nav = document.querySelector('.md\\:flex');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-20');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('right-0');
+            nav.classList.toggle('bg-surface');
+            nav.classList.toggle('p-6');
+            nav.classList.toggle('shadow-lg');
+            nav.classList.toggle('border-b');
+            nav.classList.toggle('border-primary/10');
+        });
+    </script>
+</body>
+</html>
