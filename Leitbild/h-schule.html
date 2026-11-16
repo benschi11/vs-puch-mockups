@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schule – Variante H „Zeichenheft" | VS Puch bei Weiz</title>
+<link rel="icon" href="img/favicon.svg"><link rel="stylesheet" href="css/site.css"><link rel="stylesheet" href="shared/chrome.css"><link rel="stylesheet" href="shared/kind-base.css">
+<style>
+/* ======================================================================
+   Variante H – „Zeichenheft / Malstifte" (Weiterentwicklung von F)
+   Gleiches Markup wie Content__Leitbild.liquid. Handgezeichneter Look nur
+   über CSS (Karo-/Linienpapier, Marker, Washi-Tape, Drehung) und kleine
+   Inline-SVGs (Kritzel-Sterne, Buntstift-Kreis hinter dem Icon).
+   Sechs Buntstiftfarben wiederholen sich über die Position (:nth-child(6n+k)).
+   ====================================================================== */
+:root {
+    --h-paper: #fffdf7;
+    --h-grid: oklch(86% .035 235 / .55);      /* Karo-Linien, Heft-Blau */
+    --h-line: oklch(84% .045 235 / .7);       /* Linien im Linienblatt */
+    --h-margin: oklch(70% .13 20 / .55);      /* roter Heftrand */
+    --h-marker-yellow: oklch(92% .15 98 / .85);
+    --h-marker-green: oklch(89% .12 130 / .85);
+    --h-marker-pink: oklch(89% .07 5 / .9);
+    --h-ocker: #8f5800;
+    --h-shadow: 0 1px 1px rgb(26 29 21 / .08), 0 8px 18px -6px rgb(26 29 21 / .18);
+    --h-ease: cubic-bezier(.2, .7, .2, 1);
+}
+.lb-intro, .lb-areas, .lb-goal { position: relative; }
+.lb-intro > .container-page, .lb-goal > .lb-goal-grid, .lb-goal > .lb-closing { position: relative; z-index: 1; }
+
+/* ---------- Buntstiftfarben je Position ---------- */
+.lb-cell { --lb-h: 25; --lb-tilt: -1.2deg; --lb-ink: oklch(45% .15 var(--lb-h)); --lb-tone: oklch(62% .16 var(--lb-h)); --lb-tint: oklch(88% .08 var(--lb-h) / .8); }
+.lb-cell:nth-child(6n+1) { --lb-h: 25; }   /* Rot */
+.lb-cell:nth-child(6n+2) { --lb-h: 250; }  /* Blau */
+.lb-cell:nth-child(6n+3) { --lb-h: 135; }  /* Grün */
+.lb-cell:nth-child(6n+4) { --lb-h: 62; }   /* Orange */
+.lb-cell:nth-child(6n+5) { --lb-h: 305; }  /* Lila */
+.lb-cell:nth-child(6n+6) { --lb-h: 200; }  /* Türkis */
+/* leichte, unregelmäßige Drehung (5er-Rhythmus, damit sie nicht mit den Farben gleichläuft) */
+.lb-cell:nth-child(5n+1) { --lb-tilt: -1.4deg; }
+.lb-cell:nth-child(5n+2) { --lb-tilt: .9deg; }
+.lb-cell:nth-child(5n+3) { --lb-tilt: -.5deg; }
+.lb-cell:nth-child(5n+4) { --lb-tilt: 1.5deg; }
+.lb-cell:nth-child(5n+5) { --lb-tilt: -.9deg; }
+
+/* ---------- Buntstift-Unterstreichungen (statische SVG als data-URI) ---------- */
+.lb-label { display: inline-block; padding-bottom: .45rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6.5C22 3 41 8.5 61 5.2S101 3.4 118 6.8' fill='none' stroke='%23bb0600' stroke-width='2.4' stroke-linecap='round' opacity='.85'/%3E%3C/svg%3E") left bottom / 100% .5rem no-repeat; }
+.lb-areas-head h2, .lb-goal h2 { display: inline-block; padding-bottom: .55rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9C40 4 75 11 112 7S172 4 197 8' fill='none' stroke='%234d6622' stroke-width='3' stroke-linecap='round' opacity='.8'/%3E%3Cpath d='M20 12C60 8 110 13 160 10' fill='none' stroke='%234d6622' stroke-width='1.6' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E") left bottom / 100% .75rem no-repeat; }
+
+/* ---------- 1. Motto mit Marker + Linienblatt ---------- */
+.lb-intro { padding-bottom: 5rem; }
+/* Zeilen inline, damit der Marker auch bei Umbruch (Handy) jede Textzeile begleitet */
+.lb-motto span { display: inline; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.lb-motto span::after { content: "\A"; white-space: pre; }
+.lb-motto span { padding-inline: .12em; margin-left: -.12em; border-radius: .6em .25em .7em .2em;
+    background-repeat: no-repeat; background-size: 100% 46%; background-position: 0 88%; }
+.lb-motto span:nth-child(1) { background-image: linear-gradient(-100deg, transparent .2em, var(--h-marker-yellow) .4em, var(--h-marker-yellow) 96%, transparent); }
+.lb-motto span:nth-child(2) { background-image: linear-gradient(-98deg, transparent .2em, var(--h-marker-green) .4em, var(--h-marker-green) 97%, transparent); }
+.lb-motto span:last-child { background-image: linear-gradient(-101deg, transparent .2em, var(--h-marker-pink) .4em, var(--h-marker-pink) 95%, transparent); }
+
+.lb-intro-side { position: relative; border-top: 0; padding: 2.1rem 1.4rem 2rem 2.9rem; transform: rotate(.7deg); box-shadow: var(--h-shadow);
+    background:
+        linear-gradient(90deg, transparent 2.15rem, var(--h-margin) 2.15rem 2.3rem, transparent 2.3rem),
+        repeating-linear-gradient(transparent 0 1.8rem, var(--h-line) 1.8rem calc(1.8rem + 1px)) 0 1.45rem,
+        var(--h-paper); }
+@media (min-width: 640px) { .lb-intro-side { padding: 2.4rem 2.4rem 2.2rem 3.6rem; background:
+        linear-gradient(90deg, transparent 2.75rem, var(--h-margin) 2.75rem 2.9rem, transparent 2.9rem),
+        repeating-linear-gradient(transparent 0 1.8rem, var(--h-line) 1.8rem calc(1.8rem + 1px)) 0 1.75rem,
+        var(--h-paper); } }
+.lb-intro-side::before { /* Washi-Tape oben */
+    content: ""; position: absolute; top: -.8rem; left: 50%; width: 7rem; height: 1.6rem; translate: -50% 0; rotate: -3deg;
+    background: repeating-linear-gradient(45deg, oklch(88% .09 130 / .8) 0 .5rem, oklch(93% .06 130 / .8) .5rem 1rem);
+    clip-path: polygon(3% 0, 97% 4%, 100% 30%, 97% 55%, 100% 80%, 96% 100%, 2% 96%, 0 70%, 3% 45%, 0 18%); }
+.lb-kicker { color: var(--color-secondary-dark); }
+.lb-lead p { line-height: 1.8rem; margin-top: 0; padding-top: 1.8rem; }
+.lb-lead p:first-child { padding-top: .9rem; }
+.lb-lead p + p { padding-top: 1.8rem; }
+.lb-lead p { color: color-mix(in oklch, var(--color-tertiary) 85%, black); }
+.lb-lead p:first-child { color: var(--color-on-surface); }
+
+/* Kritzel-Deko im Intro */
+.lb-deco-intro { position: absolute; inset: 0; overflow: hidden; }
+.lb-deco-intro svg { position: absolute; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.h-star-1 { width: 3.2rem; left: max(1rem, calc(50% - 41rem)); top: 1rem; color: oklch(72% .15 85); rotate: -12deg; }
+.h-star-2 { width: 2rem; left: 46%; top: 2.2rem; color: oklch(60% .15 25); rotate: 14deg; }
+.h-spiral { width: 3rem; left: 44%; bottom: 2.5rem; color: oklch(58% .12 250); }
+.h-arrow { width: 5.5rem; left: 49%; top: 46%; color: oklch(50% .13 135); }
+@media (max-width: 899px) { .h-arrow, .h-spiral { display: none; } .h-star-2 { left: auto; right: 1.25rem; top: 1.25rem; } .h-star-1 { display: none; } }
+
+/* ---------- 2. Karopapier mit Abriss-Kanten + Karten mit Washi-Tape ---------- */
+.lb-areas { padding: 4.5rem 0 5.5rem; background:
+    linear-gradient(var(--h-grid) 1px, transparent 1px) 0 0 / 1.5rem 1.5rem,
+    linear-gradient(90deg, var(--h-grid) 1px, transparent 1px) 0 0 / 1.5rem 1.5rem,
+    var(--h-paper); }
+.lb-deco-areas svg { position: absolute; left: 0; width: 100%; height: 14px; display: block; }
+.lb-deco-areas .h-tear-top { top: -1px; }
+.lb-deco-areas .h-tear-bottom { bottom: -1px; transform: scaleY(-1); }
+.lb-areas-head { border-bottom: 0; padding-bottom: 2.25rem; align-items: flex-end; }
+.lb-areas-head p { display: inline-flex; align-items: center; gap: .45rem; }
+.lb-areas-head p::before { content: ""; width: 1.1rem; height: 1.1rem; flex: none; background: var(--color-primary);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z'/%3E%3Cpath d='m15 5 4 4'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z'/%3E%3Cpath d='m15 5 4 4'/%3E%3C/svg%3E") center / contain no-repeat; }
+
+.lb-tiles { gap: 1.6rem .9rem; background: none; border-bottom: 0; }
+@media (min-width: 640px) { .lb-tiles { gap: 2.1rem 1.5rem; } }
+.lb-tile { --pad-x: 1.1rem; --pad-y: 1.9rem; padding: var(--pad-y) var(--pad-x) 1.5rem; background: #fff; box-shadow: var(--h-shadow);
+    border: 2px solid color-mix(in oklch, var(--lb-ink) 55%, transparent);
+    border-radius: 255px 18px 225px 18px / 18px 225px 18px 255px;  /* „gezeichneter" Rand */
+    transform: rotate(var(--lb-tilt)); transition: transform .25s var(--h-ease), box-shadow .25s var(--h-ease); }
+@media (min-width: 640px) { .lb-tile { --pad-x: 1.6rem; --pad-y: 2.1rem; padding-bottom: 2.4rem; } }
+.lb-tile::before { /* Washi-Tape */
+    content: ""; position: absolute; top: -.75rem; left: 50%; width: 4.6rem; height: 1.35rem; translate: -50% 0; rotate: calc(var(--lb-tilt) * -3);
+    background: repeating-linear-gradient(-45deg, var(--lb-tint) 0 .4rem, color-mix(in oklch, var(--lb-tint) 55%, white) .4rem .8rem);
+    clip-path: polygon(2% 0, 98% 5%, 100% 35%, 97% 60%, 100% 88%, 97% 100%, 3% 96%, 0 70%, 3% 42%, 0 15%); }
+.lb-tile:hover { background: #fff; transform: rotate(0) translateY(-3px) scale(1.02); box-shadow: 0 2px 2px rgb(26 29 21 / .08), 0 16px 28px -8px rgb(26 29 21 / .28); }
+.lb-tile:focus-visible { outline-offset: 4px; outline-width: 3px; }
+.lb-tile-top { color: var(--lb-ink); position: relative; }
+.lb-tile-icon { position: relative; z-index: 1; }
+.lb-tile:hover .lb-tile-icon { color: var(--lb-ink); }
+.lb-tile-deco { position: absolute; left: calc(var(--pad-x) - .75rem); top: calc(var(--pad-y) - .8rem); width: 3.8rem; height: 3.8rem; color: var(--lb-tone); opacity: .9; }
+.lb-tile-deco svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-linecap: round; }
+.lb-tile-nr { font-family: var(--font-display); font-size: .95rem; font-weight: 600; color: var(--lb-ink); rotate: 4deg; }
+.lb-tile-nr::before { content: "Nr. "; font-size: .78em; }
+.lb-tile-title { margin-top: .2rem; }
+.lb-tile-kurz { color: color-mix(in oklch, var(--color-tertiary) 85%, black); }
+.lb-tile-more { background: var(--lb-tint); color: var(--lb-ink); }
+.lb-badge { border-radius: .3rem; rotate: -1.5deg; background: var(--h-marker-yellow); color: var(--color-on-surface); }
+
+/* ---------- 3. Ziel: abgehakte Leitsätze ---------- */
+.lb-claims li { position: relative; padding-left: 3.4rem; font-size: clamp(1.75rem, 3.8vw, 2.7rem); }
+@media (min-width: 640px) { .lb-claims li { padding-left: 4rem; } }
+.lb-claims li + li { margin-top: .8rem; }
+.lb-claims li::before { content: ""; position: absolute; left: 0; top: .1em; width: 1em; height: 1em; background: center / contain no-repeat; }
+.lb-claims li:nth-child(1)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 7c9-1.5 19-1 28 .5 1 9 .5 18-.5 27-9 .8-19 .5-27.5-.5C5 25 5.5 16 6 7z' stroke='%23565f47' stroke-width='2.2'/%3E%3Cpath d='M11 20c3 2.5 5 5.5 7 9 4-9 10-17 18-24' stroke='%23bb0600' stroke-width='3.6'/%3E%3C/svg%3E"); }
+.lb-claims li:nth-child(2)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 6.5c9 .5 18 0 27.5 1 .5 9 0 18-1 27-9 .5-18 .8-27 0-.5-9 0-19 .5-28z' stroke='%23565f47' stroke-width='2.2'/%3E%3Cpath d='M10 21c3 2 5.5 5 7.5 8.5 4-9 10.5-17 18.5-24.5' stroke='%234d6622' stroke-width='3.6'/%3E%3C/svg%3E"); }
+.lb-claims li:nth-child(3)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 7.5c9-1 18.5-1 28 0 .5 9 .3 18-.5 27-9.5.5-18.5.5-27.5-.5-.5-9-.5-17.5 0-26.5z' stroke='%23565f47' stroke-width='2.2'/%3E%3Cpath d='M11 19.5c3 2.5 5 5.5 7 9.5 4-9.5 10-17.5 18-25' stroke='%238f5800' stroke-width='3.6'/%3E%3C/svg%3E"); }
+.lb-claims em { padding-inline: .1em; border-radius: .5em .2em .6em .2em; background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 90%; }
+.lb-claims li:nth-child(1) em { background-image: linear-gradient(-100deg, transparent .15em, var(--h-marker-pink) .3em, var(--h-marker-pink) 96%, transparent); }
+.lb-claims li:nth-child(2) em { background-image: linear-gradient(-100deg, transparent .15em, var(--h-marker-green) .3em, var(--h-marker-green) 96%, transparent); }
+.lb-claims li:nth-child(3) em { color: var(--h-ocker); background-image: linear-gradient(-100deg, transparent .15em, var(--h-marker-yellow) .3em, var(--h-marker-yellow) 96%, transparent); }
+.lb-closing { border-top: 0; padding-top: 2.4rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 10'%3E%3Cpath d='M0 5c7.5-5 15-5 22.5 0S37.5 10 45 5 52.5 0 60 5' fill='none' stroke='%234d6622' stroke-opacity='.5' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 0 0 / 3.75rem .65rem repeat-x; }
+.lb-deco-goal { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+.lb-deco-goal svg { position: absolute; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.h-star-3 { width: 2.6rem; right: 1.5rem; top: 2.5rem; color: oklch(72% .15 85); rotate: 10deg; }
+.h-heart { width: 2.4rem; right: 4.5rem; bottom: 1.5rem; color: oklch(60% .15 20); rotate: -10deg; }
+
+/* ---------- Dialog: Heftseite mit Tape ---------- */
+.lb-dialog { overflow: visible; border-radius: .5rem; background:
+    linear-gradient(var(--h-grid) 1px, transparent 1px) 0 0 / 1.5rem 1.5rem,
+    linear-gradient(90deg, var(--h-grid) 1px, transparent 1px) 0 0 / 1.5rem 1.5rem, var(--h-paper); }
+.lb-dialog::before { content: ""; position: absolute; top: -.85rem; left: 50%; width: 8rem; height: 1.7rem; translate: -50% 0; rotate: -2deg; z-index: 3;
+    background: repeating-linear-gradient(-45deg, var(--lb-tint, oklch(88% .09 130 / .8)) 0 .45rem, color-mix(in oklch, var(--lb-tint, oklch(88% .09 130 / .8)) 55%, white) .45rem .9rem);
+    clip-path: polygon(2% 0, 98% 5%, 100% 35%, 97% 60%, 100% 88%, 97% 100%, 3% 96%, 0 70%, 3% 42%, 0 15%); }
+.lb-dialog-close { background: transparent; }
+.lb-dialog-close:hover { background: var(--lb-tint, var(--color-surface-alt)); }
+.lb-dialog-icon { position: relative; background: none; color: var(--lb-ink, var(--color-secondary-dark)); }
+.lb-dialog-icon::before { content: ""; position: absolute; inset: -.2rem; border: 2.5px solid var(--lb-tone, var(--color-secondary)); border-radius: 58% 42% 51% 49% / 46% 55% 45% 54%; rotate: -8deg; }
+.lb-dialog-icon .lb-tile-icon { font-size: 2.5rem; }
+.lb-dialog-meta { color: var(--lb-ink, var(--color-tertiary)); }
+.lb-dialog-title { text-decoration: underline wavy var(--lb-tone, var(--color-secondary)); text-decoration-thickness: 2px; text-underline-offset: .28em; text-decoration-skip-ink: none; }
+.lb-dialog-nav { border-top: 2px dashed color-mix(in oklch, var(--color-tertiary) 30%, transparent); }
+.lb-dialog-nav button + button { border-left: 2px dashed color-mix(in oklch, var(--color-tertiary) 30%, transparent); }
+.lb-dialog-nav button:hover { background: color-mix(in oklch, var(--lb-tint, var(--color-surface-alt)) 50%, transparent); }
+.lb-dialog-nav button:first-child { border-bottom-left-radius: .5rem; }
+.lb-dialog-nav button:last-child { border-bottom-right-radius: .5rem; }
+.lb-dialog-nav .icon { color: var(--lb-ink, var(--color-primary)); }
+
+@media (prefers-reduced-motion: reduce) {
+    .lb-tile { transition: none; }
+    .lb-tile:hover { transform: rotate(var(--lb-tilt)); }
+}
+
+/* Schmale Handys: etwas mehr Platz für lange Wörter wie „Kommunikation“ */
+@media (max-width: 419px) { .lb-tile { --pad-x: .95rem; } .lb-tile-title { font-size: 1rem; } }
+</style></head>
+<body class="bg-surface text-on-surface font-body antialiased overflow-x-hidden" data-nav="flat" data-active="schule" data-variant="H">
+<main class="pt-20" id="page-content"></main>
+<script>window.MOCKUP = { schule: 'h-schule.html', leitbild: 'h-schule.html' };</script>
+<script src="shared/leitbild-data.js"></script><script src="shared/chrome.js"></script><script src="shared/kind.js"></script>
+<script>
+(function () {
+    /* Handgezeichnete Kritzel (im Template als statisches, aria-hidden Markup) */
+    const star = (cls, w = 2.4) => `<svg class="${cls}" viewBox="0 0 48 48" stroke="currentColor" stroke-width="${w}"><path d="M24 4.5c1.8 5.5 3.6 10.6 5.6 15.4 5.3.2 10.6.3 14.6.6-4.2 3.6-8.5 6.6-12.4 9.8 1.4 5.2 3 10.4 4.4 14.6-4.4-3-8.8-6-12.6-8.4-4.3 2.8-8.6 5.6-12.8 8.6 1.6-5 3.2-10 4.6-14.8C11.6 27 7.8 24 3.8 20.6c5-.4 10-.6 14.8-.8 1.8-5 3.6-10.2 5.4-15.3z"/><path d="M40 6l3-3M44 12h3M36 3V1" stroke-width="${w * .8}"/></svg>`;
+    const spiral = `<svg class="h-spiral" viewBox="0 0 48 48" stroke="currentColor" stroke-width="2.2"><path d="M25 24c0-1.6-1.8-2.4-3-1.4-1.8 1.6-.6 4.6 1.6 5 3.2.6 5.6-2.4 5-5.4-.8-4-5.4-5.8-8.8-4-4.4 2.4-4.8 8.4-1.4 11.6 4 3.8 11 2.8 13.8-1.8 3.4-5.6.6-13-5.4-15.2-6.8-2.6-14.4 1.4-16.2 8.4"/></svg>`;
+    const arrow = `<svg class="h-arrow" viewBox="0 0 90 50" stroke="currentColor" stroke-width="2.4"><path d="M4 40C18 14 44 4 74 16"/><path d="M64 7c4 3 8 6 11 9-4 2-8 4-12 7"/></svg>`;
+    const heart = `<svg class="h-heart" viewBox="0 0 48 48" stroke="currentColor" stroke-width="2.4"><path d="M24 41C14 34 5 27 5.5 17.5 6 10.5 12.5 6.5 18.5 9c2.6 1.1 4.4 3.4 5.5 5.6 1.2-2.4 3.4-4.8 6.4-5.8 6-2 12 2.4 12 9.4 0 9.6-9.4 15.8-18.4 22.8z"/><path d="M27 43c2-1.4 3.6-2.6 5-4" stroke-width="1.6"/></svg>`;
+
+    /* Abriss-Kante (zackig, wie aus dem Heft gerissen) */
+    let d = 'M0,0 H1440 V6';
+    for (let x = 1440, i = 0; x > 0; x -= 24, i++) d += ` L${x - 12},${i % 3 === 0 ? 13 : i % 2 ? 9 : 11} L${x - 24},${i % 2 ? 5 : 7}`;
+    d += ' Z';
+    const tear = cls => `<svg class="${cls}" viewBox="0 0 1440 14" preserveAspectRatio="none"><path d="${d}" fill="var(--color-surface)"/></svg>`;
+
+    /* Buntstift-Kreis hinter jedem Icon – zweimal „nachgezogen" */
+    const scribble = `<svg viewBox="0 0 60 60"><path d="M30 6c13 0 24 10 24 23 0 14-11 25-25 24C15 52 5 42 6 28 7 15 17 6 31 7" stroke-width="2.4"/><path d="M33 8c11 1 20 11 19 23-1 12-12 21-24 20" stroke-width="1.4" opacity=".7"/></svg>`;
+
+    renderLeitbild({
+        deco: {
+            intro: star('h-star-1') + star('h-star-2', 2.8) + spiral + arrow,
+            areas: tear('h-tear-top') + tear('h-tear-bottom'),
+            goal: star('h-star-3') + heart
+        },
+        tileDeco: scribble
+    });
+})();
+</script></body></html>

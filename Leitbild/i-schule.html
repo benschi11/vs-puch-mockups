@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schule – Variante I „Kleine Welt" | VS Puch bei Weiz</title>
+<link rel="icon" href="img/favicon.svg"><link rel="stylesheet" href="css/site.css"><link rel="stylesheet" href="shared/chrome.css"><link rel="stylesheet" href="shared/kind-base.css">
+<style>
+/* ======================================================================
+   Variante I – „Kleine Welt / Sticker" (Weiterentwicklung von F)
+   Gleiches Markup wie Content__Leitbild.liquid. Die Seite wird zu einer
+   kleinen Landschaft: Sonne und Wolken oben, ein Himmelsband hinter den
+   Schwerpunkten (Karten als Sticker), Regenbogen hinter den Leitsätzen und
+   eine Wiese als Übergang zum Footer. Deko = statische Inline-SVGs (aria-hidden).
+   Bewegung nur bei prefers-reduced-motion: no-preference.
+   ====================================================================== */
+:root {
+    --i-sky: oklch(95.5% .028 230);
+    --i-sky-deep: oklch(91% .045 232);
+    --i-cloud: #fff;
+    --i-sun: oklch(86% .15 88);
+    --i-sun-deep: oklch(78% .16 70);
+    --i-grass: oklch(72% .14 132);
+    --i-grass-deep: var(--color-secondary);
+    --i-ocker: #8f5800;
+    --i-spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+.lb-intro, .lb-areas, .lb-goal { position: relative; }
+.lb-intro > .container-page, .lb-areas > .container-page, .lb-goal > .lb-goal-grid, .lb-goal > .lb-closing { position: relative; z-index: 1; }
+
+/* ---------- Stickerfarben je Position ---------- */
+.lb-cell { --lb-h: 90; --lb-tilt: -1.5deg; --lb-tint: oklch(94% .05 var(--lb-h)); --lb-tone: oklch(84% .11 var(--lb-h)); --lb-ink: oklch(40% .11 var(--lb-h)); }
+.lb-cell:nth-child(6n+1) { --lb-h: 88; }   /* Sonne */
+.lb-cell:nth-child(6n+2) { --lb-h: 235; }  /* Himmel */
+.lb-cell:nth-child(6n+3) { --lb-h: 10; }   /* Rose */
+.lb-cell:nth-child(6n+4) { --lb-h: 135; }  /* Blatt */
+.lb-cell:nth-child(6n+5) { --lb-h: 300; }  /* Flieder */
+.lb-cell:nth-child(6n+6) { --lb-h: 55; }   /* Aprikose */
+.lb-cell:nth-child(4n+1) { --lb-tilt: -1.6deg; }
+.lb-cell:nth-child(4n+2) { --lb-tilt: 1.2deg; }
+.lb-cell:nth-child(4n+3) { --lb-tilt: -.6deg; }
+.lb-cell:nth-child(4n+4) { --lb-tilt: 1.8deg; }
+
+/* ---------- 1. Motto unter der Sonne ---------- */
+.lb-intro { padding: 4rem 0 6rem; overflow: clip; }
+.lb-motto span:nth-child(1) { color: var(--color-on-surface); }
+.lb-motto span:nth-child(2) { color: var(--color-secondary); }
+.lb-intro-side { border-top: 0; padding: 2rem 1.6rem; border-radius: 2rem; background: #fff; box-shadow: 0 0 0 6px #fff, 0 14px 30px -10px rgb(77 102 34 / .3); rotate: .8deg; }
+@media (min-width: 640px) { .lb-intro-side { padding: 2.25rem 2.5rem; } }
+.lb-kicker { display: inline-flex; align-items: center; gap: .5rem; color: var(--color-secondary-dark); }
+.lb-kicker::before { content: ""; width: 1.6rem; height: 1.6rem; flex: none; border-radius: 50%; background: var(--color-secondary-container) center / 1rem no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a4e1a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5'/%3E%3C/svg%3E"); }
+.lb-lead p { color: color-mix(in oklch, var(--color-tertiary) 85%, black); }
+.lb-lead p:first-child { color: var(--color-on-surface); }
+
+.lb-deco-intro { position: absolute; inset: 0; }
+.lb-deco-intro svg { position: absolute; display: block; }
+.i-sun { width: 9rem; height: 9rem; right: max(-1rem, calc(50% - 44rem)); top: .25rem; }
+.i-cloud-1 { width: 9rem; left: max(-2rem, calc(50% - 46rem)); top: 1.2rem; }
+.i-cloud-2 { width: 6rem; left: 44%; top: .4rem; opacity: .9; }
+@media (max-width: 899px) { .i-sun { width: 6rem; height: 6rem; right: -1.5rem; top: -1rem; } .i-cloud-1 { width: 6rem; left: -1.5rem; top: auto; bottom: 1rem; } .i-cloud-2 { display: none; } }
+.i-cloud path { fill: var(--i-cloud); stroke: oklch(85% .04 232); stroke-width: 1.2; }
+
+/* ---------- 2. Himmelsband mit Sticker-Karten ---------- */
+.lb-areas { padding: 5rem 0 6rem; background: linear-gradient(var(--i-sky-deep), var(--i-sky) 40%); overflow: clip; }
+.lb-deco-areas svg { position: absolute; display: block; }
+.lb-deco-areas .i-edge { left: 0; width: 100%; height: 48px; }
+.lb-deco-areas .i-edge-top { top: -1px; }
+.lb-deco-areas .i-edge-bottom { bottom: -1px; transform: scaleY(-1); }
+.lb-deco-areas .i-cloud-3 { width: 7rem; right: 6%; top: 2.6rem; }
+.lb-deco-areas .i-bird { width: 2.2rem; left: 38%; top: 3.2rem; color: oklch(45% .05 240); }
+@media (max-width: 639px) { .lb-deco-areas .i-cloud-3 { width: 4.5rem; right: -1rem; top: 2.2rem; } .lb-deco-areas .i-bird { display: none; } }
+.lb-areas-head { border-bottom: 0; padding-bottom: 2.25rem; }
+.lb-areas-head p { color: color-mix(in oklch, var(--color-tertiary) 85%, black); }
+.lb-tiles { gap: 1.4rem 1rem; background: none; border-bottom: 0; padding: .5rem .4rem; }
+@media (min-width: 640px) { .lb-tiles { gap: 2rem 1.6rem; } }
+.lb-tile { border-radius: 1.75rem; background: var(--lb-tint);
+    box-shadow: 0 0 0 6px #fff, 0 12px 22px -8px color-mix(in oklch, var(--lb-ink) 45%, transparent);
+    rotate: var(--lb-tilt); transition: rotate .35s var(--i-spring), scale .35s var(--i-spring), box-shadow .3s; }
+.lb-tile::after { /* Glanzlicht wie bei einem Sticker */
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: linear-gradient(125deg, rgb(255 255 255 / .55) 0 18%, transparent 32%); }
+.lb-tile:hover { background: var(--lb-tint); rotate: 0deg; scale: 1.04; box-shadow: 0 0 0 6px #fff, 0 20px 30px -10px color-mix(in oklch, var(--lb-ink) 55%, transparent); }
+.lb-tile:focus-visible { outline-offset: 9px; outline-width: 3px; }
+.lb-tile-top { color: var(--lb-ink); }
+.lb-tile-icon { box-sizing: content-box; font-size: 1.8rem; padding: .75rem; border-radius: 50%; background: var(--lb-tone); color: var(--lb-ink); box-shadow: 0 0 0 4px #fff; }
+@media (min-width: 640px) { .lb-tile-icon { font-size: 2rem; } }
+.lb-tile:hover .lb-tile-icon { color: var(--lb-ink); }
+.lb-tile-nr { display: grid; place-items: center; min-width: 2.2rem; height: 2.2rem; border-radius: 50%; background: #fff; color: var(--lb-ink); font-size: .8rem; }
+.lb-tile-kurz { color: var(--lb-ink); font-weight: 600; }
+.lb-tile-more { background: #fff; color: var(--lb-ink); z-index: 1; }
+.lb-badge { background: #fff; color: var(--lb-ink, var(--color-secondary-dark)); }
+
+/* ---------- 3. Ziel mit Regenbogen ---------- */
+.lb-goal { padding-block: 5rem 3rem; }
+.lb-deco-goal { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+.lb-deco-goal .i-rainbow { position: absolute; width: min(36rem, 70%); right: -2rem; top: 50%; translate: 0 -62%; }
+@media (max-width: 1023px) { .lb-deco-goal .i-rainbow { width: 30rem; right: -9rem; top: auto; bottom: 7rem; translate: 0 0; opacity: .7; } }
+.lb-claims li { position: relative; padding-left: 2.35em; min-height: 1.45em; font-size: clamp(1.7rem, 3.6vw, 2.6rem); }
+.lb-claims li + li { margin-top: .9rem; }
+.lb-claims li::before { content: ""; position: absolute; left: .1em; top: -.08em; width: 1.45em; height: 1.45em; border-radius: 50%; box-shadow: 0 0 0 5px #fff, 0 8px 14px -6px rgb(26 29 21 / .35); background: center / 58% no-repeat; }
+.lb-claims li:nth-child(1)::before { rotate: -8deg; background-color: oklch(90% .06 15); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bb0600' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z'/%3E%3C/svg%3E"); }
+.lb-claims li:nth-child(2)::before { rotate: 6deg; background-color: var(--color-secondary-container); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a4e1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5'/%3E%3C/svg%3E"); }
+.lb-claims li:nth-child(3)::before { rotate: -4deg; background-color: oklch(92% .09 88); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238f5800' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3'/%3E%3Cpath d='M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E"); }
+.lb-claims li:nth-child(3) em { color: var(--i-ocker); }
+.lb-closing { border-top: 0; margin-top: 3rem; padding: 1.5rem 1.75rem; border-radius: 1.75rem; background: #fff; box-shadow: 0 0 0 6px #fff, 0 14px 30px -12px rgb(77 102 34 / .3); width: fit-content; max-width: 100%; }
+
+/* ---------- Wiese am Seitenende ---------- */
+.lb-deco-end { position: relative; height: 150px; margin-top: -1rem; overflow: hidden; }
+@media (min-width: 900px) { .lb-deco-end { height: 190px; } }
+.lb-deco-end svg { position: absolute; bottom: 0; left: 50%; translate: -50% 0; width: max(100%, 900px); height: 100%; display: block; }
+.i-flower { transform-box: fill-box; transform-origin: 50% 100%; }
+
+/* ---------- Dialog: großer Sticker ---------- */
+.lb-dialog { border-radius: 2rem; background: var(--lb-tint, #fff); box-shadow: 0 0 0 8px #fff, 0 30px 60px rgb(26 29 21 / .3); max-height: calc(100dvh - 3rem); width: min(40rem, calc(100% - 2.5rem)); }
+.lb-dialog-close { background: #fff; }
+.lb-dialog-close:hover { background: var(--lb-tone, var(--color-surface-alt)); }
+.lb-dialog-icon { width: 4.6rem; height: 4.6rem; border-radius: 50%; background: var(--lb-tone, var(--color-secondary-container)); color: var(--lb-ink, var(--color-secondary-dark)); box-shadow: 0 0 0 5px #fff, 0 10px 18px -8px rgb(26 29 21 / .35); rotate: -6deg; }
+.lb-dialog-icon .lb-tile-icon { padding: 0; background: none; box-shadow: none; font-size: 2.3rem; }
+.lb-dialog-meta { color: var(--lb-ink, var(--color-tertiary)); }
+.lb-dialog-nav { border-top: 0; background: #fff; }
+.lb-dialog-nav button:hover { background: color-mix(in oklch, var(--lb-tint, var(--color-surface-alt)) 70%, white); }
+.lb-dialog-nav .icon { color: var(--lb-ink, var(--color-primary)); }
+.lb-dialog-nav button:first-child { border-bottom-left-radius: 2rem; }
+.lb-dialog-nav button:last-child { border-bottom-right-radius: 2rem; }
+
+/* ---------- Bewegung (nur wenn erwünscht) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+    .i-sun .i-rays { transform-origin: 50% 50%; animation: i-spin 60s linear infinite; }
+    .i-cloud-1 { animation: i-drift 14s ease-in-out infinite alternate; }
+    .i-cloud-2 { animation: i-drift 11s ease-in-out -4s infinite alternate-reverse; }
+    .lb-deco-areas .i-cloud-3 { animation: i-drift 16s ease-in-out -6s infinite alternate; }
+    .i-flower { animation: i-sway 4.5s ease-in-out infinite alternate; }
+    .lb-deco-end g:nth-of-type(2n) > .i-flower { animation-duration: 5.5s; animation-delay: -2s; }
+    .lb-deco-end g:nth-of-type(3n) > .i-flower { animation-duration: 3.8s; animation-delay: -1s; }
+    .lb-tile:hover .lb-tile-icon { animation: i-wiggle .5s ease-in-out; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .lb-tile, .lb-tile:hover { transition: none; scale: 1; }
+}
+@keyframes i-spin { to { transform: rotate(360deg); } }
+@keyframes i-drift { from { translate: -1.2rem 0; } to { translate: 1.2rem 0; } }
+@keyframes i-sway { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+@keyframes i-wiggle { 0%, 100% { rotate: 0deg; } 25% { rotate: -10deg; } 60% { rotate: 8deg; } }
+
+/* Schmale Handys: etwas mehr Platz für lange Wörter wie „Kommunikation“ */
+@media (max-width: 419px) { .lb-tile { padding-inline: .95rem; } .lb-tile-title { font-size: 1rem; } }
+</style></head>
+<body class="bg-surface text-on-surface font-body antialiased overflow-x-hidden" data-nav="flat" data-active="schule" data-variant="I">
+<main class="pt-20" id="page-content"></main>
+<script>window.MOCKUP = { schule: 'i-schule.html', leitbild: 'i-schule.html' };</script>
+<script src="shared/leitbild-data.js"></script><script src="shared/chrome.js"></script><script src="shared/kind.js"></script>
+<script>
+(function () {
+    /* Alle Deko-Elemente sind statisches SVG – im Template 1:1 als aria-hidden-Markup übernehmbar. */
+    const sun = `<svg class="i-sun" viewBox="0 0 120 120">
+        <g class="i-rays" stroke="var(--i-sun-deep)" stroke-width="6" stroke-linecap="round">
+            ${Array.from({ length: 12 }, (_, i) => `<line x1="60" y1="8" x2="60" y2="20" transform="rotate(${i * 30} 60 60)"/>`).join('')}
+        </g>
+        <circle cx="60" cy="60" r="30" fill="var(--i-sun)" stroke="var(--i-sun-deep)" stroke-width="3"/>
+        <circle cx="50" cy="56" r="3" fill="#5c3b00"/><circle cx="70" cy="56" r="3" fill="#5c3b00"/>
+        <path d="M49 67c6 6 16 6 22 0" fill="none" stroke="#5c3b00" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="44" cy="65" r="4" fill="oklch(80% .1 25)" opacity=".6"/><circle cx="76" cy="65" r="4" fill="oklch(80% .1 25)" opacity=".6"/>
+    </svg>`;
+    const cloud = cls => `<svg class="i-cloud ${cls}" viewBox="0 0 120 60"><path d="M28 52h66a18 18 0 0 0 2-35.9A24 24 0 0 0 52 10a16 16 0 0 0-24 12 15 15 0 0 0 0 30z"/></svg>`;
+    const edge = cls => `<svg class="i-edge ${cls}" viewBox="0 0 1440 48" preserveAspectRatio="none"><path d="M0,0 H1440 V18 C1300,40 1160,40 1020,24 C880,8 760,10 620,26 C480,42 300,42 160,24 C100,16 50,14 0,20 Z" fill="var(--color-surface)"/></svg>`;
+    const bird = `<svg class="i-bird" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 10c4-6 9-6 13 0 4-6 9-6 13 0"/></svg>`;
+    const rainbow = `<svg class="i-rainbow" viewBox="0 0 400 210" fill="none" stroke-linecap="round">
+        <path d="M30 205a170 170 0 0 1 340 0" stroke="oklch(88% .07 15)" stroke-width="22"/>
+        <path d="M54 205a146 146 0 0 1 292 0" stroke="oklch(91% .09 70)" stroke-width="22"/>
+        <path d="M78 205a122 122 0 0 1 244 0" stroke="oklch(93% .1 98)" stroke-width="22"/>
+        <path d="M102 205a98 98 0 0 1 196 0" stroke="oklch(91% .07 140)" stroke-width="22"/>
+        <path d="M126 205a74 74 0 0 1 148 0" stroke="oklch(91% .05 235)" stroke-width="22"/>
+        <path d="M14 205c0-14 14-22 28-18 6-12 26-12 30 2 12-2 18 10 12 16z" fill="#fff" stroke="oklch(88% .03 232)" stroke-width="1.5"/>
+        <path d="M318 205c-4-12 8-22 20-16 6-12 26-10 28 4 14-2 22 8 18 12z" fill="#fff" stroke="oklch(88% .03 232)" stroke-width="1.5"/>
+    </svg>`;
+
+    /* Wiese: zwei Hügel, Grashalme, Blumen (Blüte = 5 Kreise) */
+    const flower = (x, y, c, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><g class="i-flower">
+        <path d="M0 0v-34" stroke="oklch(48% .1 135)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M0 -14c-8-2-12-8-12-12 6 0 11 4 12 10" fill="oklch(62% .13 135)"/>
+        ${[0, 72, 144, 216, 288].map(a => `<circle cx="0" cy="-44" r="7" fill="${c}" transform="rotate(${a} 0 -36)"/>`).join('')}
+        <circle cx="0" cy="-36" r="5" fill="oklch(85% .15 88)"/></g></g>`;
+    const grass = Array.from({ length: 34 }, (_, i) => {
+        const x = 20 + i * 42 + (i % 3) * 7, h = 14 + (i * 7) % 12;
+        return `<path d="M${x} 190q2-${h} ${(i % 2 ? 6 : -4)}-${h + 8}M${x + 6} 190q1-${h - 4} 8-${h + 2}" stroke="oklch(52% .12 135)" stroke-width="2.4" stroke-linecap="round" fill="none"/>`;
+    }).join('');
+    const meadow = `<svg viewBox="0 0 1440 190" preserveAspectRatio="xMidYMax slice">
+        <path d="M0 120C200 60 420 70 620 110S1040 150 1440 70V190H0z" fill="oklch(84% .1 132)"/>
+        <path d="M0 150C260 110 520 120 760 145S1200 160 1440 120V190H0z" fill="var(--i-grass)"/>
+        <path d="M0 176C300 160 700 168 1000 174S1300 172 1440 166V190H0z" fill="var(--i-grass-deep)"/>
+        ${grass}
+        ${flower(120, 168, 'oklch(80% .1 10)')}${flower(260, 160, 'oklch(84% .1 300)', .85)}${flower(470, 172, '#fff', .9)}
+        ${flower(690, 158, 'oklch(80% .1 10)', .8)}${flower(860, 170, 'oklch(84% .12 60)')}${flower(1030, 162, 'oklch(84% .1 300)', .9)}
+        ${flower(1210, 170, '#fff')}${flower(1350, 150, 'oklch(80% .1 10)', .8)}
+    </svg>`;
+
+    renderLeitbild({
+        deco: {
+            intro: sun + cloud('i-cloud-1') + cloud('i-cloud-2'),
+            areas: edge('i-edge-top') + edge('i-edge-bottom') + cloud('i-cloud-3') + bird,
+            goal: rainbow,
+            end: meadow
+        }
+    });
+})();
+</script></body></html>

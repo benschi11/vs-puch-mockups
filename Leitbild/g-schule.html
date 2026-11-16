@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schule – Variante G „Farbenfroh" | VS Puch bei Weiz</title>
+<link rel="icon" href="img/favicon.svg"><link rel="stylesheet" href="css/site.css"><link rel="stylesheet" href="shared/chrome.css"><link rel="stylesheet" href="shared/kind-base.css">
+<style>
+/* ======================================================================
+   Variante G – „Farbenfroh" (Weiterentwicklung von F)
+   Gleiche Struktur und dasselbe Markup wie Content__Leitbild.liquid; alles hier
+   wäre eine Ergänzung in components.css. Jeder Schwerpunkt bekommt über seine
+   Position (:nth-child) eine eigene Bonbonfarbe: --lb-tint (Fläche), --lb-tone
+   (Icon-Kreis, Bonbon-Kante), --lb-ink (dunkle Schriftfarbe, ≥ 4.5:1 auf tint).
+   ====================================================================== */
+:root {
+    --g-cream: #fff6e2;           /* warme Fläche hinter dem Raster */
+    --g-sun: oklch(88% .12 88);
+    --g-sky: oklch(86% .07 235);
+    --g-rose: oklch(86% .08 10);
+    --g-lime: oklch(88% .1 130);
+    --g-ocker: #8f5800;           /* dunkles Ocker statt #c27a00: AA auch auf Pastell */
+    --g-spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+.lb-intro, .lb-areas, .lb-goal { position: relative; }
+.lb-intro > .container-page, .lb-goal > .lb-goal-grid, .lb-goal > .lb-closing { position: relative; z-index: 1; }
+
+/* ---------- Farben je Position (Reihenfolge im BagPart = Farbe) ---------- */
+.lb-cell { --lb-h: 10; --lb-tint: oklch(95.5% .04 var(--lb-h)); --lb-tone: oklch(85% .1 var(--lb-h)); --lb-ink: oklch(40% .11 var(--lb-h)); }
+.lb-cell:nth-child(12n+1)  { --lb-h: 10; }   /* Rosa */
+.lb-cell:nth-child(12n+2)  { --lb-h: 240; }  /* Himmelblau */
+.lb-cell:nth-child(12n+3)  { --lb-h: 92; }   /* Sonnengelb */
+.lb-cell:nth-child(12n+4)  { --lb-h: 132; }  /* Apfelgrün */
+.lb-cell:nth-child(12n+5)  { --lb-h: 302; }  /* Flieder */
+.lb-cell:nth-child(12n+6)  { --lb-h: 205; }  /* Türkis */
+.lb-cell:nth-child(12n+7)  { --lb-h: 52; }   /* Aprikose */
+.lb-cell:nth-child(12n+8)  { --lb-h: 352; }  /* Himbeer */
+.lb-cell:nth-child(12n+9)  { --lb-h: 272; }  /* Lavendelblau */
+.lb-cell:nth-child(12n+10) { --lb-h: 145; }  /* Kleegrün */
+.lb-cell:nth-child(12n+11) { --lb-h: 75; }   /* Honig */
+.lb-cell:nth-child(12n+12) { --lb-h: 178; }  /* Minze */
+
+/* ---------- 1. Motto + Einleitung ---------- */
+.lb-intro { padding-bottom: 5.5rem; }
+.lb-label { display: inline-flex; align-items: center; gap: .5rem; }
+.lb-label::before { content: ""; width: .7rem; height: .7rem; border-radius: 50%; background: currentColor; box-shadow: 1rem 0 0 var(--g-sun), 2rem 0 0 var(--g-sky); margin-right: 2.1rem; }
+/* Zeilen inline, damit der Marker auch bei Umbruch (Handy) jede Textzeile begleitet */
+.lb-motto span { display: inline; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.lb-motto span::after { content: "\A"; white-space: pre; }
+.lb-motto span:nth-child(1) { background: linear-gradient(transparent 62%, var(--g-sky) 62% 88%, transparent 88%); }
+.lb-motto span:nth-child(2) { background: linear-gradient(transparent 62%, var(--g-lime) 62% 88%, transparent 88%); }
+.lb-motto span:last-child { background: linear-gradient(transparent 62%, var(--g-rose) 62% 88%, transparent 88%); }
+.lb-intro-side { position: relative; border-top: 0; padding: 2rem 1.6rem 2rem; border-radius: 2rem 2rem 2rem .6rem; background: var(--g-cream); }
+@media (min-width: 640px) { .lb-intro-side { padding: 2.25rem 2.5rem 2.4rem; } }
+.lb-intro-side::after { /* Bonbon-Punkt in der Ecke */
+    content: ""; position: absolute; top: -1rem; right: 1.5rem; width: 2.4rem; height: 2.4rem; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff8 0 18%, transparent 19%), var(--color-primary); box-shadow: -2.8rem .6rem 0 -.6rem var(--g-sun), -4.6rem -.2rem 0 -.9rem var(--g-sky); }
+.lb-kicker { color: var(--color-secondary-dark); }
+.lb-lead p { color: color-mix(in oklch, var(--color-tertiary) 85%, black); }
+
+/* Konfetti im Intro (Deko) */
+.lb-deco-intro { position: absolute; inset: 0; overflow: hidden; }
+.lb-deco-intro i { position: absolute; display: block; border-radius: 50%; opacity: .9; }
+
+/* ---------- Wellen-Trenner (Deko, als SVG oben/unten an der Raster-Sektion) ---------- */
+.lb-areas { background: var(--g-cream); padding: 4.5rem 0 5.5rem; }
+@media (min-width: 640px) { .lb-areas { padding: 5.5rem 0 6.5rem; } }
+.lb-deco-areas svg { position: absolute; left: 0; width: 100%; height: 56px; display: block; }
+.lb-deco-areas .g-wave-top { top: -1px; }
+.lb-deco-areas .g-wave-bottom { bottom: -1px; transform: scaleY(-1); }
+
+/* ---------- 2. Raster: Bonbon-Karten ---------- */
+.lb-areas-head { border-bottom: 0; padding-bottom: 1.75rem; }
+.lb-areas-head h2 { position: relative; }
+.lb-areas-head h2::after { content: ""; display: block; width: 7.5rem; height: .45rem; margin-top: .55rem; border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-primary) 0 20%, transparent 20% 26%, oklch(80% .14 88) 26% 46%, transparent 46% 52%, oklch(72% .1 235) 52% 72%, transparent 72% 78%, oklch(72% .13 132) 78%); }
+.lb-tiles { gap: .85rem; background: none; border-bottom: 0; }
+@media (min-width: 640px) { .lb-tiles { gap: 1.25rem; } }
+.lb-tile { border-radius: 1.6rem; background: var(--lb-tint); box-shadow: 0 6px 0 var(--lb-tone); margin-bottom: 6px;
+    transition: transform .3s var(--g-spring), box-shadow .3s var(--g-spring), background-color .2s; }
+.lb-tile:hover { background: var(--lb-tint); transform: translateY(-4px) rotate(-.6deg); box-shadow: 0 10px 0 var(--lb-tone), 0 18px 28px color-mix(in oklch, var(--lb-ink) 18%, transparent); }
+.lb-cell:nth-child(even) .lb-tile:hover { transform: translateY(-4px) rotate(.6deg); }
+.lb-tile:active { transform: translateY(3px); box-shadow: 0 3px 0 var(--lb-tone); }
+.lb-tile:focus-visible { outline-offset: 3px; outline-width: 3px; }
+.lb-tile-top { color: var(--lb-ink); }
+.lb-tile-icon { box-sizing: content-box; font-size: 1.9rem; padding: .8rem; border-radius: 42% 58% 55% 45% / 50% 45% 55% 50%; background: var(--lb-tone); color: var(--lb-ink); }
+@media (min-width: 640px) { .lb-tile-icon { font-size: 2.1rem; } }
+.lb-tile:hover .lb-tile-icon { color: var(--lb-ink); transform: rotate(-8deg) scale(1.06); transition: transform .35s var(--g-spring); }
+.lb-tile-nr { padding: .2rem .55rem; border-radius: 999px; background: #fff; color: var(--lb-ink); }
+.lb-tile-kurz { color: var(--lb-ink); font-weight: 600; }
+.lb-tile-more { background: #fff; color: var(--lb-ink); }
+.lb-badge { background: #fff; color: var(--lb-ink, var(--color-secondary-dark)); box-shadow: inset 0 0 0 2px var(--lb-tone, var(--color-secondary-container)); }
+
+/* ---------- 3. Ziel ---------- */
+.lb-goal { padding-block: 5rem 4.5rem; }
+.lb-claims { display: grid; gap: .75rem; }
+.lb-claims li { display: block; width: fit-content; max-width: 100%; padding: .45rem 1.1rem .55rem; border-radius: 1.4rem; font-size: clamp(1.6rem, 3.3vw, 2.45rem); }
+.lb-claims li + li { margin-top: 0; }
+.lb-claims li:nth-child(1) { background: oklch(95% .035 15); transform: rotate(-1.2deg); }
+.lb-claims li:nth-child(2) { background: oklch(95% .05 130); transform: rotate(.8deg); margin-left: clamp(0rem, 2vw, 1.5rem); }
+.lb-claims li:nth-child(3) { background: oklch(95.5% .06 88); transform: rotate(-.5deg); margin-left: clamp(0rem, 4vw, 3rem); }
+.lb-claims li:nth-child(3) em { color: var(--g-ocker); }
+.lb-closing { border-top: 0; padding-top: 2.5rem; background: radial-gradient(circle, var(--color-primary) 0 .28rem, transparent .3rem) 0 0 / 1.6rem .6rem repeat-x,
+    radial-gradient(circle, oklch(80% .14 88) 0 .28rem, transparent .3rem) .8rem 0 / 1.6rem .6rem repeat-x; }
+.lb-closing p { display: flex; gap: .75rem; align-items: flex-start; }
+.lb-closing p::before { content: ""; flex: none; width: 1.6rem; height: 1.6rem; margin-top: .1rem; background: var(--color-primary);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+.lb-deco-goal { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+.lb-deco-goal .g-blob { position: absolute; right: -7rem; top: 50%; translate: 0 -55%; width: 30rem; height: 30rem; color: oklch(96% .03 240); }
+@media (max-width: 1023px) { .lb-deco-goal .g-blob { top: auto; bottom: 4rem; translate: 0 0; right: -12rem; } }
+
+/* ---------- Dialog in der Farbe des Schwerpunkts ---------- */
+.lb-dialog { border-radius: 2rem; overflow: hidden; }
+.lb-dialog-body { background: var(--lb-tint, var(--color-surface-card)); }
+.lb-dialog-close { background: #fff; }
+.lb-dialog-close:hover { background: var(--lb-tone, var(--color-surface-alt)); }
+.lb-dialog-icon { width: 4.5rem; height: 4.5rem; border-radius: 42% 58% 55% 45% / 50% 45% 55% 50%; background: var(--lb-tone, var(--color-secondary-container)); color: var(--lb-ink, var(--color-secondary-dark)); box-shadow: 0 5px 0 color-mix(in oklch, var(--lb-tone) 70%, var(--lb-ink)); }
+.lb-dialog-icon .lb-tile-icon { padding: 0; background: none; border-radius: 0; font-size: 2.3rem; }
+.lb-dialog-meta { color: var(--lb-ink, var(--color-tertiary)); }
+.lb-dialog-nav { border-top: 0; }
+.lb-dialog-nav button:hover { background: var(--lb-tint, var(--color-surface-alt)); }
+.lb-dialog-nav .icon { color: var(--lb-ink, var(--color-primary)); }
+.lb-dialog-nav button:first-child, .lb-dialog-nav button:last-child { border-radius: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .lb-tile, .lb-tile:hover, .lb-tile:hover .lb-tile-icon { transition: none; transform: none !important; }
+}
+
+/* Schmale Handys: etwas mehr Platz für lange Wörter wie „Kommunikation“ */
+@media (max-width: 419px) { .lb-tile { padding-inline: .95rem; } .lb-tile-title { font-size: 1rem; } }
+</style></head>
+<body class="bg-surface text-on-surface font-body antialiased overflow-x-hidden" data-nav="flat" data-active="schule" data-variant="G">
+<main class="pt-20" id="page-content"></main>
+<script>window.MOCKUP = { schule: 'g-schule.html', leitbild: 'g-schule.html' };</script>
+<script src="shared/leitbild-data.js"></script><script src="shared/chrome.js"></script><script src="shared/kind.js"></script>
+<script>
+(function () {
+    /* Konfetti-Punkte: feste Positionen (im Template als statisches Markup) */
+    const dots = [
+        [4, 12, .7, 'oklch(80% .14 88)'], [46, 8, .5, 'oklch(72% .1 235)'], [93, 18, .9, 'oklch(80% .09 10)'],
+        [52, 88, .6, 'oklch(75% .13 132)'], [2, 78, .45, 'oklch(72% .1 302)'], [97, 70, .55, 'oklch(80% .14 88)']
+    ].map(([x, y, s, c]) => `<i style="left:${x}%;top:${y}%;width:${s}rem;height:${s}rem;background:${c}"></i>`).join('');
+
+    /* Wellen: Creme-Fläche der Raster-Sektion mit drei bunten Bändern */
+    const wave = cls => `<svg class="${cls}" viewBox="0 0 1440 56" preserveAspectRatio="none">
+        <path d="M0,0 H1440 V22 C1200,44 960,6 720,24 C480,42 240,10 0,28 Z" fill="oklch(86% .08 10)"/>
+        <path d="M0,0 H1440 V16 C1200,38 960,0 720,18 C480,36 240,4 0,22 Z" fill="oklch(88% .12 88)"/>
+        <path d="M0,0 H1440 V10 C1200,32 960,-6 720,12 C480,30 240,-2 0,16 Z" fill="oklch(86% .07 235)"/>
+        <path d="M0,0 H1440 V4 C1200,26 960,-12 720,6 C480,24 240,-8 0,10 Z" fill="var(--color-surface)"/>
+    </svg>`;
+
+    const blob = `<svg class="g-blob" viewBox="0 0 200 200"><path fill="currentColor" d="M43.5,-58.6C55.4,-50.7,63.3,-36.4,68.3,-20.8C73.3,-5.2,75.3,11.7,69.4,25.4C63.5,39.1,49.6,49.6,34.6,57.8C19.6,66,3.5,71.9,-12.9,70.6C-29.3,69.3,-46,60.8,-57.5,47.6C-69,34.4,-75.3,16.6,-74.2,-0.5C-73.2,-17.6,-64.8,-34,-52.4,-42.1C-40,-50.2,-23.5,-50,-7.5,-49.7C8.5,-49.4,31.6,-66.5,43.5,-58.6Z" transform="translate(100 100)"/></svg>`;
+
+    renderLeitbild({ deco: { intro: dots, areas: wave('g-wave-top') + wave('g-wave-bottom'), goal: blob } });
+})();
+</script></body></html>

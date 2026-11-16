@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Schule – Variante D | VS Puch bei Weiz</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="shared/chrome.css">
+    <style>
+        /* Variante D „Klar & sachlich": Typografie statt Icons, Haarlinien statt Karten,
+           Moosgrün als einziger Akzent, Volltexte nur auf Wunsch. */
+        :root {
+            --d-line: color-mix(in oklch, var(--color-tertiary) 22%, transparent);
+            --d-muted: var(--color-tertiary);
+            --d-ease: cubic-bezier(.2, .7, .2, 1);
+        }
+        .d-section { padding-block: 4.5rem; }
+        @media (min-width: 1024px) { .d-section { padding-block: 7rem; } }
+        .d-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+        .d-grid > * { min-width: 0; }
+        @media (min-width: 1024px) { .d-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 3rem; } }
+
+        .d-h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.75rem, 3vw, 2.4rem); line-height: 1.15; margin-top: .6rem; }
+        .d-lead { font-size: 1.2rem; line-height: 1.6; color: var(--color-on-surface); }
+        .d-text { line-height: 1.75; color: var(--d-muted); max-width: 62ch; }
+        .d-text + .d-text { margin-top: 1rem; }
+
+        /* Fokus: überall gleich, gut sichtbar */
+        .d-page :is(a, button, summary):focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 3px; border-radius: .4rem; }
+
+        /* ---------- Einstieg ---------- */
+        .d-intro { padding-block: 3.5rem 4rem; }
+        @media (min-width: 1024px) { .d-intro { padding-block: 5.5rem 6rem; } }
+        @media (min-width: 1024px) { .d-motto-col { grid-column: span 7; } .d-center-col { grid-column: 9 / span 4; align-self: end; } }
+        .d-motto { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.4rem, 6vw, 4.5rem); line-height: 1.04; letter-spacing: -.015em; margin-top: 1rem; }
+        .d-motto span { display: block; }
+        .d-motto span:last-child { color: var(--color-secondary); }
+        .d-center-col h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; color: var(--d-muted); }
+        .d-center-col .d-lead { margin-top: .5rem; font-size: clamp(1.45rem, 2vw, 1.75rem); font-weight: 700; line-height: 1.3; }
+
+        /* „Mehr lesen" */
+        .d-more { margin-top: 1.25rem; }
+        .d-more > summary { list-style: none; display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; font-weight: 700; color: var(--color-secondary); padding-block: .25rem; }
+        .d-more > summary::-webkit-details-marker { display: none; }
+        .d-more > summary:hover { color: var(--color-secondary-dark); text-decoration: underline; text-underline-offset: 4px; }
+        .d-more > summary svg { width: 1.1rem; height: 1.1rem; flex: none; transition: transform .2s var(--d-ease); }
+        .d-more[open] > summary svg { transform: rotate(45deg); }
+        .d-more[open] > summary .d-more-open { display: none; }
+        .d-more:not([open]) > summary .d-more-close { display: none; }
+        .d-more-body { padding-top: .75rem; }
+
+        .d-profile { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--d-line); }
+        @media (min-width: 1024px) { .d-profile { margin-top: 5.5rem; } }
+        .d-profile-label { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; }
+        @media (min-width: 1024px) { .d-profile-label { grid-column: span 3; } .d-profile-text { grid-column: 4 / span 7; } }
+        .d-profile .d-grid { gap: .75rem 3rem; }
+
+        /* ---------- Schwerpunkte ---------- */
+        .d-band { background: var(--color-surface-alt); }
+        .d-sp-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 2.5rem; }
+        .d-sp-head .d-text { margin-top: .75rem; }
+        .d-toggle-all { font-weight: 700; font-size: .9rem; color: var(--color-secondary); padding: .5rem 0; cursor: pointer; }
+        .d-toggle-all:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+        .d-cols { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 4rem; }
+        .d-cols > * { min-width: 0; }
+        @media (min-width: 900px) { .d-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        .d-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--d-line); }
+        @media (max-width: 899px) { .d-list + .d-list { border-top: 0; } }
+        .d-item { border-bottom: 1px solid var(--d-line); }
+        .d-item h3 { margin: 0; }
+        .d-btn {
+            width: 100%; display: grid; grid-template-columns: 2.25rem minmax(0, 1fr) 2rem; gap: .25rem 1rem; align-items: start;
+            padding: 1.25rem .25rem; text-align: left; cursor: pointer; color: var(--color-on-surface);
+            transition: background-color .15s;
+        }
+        .d-btn:hover { background: color-mix(in oklch, var(--color-secondary) 5%, transparent); }
+        .d-nr { font-size: .8rem; font-weight: 700; letter-spacing: .04em; color: var(--d-muted); font-variant-numeric: tabular-nums; padding-top: .3rem; }
+        .d-title { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; line-height: 1.3; }
+        .d-kurz { display: block; margin-top: .15rem; font-size: .92rem; color: var(--d-muted); font-weight: 400; }
+        .d-plus { width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--d-line); color: var(--color-secondary); transition: background-color .2s, color .2s, border-color .2s; }
+        .d-plus svg { width: 1rem; height: 1rem; }
+        .d-plus .d-v { transform-origin: center; transition: transform .25s var(--d-ease); }
+        .d-btn[aria-expanded="true"] .d-plus { background: var(--color-secondary); border-color: var(--color-secondary); color: #fff; }
+        .d-btn[aria-expanded="true"] .d-plus .d-v { transform: scaleY(0); }
+        .d-btn[aria-expanded="true"] .d-title { color: var(--color-secondary-dark); }
+
+        .d-panel { display: grid; grid-template-rows: 0fr; visibility: hidden; }
+        .d-panel > div { overflow: hidden; min-height: 0; }
+        .d-panel p { padding: 0 3rem 1.5rem 3.5rem; line-height: 1.75; color: var(--d-muted); max-width: 62ch; }
+        .d-item.is-open .d-panel { grid-template-rows: 1fr; visibility: visible; }
+        @media (max-width: 480px) { .d-panel p { padding-right: .25rem; } }
+        @media (prefers-reduced-motion: no-preference) {
+            .d-panel { transition: grid-template-rows .3s var(--d-ease), visibility 0s linear .3s; }
+            .d-item.is-open .d-panel { transition: grid-template-rows .3s var(--d-ease), visibility 0s; }
+            .d-item.is-flash .d-btn { animation: d-flash 1.6s ease-out; }
+            @keyframes d-flash { from { background: color-mix(in oklch, var(--color-secondary-container) 70%, transparent); } }
+        }
+
+        /* ---------- Ziel ---------- */
+        .d-claims { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
+        .d-claims > li { min-width: 0; padding: 1.5rem 0; border-top: 1px solid var(--d-line); }
+        @media (min-width: 768px) {
+            .d-claims { grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--d-line); }
+            .d-claims > li { border-top: 0; padding: 2rem 2rem 0; }
+            .d-claims > li:first-child { padding-left: 0; }
+            .d-claims > li + li { border-left: 1px solid var(--d-line); }
+        }
+        .d-claim-pre { display: block; font-size: .95rem; font-weight: 700; color: var(--d-muted); }
+        .d-claim { display: block; font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.1; margin-top: .25rem; }
+        .d-claims > li:nth-child(1) .d-claim { color: var(--color-primary); }
+
+        .d-goal-foot { margin-top: 3.5rem; }
+        .d-goal-foot .d-grid { gap: 1.5rem 3rem; align-items: start; }
+        .d-schluss { font-size: 1.05rem; line-height: 1.6; color: var(--color-on-surface); }
+        .d-goal-foot .d-more { margin-top: 0; }
+        @media (min-width: 1024px) { .d-schluss, .d-goal-foot .d-more { grid-column: span 7; } .d-pdf-col { grid-column: 9 / span 4; grid-row: 1; } }
+        .d-pdf { display: inline-flex; align-items: center; gap: .6rem; font-weight: 700; color: var(--color-on-surface); padding: .4rem 0; border-bottom: 1px solid var(--d-line); }
+        .d-pdf:hover { color: var(--color-secondary-dark); border-color: currentColor; }
+        .d-pdf svg { width: 1.25rem; height: 1.25rem; color: var(--color-secondary); flex: none; }
+        .d-pdf small { font-weight: 400; color: var(--d-muted); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased overflow-x-hidden" data-nav="flat" data-active="schule" data-variant="D">
+<main class="pt-20 d-page" id="page-content"></main>
+
+<script>window.MOCKUP = { schule: 'd-schule.html', leitbild: 'd-schule.html' };</script>
+<script src="shared/leitbild-data.js"></script>
+<script src="shared/chrome.js"></script>
+<script>
+(function () {
+    const L = window.LEITBILD;
+    const pad = n => String(n).padStart(2, '0');
+
+    /* Schlichte Linien-Icons (24×24, stroke 1.75, currentColor) */
+    const svg = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+    const icoPlus = svg('<path d="M5 12h14"/><path class="d-v" d="M12 5v14"/>');
+    const icoDoc = svg('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>');
+
+    /* „Das Kind steht im Mittelpunkt": erster Satz sichtbar, Rest hinter „Mehr lesen" */
+    const m0 = L.mittelpunkt.absaetze[0];
+    const cut = m0.indexOf('. ') + 1;
+    const ersterSatz = m0.slice(0, cut), restSatz = m0.slice(cut).trim();
+
+    /* Schulprofil knapp: nur der erste Absatz des bestehenden Textes */
+    const tmp = document.createElement('div');
+    tmp.innerHTML = window.schulprofilIntro;
+    const profil = tmp.querySelector('p').textContent;
+
+    const more = (body, label = 'Mehr lesen') => `
+        <details class="d-more">
+            <summary>${icoPlus}<span class="d-more-open">${label}</span><span class="d-more-close">Weniger anzeigen</span></summary>
+            <div class="d-more-body">${body}</div>
+        </details>`;
+
+    const item = s => `
+        <li class="d-item" id="${s.id}">
+            <h3>
+                <button type="button" class="d-btn" aria-expanded="false" aria-controls="${s.id}-p" id="${s.id}-b">
+                    <span class="d-nr" aria-hidden="true">${pad(s.nr)}</span>
+                    <span><span class="d-title"><span class="sr-only">${s.nr}. </span>${s.titel}</span><span class="d-kurz">${s.kurz}</span></span>
+                    <span class="d-plus">${icoPlus}</span>
+                </button>
+            </h3>
+            <div class="d-panel" id="${s.id}-p" role="region" aria-labelledby="${s.id}-b"><div><p>${s.text}</p></div></div>
+        </li>`;
+
+    const sp = L.schwerpunkte;
+    const half = Math.ceil(sp.length / 2);
+
+    document.getElementById('page-content').innerHTML = `
+        ${pageHero({ icon: '🏫', eyebrow: 'Schule', title: 'Unsere Schule', crumbs: [['Schule']], waveFill: 'fill-surface' })}
+
+        <section class="container-page d-intro" aria-labelledby="leitbild">
+            <div class="d-grid">
+                <div class="d-motto-col">
+                    <p class="eyebrow">${L.titel}</p>
+                    <h2 id="leitbild" class="d-motto">${L.motto.map(m => `<span>${m}</span>`).join('')}</h2>
+                </div>
+                <div class="d-center-col" id="mittelpunkt">
+                    <h3>${L.mittelpunkt.titel}</h3>
+                    <p class="d-lead">${ersterSatz}</p>
+                    ${more(`<p class="d-text">${restSatz}</p><p class="d-text">${L.mittelpunkt.absaetze[1]}</p>`)}
+                </div>
+            </div>
+            <div class="d-profile">
+                <div class="d-grid">
+                    <h3 class="d-profile-label">Unsere Schule</h3>
+                    <p class="d-profile-text d-text">${profil}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="d-band d-section" aria-labelledby="schwerpunkte">
+            <div class="container-page">
+                <div class="d-sp-head">
+                    <div>
+                        <p class="eyebrow">Was uns ausmacht</p>
+                        <h2 id="schwerpunkte" class="d-h2">Unsere 12 Schwerpunkte</h2>
+                    </div>
+                    <button type="button" class="d-toggle-all" data-toggle-all aria-pressed="false">Alle aufklappen</button>
+                </div>
+                <div class="d-cols">
+                    <ul class="d-list">${sp.slice(0, half).map(item).join('')}</ul>
+                    <ul class="d-list">${sp.slice(half).map(item).join('')}</ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-page d-section" aria-labelledby="ziel">
+            <p class="eyebrow">Wohin wir wollen</p>
+            <h2 id="ziel" class="d-h2">${L.ziel.titel}</h2>
+            <ul class="d-claims">
+                ${L.ziel.leitsaetze.map(t => {
+                    const rest = t.replace(/^Jedes Kind\s+/, '');
+                    return `<li><span class="d-claim-pre">Jedes Kind</span><span class="d-claim">${rest}</span></li>`;
+                }).join('')}
+            </ul>
+            <div class="d-goal-foot">
+                <div class="d-grid">
+                    <p class="d-schluss">${L.ziel.schluss}</p>
+                    ${more(L.ziel.absaetze.map(p => `<p class="d-text">${p}</p>`).join(''), 'Mehr zu unserem Ziel')}
+                    <div class="d-pdf-col">
+                        <a href="#" class="d-pdf" data-mk-dummy>${icoDoc}<span>Leitbild als PDF <small>(Download)</small></span></a>
+                    </div>
+                </div>
+            </div>
+        </section>`;
+
+    /* ---------- Accordion ---------- */
+    const items = [...document.querySelectorAll('.d-item')];
+    const allBtn = document.querySelector('[data-toggle-all]');
+    function setOpen(li, open) {
+        li.classList.toggle('is-open', open);
+        li.querySelector('.d-btn').setAttribute('aria-expanded', String(open));
+    }
+    function syncAll() {
+        const all = items.every(li => li.classList.contains('is-open'));
+        allBtn.textContent = all ? 'Alle zuklappen' : 'Alle aufklappen';
+        allBtn.setAttribute('aria-pressed', String(all));
+    }
+    items.forEach(li => li.querySelector('.d-btn').addEventListener('click', () => {
+        setOpen(li, !li.classList.contains('is-open'));
+        syncAll();
+    }));
+    allBtn.addEventListener('click', () => {
+        const open = !items.every(li => li.classList.contains('is-open'));
+        items.forEach(li => setOpen(li, open));
+        syncAll();
+    });
+
+    /* Deep-Link (#musik usw.) öffnet den Punkt und markiert ihn kurz */
+    function fromHash(scroll) {
+        const li = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (!li || !li.classList.contains('d-item')) return;
+        setOpen(li, true); syncAll();
+        li.classList.remove('is-flash'); void li.offsetWidth; li.classList.add('is-flash');
+        if (scroll) (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => li.scrollIntoView({ block: 'start', behavior: 'instant' }));
+    }
+    window.addEventListener('hashchange', () => fromHash(false));
+    fromHash(true);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leitbild-Mockups | VS Puch bei Weiz</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        :root { --shadow-ambient: 0 12px 28px rgb(77 102 34 / .12); --shadow-ambient-lg: 0 30px 60px rgb(77 102 34 / .16); }
+        body { background: var(--color-surface); }
+        .o-head { padding: 3.5rem 0 2.5rem; }
+        .o-head img { height: 4.5rem; }
+        .o-head h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; margin-top: 1rem; }
+        .o-head p { margin-top: 1rem; max-width: 62ch; line-height: 1.75; color: var(--color-tertiary); font-size: 1.1rem; }
+        .o-grid { display: grid; gap: 1.75rem; grid-template-columns: minmax(0, 1fr); }
+        @media (min-width: 1024px) { .o-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        .o-grid-2 { margin-bottom: 1rem; }
+        @media (min-width: 900px) { .o-card.o-card-wide { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } .o-card.o-card-wide .o-shot { aspect-ratio: auto; height: 100%; border-bottom: 0; border-right: 1px solid var(--color-surface-alt); } }
+        @media (min-width: 900px) { .o-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        .o-group { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; margin: 2.5rem 0 1.25rem; }
+        .o-card { display: flex; flex-direction: column; background: var(--color-surface-card); border-radius: 1.75rem; box-shadow: var(--shadow-ambient); overflow: hidden; }
+        .o-shot { display: block; aspect-ratio: 16 / 11; overflow: hidden; background: var(--color-surface-alt); border-bottom: 1px solid var(--color-surface-alt); }
+        .o-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .4s; }
+        .o-card:hover .o-shot img { transform: scale(1.03); }
+        .o-body { padding: 1.6rem 1.6rem 1.8rem; display: flex; flex-direction: column; gap: .9rem; flex: 1; }
+        .o-letter { font-family: var(--font-display); font-weight: 700; color: var(--color-primary); font-size: .95rem; letter-spacing: .08em; text-transform: uppercase; }
+        .o-body h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; line-height: 1.2; }
+        .o-body > p { color: var(--color-tertiary); line-height: 1.65; }
+        .o-meta { display: grid; gap: .5rem; font-size: .9rem; }
+        .o-meta div { display: grid; grid-template-columns: 6.5rem 1fr; gap: .5rem; }
+        .o-meta dt { font-weight: 700; color: var(--color-on-surface); }
+        .o-meta dd { color: var(--color-tertiary); }
+        .o-pc { display: grid; gap: .3rem; font-size: .9rem; line-height: 1.5; }
+        .o-pc li { list-style: none; padding-left: 1.4rem; position: relative; color: var(--color-tertiary); }
+        .o-pc li::before { position: absolute; left: 0; font-weight: 800; }
+        .o-pc .pro::before { content: "+"; color: var(--color-secondary); }
+        .o-pc .con::before { content: "–"; color: var(--color-primary); }
+        .o-links { margin-top: auto; padding-top: .5rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+        .o-links a { display: inline-flex; align-items: center; gap: .4rem; padding: .7rem 1.1rem; border-radius: 1rem; font-family: var(--font-display); font-weight: 600; }
+        .o-links a:first-child { background: var(--color-primary); color: #fff; }
+        .o-links a:first-child:hover { background: var(--color-primary-dark); }
+        .o-links a + a { background: var(--color-surface-alt); color: var(--color-on-surface); }
+        .o-links a + a:hover { background: var(--color-secondary-container); }
+        .o-rec { margin-top: 3rem; padding: 2rem; border-radius: 1.75rem; background: var(--color-secondary); color: #fff; display: grid; gap: 1rem; }
+        @media (min-width: 900px) { .o-rec { grid-template-columns: 14rem 1fr; padding: 2.5rem 3rem; gap: 2.5rem; } }
+        .o-rec h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.8rem; line-height: 1.15; }
+        .o-rec p, .o-rec li { line-height: 1.7; color: rgb(255 255 255 / .88); }
+        .o-rec ul { margin-top: .75rem; padding-left: 1.2rem; list-style: disc; }
+        .o-rec b { color: #fff; }
+        .o-notes { margin: 3rem 0 4rem; display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr); }
+        @media (min-width: 900px) { .o-notes { grid-template-columns: 1fr 1fr; } }
+        .o-notes section { padding: 1.75rem; border-radius: 1.5rem; background: var(--color-surface-alt); }
+        .o-notes h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; }
+        .o-notes p, .o-notes li { margin-top: .6rem; line-height: 1.65; color: var(--color-tertiary); font-size: .95rem; }
+        .o-notes ul { padding-left: 1.2rem; list-style: disc; }
+        .o-intro { margin: -.5rem 0 1.5rem; max-width: 75ch; line-height: 1.7; color: var(--color-tertiary); }
+        .o-intro code { font-size: .85em; background: var(--color-surface-alt); padding: .1rem .35rem; border-radius: .35rem; }
+        .o-notes code { font-size: .85em; background: var(--color-surface-card); padding: .1rem .35rem; border-radius: .35rem; }
+    </style>
+</head>
+<body class="text-on-surface font-body antialiased">
+<main class="container-page">
+    <header class="o-head">
+        <img src="img/logo.svg" alt="Logo VS Puch">
+        <h1>Das Leitbild auf der Seite „Schule" – neun Varianten</h1>
+        <p>Klickbare Mockups im echten Look der Seite (kompiliertes Theme-CSS, Header, PageHero und Footer wie in den Liquid-Templates). Das Menü bleibt unverändert: Ein Klick auf „Schule" führt direkt auf die Seite mit dem Leitbild. Alle Varianten zeigen denselben, unveränderten Leitbild-Text – nur die Darstellung unterscheidet sich. Die schwarze Leiste unten in jedem Mockup wechselt zwischen den Varianten; Links außerhalb von „Schule" sind Platzhalter.</p>
+    </header>
+
+    <h2 class="o-group">Kombination</h2>
+    <article class="o-card o-card-wide">
+        <a class="o-shot" href="f-schule.html"><img src="img/preview-f.jpg" alt="Vorschau Variante F"></a>
+        <div class="o-body">
+            <span class="o-letter">Variante F · Kombination aus E und A</span>
+            <h2>Auf einen Blick, mit Einleitung und Ziel</h2>
+            <p>Oben wie in E: großes Motto und daneben der vollständige Einleitungstext „Das Kind steht im Mittelpunkt" statt des Gütesiegels. Dann die 12 Schwerpunkte als Icon-Raster, ein Klick öffnet den Text. Unten der Ziel-Abschnitt aus A mit den drei farbigen Leitsätzen und dem Schlusssatz.</p>
+            <dl class="o-meta">
+                <div><dt>Charakter</dt><dd>sachlich oben, warm am Schluss</dd></div>
+                <div><dt>Interaktion</dt><dd>Icon-Raster, Dialog mit Vor/Zurück</dd></div>
+                <div><dt>Aufwand</dt><dd>mittel</dd></div>
+            </dl>
+            <div class="o-links"><a href="f-schule.html">Ansehen →</a></div>
+        </div>
+    </article>
+
+    <h2 class="o-group">Kindgerechte Varianten (auf Basis von F)</h2>
+    <p class="o-intro">Wunsch der Schule: mehr Farbe und kindgerechte Details – bei gleicher Struktur, gleichem Inhalt und gleichem Dialog wie F. Alle drei Varianten verwenden genau das Markup der Orchard-Umsetzung (<code>Content__Leitbild.liquid</code>) und unterscheiden sich nur in CSS und dekorativen Inline-SVGs.</p>
+    <div class="o-grid">
+        <article class="o-card">
+            <a class="o-shot" href="g-schule.html"><img src="img/preview-g.jpg" alt="Vorschau Variante G"></a>
+            <div class="o-body">
+                <span class="o-letter">Variante G · neu</span>
+                <h2>Farbenfroh</h2>
+                <p>Jeder der 12 Schwerpunkte bekommt eine eigene Bonbonfarbe – Karte, Icon-Fleck und Dialog in derselben Farbe. Bunte Marker unter dem Motto, Wellenbänder zwischen den Sektionen, die Leitsätze auf farbigen, leicht gedrehten Streifen.</p>
+                <dl class="o-meta">
+                    <div><dt>Charakter</dt><dd>fröhlich, bunt, aufgeräumt</dd></div>
+                    <div><dt>Interaktion</dt><dd>wie F, Karten „hüpfen" beim Hover</dd></div>
+                    <div><dt>Aufwand</dt><dd>gering (nur CSS + 2 Wellen-SVGs)</dd></div>
+                </dl>
+                <ul class="o-pc">
+                    <li class="pro">Größter Farbgewinn bei kleinstem Umbau</li>
+                    <li class="pro">Farbe folgt der Position – keine neuen Felder</li>
+                    <li class="con">Zwölf Farben wirken auf dem Handy dicht</li>
+                </ul>
+                <div class="o-links"><a href="g-schule.html">Ansehen →</a></div>
+            </div>
+        </article>
+
+        <article class="o-card">
+            <a class="o-shot" href="h-schule.html"><img src="img/preview-h.jpg" alt="Vorschau Variante H"></a>
+            <div class="o-body">
+                <span class="o-letter">Variante H · neu</span>
+                <h2>Zeichenheft</h2>
+                <p>Wie aus dem Schulheft: Textmarker im Motto, Einleitung auf Linienpapier mit rotem Rand, Schwerpunkte als gezeichnete Kärtchen mit Washi-Tape auf Karopapier, Buntstift-Kreise um die Icons und abgehakte Leitsätze.</p>
+                <dl class="o-meta">
+                    <div><dt>Charakter</dt><dd>handgemacht, persönlich, schulisch</dd></div>
+                    <div><dt>Interaktion</dt><dd>wie F, Kärtchen richten sich beim Hover gerade</dd></div>
+                    <div><dt>Aufwand</dt><dd>mittel (CSS + kleine Kritzel-SVGs)</dd></div>
+                </dl>
+                <ul class="o-pc">
+                    <li class="pro">Eigenständiger Look mit hohem Wiedererkennungswert</li>
+                    <li class="pro">Passt zum Schulalltag, ohne kindisch zu wirken</li>
+                    <li class="con">Viele kleine Details – braucht etwas Pflege beim Feinschliff</li>
+                </ul>
+                <div class="o-links"><a href="h-schule.html">Ansehen →</a></div>
+            </div>
+        </article>
+
+        <article class="o-card">
+            <a class="o-shot" href="i-schule.html"><img src="img/preview-i.jpg" alt="Vorschau Variante I"></a>
+            <div class="o-body">
+                <span class="o-letter">Variante I · neu</span>
+                <h2>Kleine Welt</h2>
+                <p>Die Seite als kleine Landschaft: lachende Sonne und Wolken beim Motto, ein Himmelsband mit Schwerpunkten als Sticker (weißer Rand, Glanz), ein Regenbogen hinter den Leitsätzen und eine Wiese mit wiegenden Blumen vor dem Footer.</p>
+                <dl class="o-meta">
+                    <div><dt>Charakter</dt><dd>verspielt, warm, am kindlichsten</dd></div>
+                    <div><dt>Interaktion</dt><dd>wie F, sanfte Animationen (abschaltbar)</dd></div>
+                    <div><dt>Aufwand</dt><dd>mittel (CSS + Landschafts-SVGs)</dd></div>
+                </dl>
+                <ul class="o-pc">
+                    <li class="pro">Spricht Kinder am direktesten an</li>
+                    <li class="pro">Bewegung respektiert „Bewegung reduzieren"</li>
+                    <li class="con">Deko-SVGs machen das Template länger</li>
+                </ul>
+                <div class="o-links"><a href="i-schule.html">Ansehen →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <h2 class="o-group">Sachlich &amp; kompakt</h2>
+    <div class="o-grid o-grid-2">
+        <article class="o-card">
+            <a class="o-shot" href="d-schule.html"><img src="img/preview-d.jpg" alt="Vorschau Variante D"></a>
+            <div class="o-body">
+                <span class="o-letter">Variante D · neu</span>
+                <h2>Klar &amp; sachlich</h2>
+                <p>Ruhig und erwachsen, ohne Emojis: das Motto als große Aussage, die 12 Schwerpunkte als schlichte zweispaltige Liste nur mit Titel und Kurzbeschreibung. Der Volltext klappt erst bei Bedarf auf, die drei Leitsätze stehen gleichwertig nebeneinander.</p>
+                <dl class="o-meta">
+                    <div><dt>Charakter</dt><dd>ruhig, professionell</dd></div>
+                    <div><dt>Interaktion</dt><dd>Aufklappen, „Alle aufklappen"</dd></div>
+                    <div><dt>Aufwand</dt><dd>gering</dd></div>
+                </dl>
+                <ul class="o-pc">
+                    <li class="pro">Wenig sichtbarer Text, trotzdem alles auf der Seite</li>
+                    <li class="pro">Sehr einfach in OrchardCore umzusetzen</li>
+                    <li class="con">Optisch zurückhaltend, wenig Wiedererkennung</li>
+                </ul>
+                <div class="o-links"><a href="d-schule.html">Ansehen →</a></div>
+            </div>
+        </article>
+
+        <article class="o-card">
+            <a class="o-shot" href="e-schule.html"><img src="img/preview-e.jpg" alt="Vorschau Variante E"></a>
+            <div class="o-body">
+                <span class="o-letter">Variante E · neu</span>
+                <h2>Auf einen Blick</h2>
+                <p>Das Leitbild als visuelle Zusammenfassung: großes Motto, Gütesiegel „Glücksschule", die 12 Schwerpunkte als luftiges Raster mit eigenen Linien-Icons. Ein Klick öffnet den Text in einem Fenster, „Ganzes Leitbild lesen" zeigt alles im Wortlaut.</p>
+                <dl class="o-meta">
+                    <div><dt>Charakter</dt><dd>modern, übersichtlich</dd></div>
+                    <div><dt>Interaktion</dt><dd>Icon-Raster, Dialog mit Vor/Zurück</dd></div>
+                    <div><dt>Aufwand</dt><dd>mittel</dd></div>
+                </dl>
+                <ul class="o-pc">
+                    <li class="pro">In wenigen Sekunden erfassbar, kaum Fließtext</li>
+                    <li class="pro">Einheitliche Icons wirken hochwertig, nicht kindlich</li>
+                    <li class="con">Texte nur im Fenster; Icons müssen im Theme mitgepflegt werden</li>
+                </ul>
+                <div class="o-links"><a href="e-schule.html">Ansehen →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <h2 class="o-group">Verspielt</h2>
+    <div class="o-grid">
+        <article class="o-card">
+            <a class="o-shot" href="a-schule.html"><img src="img/preview-a.jpg" alt="Vorschau Variante A"></a>
+            <div class="o-body">
+                <span class="o-letter">Variante A</span>
+                <h2>Ruhig &amp; redaktionell</h2>
+                <p>Kurzes Schulprofil mit Inhaltsverzeichnis, dann das Leitbild als gut lesbarer Text: großes Statement, alle 12 Schwerpunkte nummeriert untereinander mit mitlaufendem Index, die Glücksschule hervorgehoben, starke Schlusssätze.</p>
+                <dl class="o-meta">
+                    <div><dt>Charakter</dt><dd>klar, textorientiert</dd></div>
+                    <div><dt>Interaktion</dt><dd>Sprungmarken, mitlaufender Index</dd></div>
+                    <div><dt>Aufwand</dt><dd>gering</dd></div>
+                </dl>
+                <ul class="o-pc">
+                    <li class="pro">Ganzer Text sofort sichtbar – gut für Eltern, Druck und Suchmaschinen</li>
+                    <li class="pro">Am einfachsten in OrchardCore umzusetzen und zu pflegen</li>
+                    <li class="con">Lange Seite, wenig Überraschung</li>
+                </ul>
+                <div class="o-links"><a href="a-schule.html">Ansehen →</a></div>
+            </div>
+        </article>
+
+        <article class="o-card">
+            <a class="o-shot" href="b-schule.html"><img src="img/preview-b.jpg" alt="Vorschau Variante B"></a>
+            <div class="o-body">
+                <span class="o-letter">Variante B</span>
+                <h2>Kompakt &amp; filterbar</h2>
+                <p>Mitlaufende Abschnittsleiste (Über uns · Kind im Mittelpunkt · 12 Schwerpunkte · Ziel). Die Schwerpunkte als farbige Kacheln, filterbar nach Herz / Kopf / Hand / Welt – der volle Text erscheint im Detailfeld daneben. Großer grüner Abschluss mit den drei Leitsätzen.</p>
+                <dl class="o-meta">
+                    <div><dt>Charakter</dt><dd>übersichtlich, verspielt</dd></div>
+                    <div><dt>Interaktion</dt><dd>Filter, Kacheln, Detailfeld</dd></div>
+                    <div><dt>Aufwand</dt><dd>mittel</dd></div>
+                </dl>
+                <ul class="o-pc">
+                    <li class="pro">Alle 12 Punkte auf einen Blick, ohne endloses Scrollen</li>
+                    <li class="pro">Schöner Fakten-Block für „Über uns"</li>
+                    <li class="con">Texte erst nach Klick lesbar; Gruppierung Herz/Kopf/Hand/Welt ist ein Vorschlag von uns</li>
+                </ul>
+                <div class="o-links"><a href="b-schule.html">Ansehen →</a></div>
+            </div>
+        </article>
+
+        <article class="o-card">
+            <a class="o-shot" href="c-schule.html"><img src="img/preview-c.jpg" alt="Vorschau Variante C"></a>
+            <div class="o-body">
+                <span class="o-letter">Variante C</span>
+                <h2>Das Kind im Mittelpunkt</h2>
+                <p>Das Leitbild wörtlich genommen: eine interaktive Grafik mit dem Kind in der Mitte und den 12 Schwerpunkten im Kreis rundherum. Antippen oder mit den Pfeiltasten blättern zeigt den Text daneben. Die Leitsätze „wachsen" mit 🌱 → 🌿 → 🌳.</p>
+                <dl class="o-meta">
+                    <div><dt>Charakter</dt><dd>bildhaft, einprägsam</dd></div>
+                    <div><dt>Interaktion</dt><dd>Kreisgrafik, Vor/Zurück</dd></div>
+                    <div><dt>Aufwand</dt><dd>mittel–hoch</dd></div>
+                </dl>
+                <ul class="o-pc">
+                    <li class="pro">Stärkster Wiedererkennungswert, passt perfekt zur Kernaussage</li>
+                    <li class="pro">Kindgerecht – auch für Kinder selbst spannend</li>
+                    <li class="con">Mehr JavaScript; am Handy nur Symbole im Kreis</li>
+                </ul>
+                <div class="o-links"><a href="c-schule.html">Ansehen →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <section class="o-rec" aria-labelledby="empf">
+        <h2 id="empf">Empfehlung</h2>
+        <div>
+            <p><b>Variante F</b> – die Kombination aus E und A: oben schnell erfassbar mit Motto, Einleitungstext und Icon-Raster, unten der warme Abschluss mit den drei Leitsätzen. Alle Texte des Leitbilds sind auf der Seite oder mit einem Klick erreichbar.</p>
+            <ul>
+                <li>Noch schlichter und am einfachsten umzusetzen: <b>Variante D</b>.</li>
+                <li>Verspielter und kindgerechter: <b>Variante C</b> mit der Kreisgrafik.</li>
+                <li>Die Einteilung Herz / Kopf / Hand / Welt gibt es nur in B und C.</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="o-notes">
+        <section>
+            <h3>Umsetzung in OrchardCore</h3>
+            <ul>
+                <li>Neuer Content-Type <code>Leitbild</code> (Titel, Motto, Einleitung, Ziel) mit <code>BagPart</code> für die 12 <code>Schwerpunkt</code>-Einträge (Nummer, Icon, Titel, Text) – so bleibt alles im Admin pflegbar.</li>
+                <li>Menü bleibt unverändert: „Schule" (<code>~/schulprofil</code>) bekommt ein eigenes Liquid-Template, das Schulprofil und Leitbild rendert – kein Untermenü nötig.</li>
+                <li>Neue Utility-Klassen landen nur im CSS, wenn sie in Views stehen – daher die Leitbild-Styles als benannte Komponenten in <code>components.css</code>.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Hinweise</h3>
+            <ul>
+                <li>Texte stammen 1:1 aus „UNSER LEITBILD VS PUCH bei WEIZ.docx" (<code>shared/leitbild-data.js</code>).</li>
+                <li>Die Icons (Emojis) sind ein Vorschlag passend zum restlichen Auftritt und können frei getauscht werden.</li>
+                <li>„Leitbild als PDF" in A–E ist nur ein Platzhalter; in Variante F entfällt der Download.</li>
+            </ul>
+        </section>
+    </div>
+</main>
+</body>
+</html>

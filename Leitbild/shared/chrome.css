@@ -1,0 +1,64 @@
+/*
+ * Ergaenzungen fuer die Leitbild-Mockups, die (noch) nicht im kompilierten Theme-CSS stecken:
+ * Dropdown/Mega-Menue fuer "Schule", Mockup-Leiste, Fliesstext. Nutzt ausschliesslich die
+ * Theme-Tokens (--color-*, --font-*, --shadow-*) aus css/site.css.
+ */
+:root { --shadow-ambient: 0 12px 28px rgb(77 102 34 / .12); --shadow-ambient-lg: 0 30px 60px rgb(77 102 34 / .16); }
+html { scroll-behavior: smooth; scroll-padding-top: 6.5rem; }
+footer.bg-on-surface { padding-bottom: 4.5rem; } /* Platz fuer die Mockup-Leiste */
+
+/* ---------- Dropdown "Schule" ---------- */
+.mk-dd { position: relative; }
+.mk-dd-btn { display: inline-flex; align-items: center; gap: .3rem; cursor: pointer; }
+.mk-chevron { width: 1rem; height: 1rem; transition: transform .2s; }
+.mk-dd.is-open .mk-chevron, details[open] > summary .mk-chevron { transform: rotate(180deg); }
+.mk-panel {
+    position: absolute; top: calc(100% + .6rem); left: 50%; translate: -50% 0;
+    min-width: 19rem; padding: .5rem; border-radius: 1.5rem;
+    background: var(--color-surface-card); box-shadow: var(--shadow-ambient-lg);
+    border: 1px solid color-mix(in oklch, var(--color-secondary) 12%, transparent);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .18s, transform .18s, visibility .18s;
+}
+.mk-panel::before { content: ""; position: absolute; inset: -0.8rem 0 auto 0; height: .8rem; } /* Hover-Bruecke */
+.mk-dd.is-open .mk-panel { opacity: 1; visibility: visible; transform: none; }
+.mk-sub { display: flex; gap: .85rem; align-items: flex-start; padding: .8rem 1rem; border-radius: 1rem; color: var(--color-on-surface); transition: background .15s; }
+.mk-sub:hover { background: var(--color-surface-alt); }
+.mk-sub.is-active { background: color-mix(in oklch, var(--color-primary) 7%, white); }
+.mk-sub-icon { font-size: 1.5rem; line-height: 1; margin-top: .1rem; }
+.mk-sub-label { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; }
+.mk-sub.is-active .mk-sub-label { color: var(--color-primary); }
+.mk-sub-desc { display: block; font-size: .8rem; color: var(--color-tertiary); margin-top: .1rem; }
+
+/* Mega-Variante */
+.mk-panel-mega { display: grid; grid-template-columns: 17rem 1fr; gap: .5rem; width: min(52rem, calc(100vw - 3rem)); left: auto; right: -14rem; translate: 0 0; }
+.mk-mega-left { display: flex; flex-direction: column; gap: .25rem; padding-right: .5rem; border-right: 1px solid var(--color-surface-alt); }
+.mk-mega-right { padding: .6rem .6rem .6rem .8rem; }
+.mk-mega-title { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-primary); margin-bottom: .6rem; }
+.mk-mega-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .15rem .4rem; }
+.mk-mega-chip { display: flex; gap: .5rem; align-items: center; padding: .45rem .6rem; border-radius: .75rem; font-size: .82rem; font-weight: 600; color: var(--color-on-surface); line-height: 1.25; }
+.mk-mega-chip:hover { background: var(--color-surface-alt); color: var(--color-primary); }
+
+/* Mobile-Untermenue */
+.mk-mobile-group > summary { list-style: none; display: flex; align-items: center; gap: .3rem; cursor: pointer; }
+.mk-mobile-group > summary::-webkit-details-marker { display: none; }
+.mk-mobile-group > summary .mk-chevron { margin-left: auto; }
+.mk-mobile-sub { display: block; padding: .65rem 0 .65rem 1.9rem; font-weight: 600; color: var(--color-tertiary); border-bottom: 1px solid color-mix(in oklch, var(--color-primary) 8%, transparent); }
+.mk-mobile-sub.is-active { color: var(--color-primary); }
+
+/* ---------- Fliesstext ---------- */
+.mk-prose h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.9rem; line-height: 1.2; }
+.mk-prose p { margin-top: 1rem; line-height: 1.75; color: color-mix(in oklch, var(--color-tertiary) 92%, transparent); max-width: 65ch; }
+
+/* ---------- Mockup-Leiste (nicht Teil des Designs) ---------- */
+.mk-bar {
+    position: fixed; z-index: 60; left: 50%; bottom: 1rem; translate: -50% 0;
+    display: flex; gap: .25rem; padding: .35rem; border-radius: 999px;
+    background: #1a1d15; box-shadow: 0 10px 30px rgb(0 0 0 / .25);
+    font: 600 .8rem/1 system-ui, sans-serif; max-width: calc(100vw - 1.5rem); overflow-x: auto;
+}
+.mk-bar a { color: #fff9; padding: .6rem .9rem; border-radius: 999px; white-space: nowrap; }
+.mk-bar a:hover { color: #fff; }
+.mk-bar a.is-active { background: #fff; color: #1a1d15; }
+.mk-bar-home { border-right: 1px solid #fff3; border-radius: 999px 0 0 999px !important; }
+.mk-toast { position: fixed; z-index: 61; left: 50%; bottom: 4.6rem; translate: -50% 0; background: #1a1d15; color: #fff; padding: .6rem 1rem; border-radius: .75rem; font: 600 .8rem system-ui, sans-serif; }

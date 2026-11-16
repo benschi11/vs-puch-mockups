@@ -1,0 +1,97 @@
+/*
+ * Basis der kindgerechten Varianten G/H/I: 1:1 der Leitbild-Block aus
+ * src/Theme/OrchardCore.VsPuch.Theme/Assets/css/components.css (Stand Variante F in Orchard),
+ * damit die Varianten-Styles in g/h/i-schule.html genau das zeigen, was sie später als
+ * Ergänzung in components.css bewirken würden.
+ */
+.icon { display: inline-block; flex-shrink: 0; vertical-align: -0.125em; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+.lb-deco { pointer-events: none; }
+.lb-label { font-size: .75rem; line-height: 1.4; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-primary); }
+
+.lb-intro { padding: 3.5rem 0 4rem; }
+.lb-intro-grid { display: grid; gap: 2rem; align-items: start; }
+.lb-intro-grid > * { min-width: 0; }
+@media (min-width: 900px) { .lb-intro-grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 4rem; } }
+.lb-motto { margin-top: .9rem; font-family: var(--font-display); font-weight: 600; font-size: clamp(2.3rem, 4.4vw, 3.9rem); line-height: 1.02; letter-spacing: -.015em; color: var(--color-on-surface); }
+.lb-motto span { display: block; }
+.lb-motto span:last-child { color: var(--color-primary); }
+.lb-intro-side { padding-top: 1.5rem; border-top: 1px solid color-mix(in oklch, var(--color-tertiary) 20%, transparent); }
+@media (min-width: 900px) { .lb-intro-side { margin-top: 1.9rem; } }
+.lb-kicker { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--color-secondary); }
+.lb-quote { margin-top: .4rem; font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; line-height: 1.25; color: var(--color-on-surface); }
+.lb-lead p { margin-top: .9rem; font-size: 1.08rem; line-height: 1.7; color: var(--color-tertiary); }
+.lb-lead p:first-child { color: var(--color-on-surface); }
+
+.lb-areas-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid color-mix(in oklch, var(--color-tertiary) 20%, transparent); }
+.lb-areas-head h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; }
+.lb-areas-head p { font-size: .95rem; color: var(--color-tertiary); }
+/* Haarlinien zwischen den Kacheln: 1px-Gap auf getoentem Hintergrund statt Rahmen je Kachel. */
+.lb-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: color-mix(in oklch, var(--color-tertiary) 20%, transparent); border-bottom: 1px solid color-mix(in oklch, var(--color-tertiary) 20%, transparent); }
+@media (min-width: 640px) { .lb-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .lb-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.lb-cell { min-width: 0; display: flex; }
+.lb-tile { position: relative; width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; padding: 1.6rem 1.1rem 1.5rem; text-align: left; background: var(--color-surface); color: var(--color-on-surface); cursor: pointer; transition: background-color .2s; }
+@media (min-width: 640px) { .lb-tile { padding: 1.9rem 1.75rem 2.4rem; } }
+.lb-tile:hover { background: var(--color-surface-alt); }
+.lb-tile:focus-visible { outline-offset: -3px; z-index: 1; }
+.lb-tile-top { display: flex; width: 100%; align-items: flex-start; justify-content: space-between; margin-bottom: 1.1rem; color: var(--color-secondary); }
+.lb-tile-icon { font-size: 2.25rem; transition: color .2s; }
+.lb-tile:hover .lb-tile-icon { color: var(--color-primary); }
+.lb-tile-nr { font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: .04em; color: var(--color-tertiary); }
+.lb-tile-title { font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; line-height: 1.25; hyphens: auto; overflow-wrap: anywhere; }
+@media (min-width: 640px) { .lb-tile-title { font-size: 1.2rem; } }
+.lb-tile-kurz { font-size: .88rem; line-height: 1.45; color: var(--color-tertiary); }
+.lb-tile-more { position: absolute; right: 1.1rem; bottom: 1.1rem; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-surface-card); color: var(--color-primary); font-size: 1.1rem; opacity: 0; transform: translateX(-4px); transition: opacity .2s, transform .2s; }
+.lb-tile:hover .lb-tile-more, .lb-tile:focus-visible .lb-tile-more { opacity: 1; transform: none; }
+@media (hover: none) { .lb-tile-more { display: none; } }
+.lb-badge { display: inline-flex; align-items: center; gap: .3rem; padding: .15rem .55rem .15rem .35rem; border-radius: 999px; background: var(--color-secondary-container); color: var(--color-secondary-dark); font-size: .7rem; font-weight: 700; letter-spacing: .04em; }
+.lb-badge .icon { font-size: .9rem; }
+
+.lb-goal { padding-block: 4rem; }
+@media (min-width: 1024px) { .lb-goal { padding-block: 5.5rem 5rem; } }
+.lb-goal-grid { display: grid; gap: 2.5rem; }
+.lb-goal-grid > * { min-width: 0; }
+@media (min-width: 1024px) { .lb-goal-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; } }
+.lb-goal h2 { margin-top: .5rem; font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.1; }
+.lb-goal-text p:not(.lb-label) { margin-top: 1.1rem; font-size: 1.1rem; line-height: 1.8; color: var(--color-tertiary); }
+.lb-claims li { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 4.2vw, 2.9rem); line-height: 1.12; letter-spacing: -.01em; }
+.lb-claims li + li { margin-top: .35rem; }
+.lb-claims em { font-style: normal; color: var(--color-primary); }
+.lb-claims li:nth-child(2) em { color: var(--color-secondary); }
+.lb-claims li:nth-child(3) em { color: #c27a00; }
+.lb-closing { margin-top: 3.5rem; padding-top: 2rem; border-top: 2px dashed color-mix(in oklch, var(--color-secondary) 25%, transparent); }
+.lb-closing p { max-width: 40ch; font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--color-on-surface); }
+
+.lb-dialog { width: min(40rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); padding: 0; border: 0; border-radius: 1.5rem; background: var(--color-surface-card); color: var(--color-on-surface); box-shadow: 0 30px 60px rgb(77 102 34 / .16); overscroll-behavior: contain; }
+.lb-dialog::backdrop { background: rgb(26 29 21 / .55); }
+.lb-dialog[open] { animation: lb-dialog-in .22s cubic-bezier(.2, .7, .2, 1); }
+.lb-dialog-close { position: absolute; top: 1rem; right: 1rem; z-index: 2; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; font-size: 1.35rem; color: var(--color-on-surface); background: var(--color-surface-card); cursor: pointer; transition: background-color .2s; }
+.lb-dialog-close:hover { background: var(--color-surface-alt); }
+.lb-dialog-body { padding: 2rem 1.5rem 1.75rem; }
+@media (min-width: 640px) { .lb-dialog-body { padding: 2.5rem 2.75rem 2.25rem; } }
+.lb-dialog-icon { display: grid; place-items: center; width: 4rem; height: 4rem; border-radius: 1.25rem; background: var(--color-secondary-container); color: var(--color-secondary-dark); }
+.lb-dialog-icon .lb-tile-icon { font-size: 2.25rem; }
+.lb-dialog-meta { margin-top: 1.4rem; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-tertiary); }
+.lb-dialog-title { margin-top: .3rem; padding-right: 2rem; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.1rem); line-height: 1.15; }
+.lb-dialog-body .lb-badge { margin-top: 1.1rem; padding: .3rem .8rem; font-size: .78rem; }
+.lb-dialog-text { margin-top: 1rem; max-width: 60ch; font-size: 1.08rem; line-height: 1.75; }
+.lb-dialog-nav { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-top: 1px solid color-mix(in oklch, var(--color-tertiary) 20%, transparent); }
+.lb-dialog-nav button { min-width: 0; display: flex; align-items: center; gap: .6rem; padding: 1rem 1.5rem 1.15rem; text-align: left; color: var(--color-on-surface); cursor: pointer; transition: background-color .2s; }
+.lb-dialog-nav button:hover { background: var(--color-surface-alt); }
+.lb-dialog-nav button + button { justify-content: flex-end; text-align: right; border-left: 1px solid color-mix(in oklch, var(--color-tertiary) 20%, transparent); }
+.lb-dialog-nav button:first-child { border-bottom-left-radius: 1.5rem; }
+.lb-dialog-nav button:last-child { border-bottom-right-radius: 1.5rem; }
+.lb-dialog-nav span { min-width: 0; }
+.lb-dialog-nav small { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-tertiary); }
+.lb-dialog-nav b { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-family: var(--font-display); font-weight: 600; font-size: .98rem; line-height: 1.25; }
+.lb-dialog-nav .icon { flex: none; font-size: 1.15rem; color: var(--color-primary); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lb-dialog[open] { animation: none; }
+  .lb-tile, .lb-tile-icon, .lb-tile-more { transition: none; }
+  .lb-tile-more { transform: none; }
+}
+@keyframes lb-dialog-in {
+  from { opacity: 0; transform: translateY(10px) scale(.985); }
+}

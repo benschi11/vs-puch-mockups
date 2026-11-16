@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schule – Variante E | VS Puch bei Weiz</title>
+<link rel="icon" href="img/favicon.svg"><link rel="stylesheet" href="css/site.css"><link rel="stylesheet" href="shared/chrome.css">
+<style>
+/* ======================================================================
+   Variante E – "Auf einen Blick"
+   Visuelle Zusammenfassung: eine Aussage, 12 Icons, drei Leitsätze.
+   Nur Theme-Tokens (--color-*, --font-*) + eigene Klassen mit Präfix e-
+   ====================================================================== */
+:root {
+    --e-line: color-mix(in oklch, var(--color-tertiary) 20%, transparent);
+    --e-ease: cubic-bezier(.2, .7, .2, 1);
+}
+.e-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.e-ico { width: 1.75rem; height: 1.75rem; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.e-label { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-primary); }
+
+/* ---------- 1. Eine Aussage ---------- */
+.e-intro { padding: 3.5rem 0 4rem; }
+.e-intro-grid { display: grid; gap: 2rem; align-items: end; }
+.e-intro-grid > * { min-width: 0; }
+@media (min-width: 900px) { .e-intro-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 4rem; } }
+.e-motto { margin-top: .9rem; font-family: var(--font-display); font-weight: 600; font-size: clamp(2.3rem, 6.2vw, 4.75rem); line-height: 1.02; letter-spacing: -.015em; color: var(--color-on-surface); }
+.e-motto span { display: block; }
+.e-motto span:last-child { color: var(--color-primary); }
+.e-intro-side { padding-top: 1.5rem; border-top: 1px solid var(--e-line); }
+.e-intro-side .e-kicker { font-family: var(--font-display); font-weight: 600; color: var(--color-secondary); font-size: 1.05rem; }
+.e-intro-side .e-quote { margin-top: .4rem; font-size: 1.3rem; line-height: 1.45; color: var(--color-on-surface); }
+
+/* Gütesiegel Glücksschule */
+.e-seal { margin-top: 1.5rem; display: inline-flex; align-items: center; gap: .75rem; padding: .45rem 1rem .45rem .45rem; border-radius: 999px;
+    background: var(--color-surface-card); border: 1px solid var(--e-line); color: var(--color-on-surface); text-align: left;
+    font: inherit; cursor: pointer; transition: border-color .2s, background-color .2s; }
+.e-seal:hover { border-color: var(--color-secondary); }
+.e-seal-mark { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--color-secondary-container); color: var(--color-secondary-dark); }
+.e-seal-mark .e-ico { width: 1.5rem; height: 1.5rem; }
+.e-seal small { display: block; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-tertiary); }
+.e-seal b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1rem; line-height: 1.2; }
+
+/* ---------- 2. Icon-Raster ---------- */
+.e-areas { padding: 0 0 5rem; }
+.e-areas-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--e-line); }
+.e-areas-head h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; }
+.e-areas-head p { color: var(--color-tertiary); font-size: .95rem; }
+.e-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--e-line); border-bottom: 1px solid var(--e-line); }
+@media (min-width: 640px) { .e-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .e-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.e-cell { min-width: 0; display: flex; }
+.e-tile { width: 100%; min-width: 0; position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; text-align: left;
+    padding: 1.6rem 1.1rem 1.5rem; background: var(--color-surface); color: var(--color-on-surface); cursor: pointer;
+    transition: background-color .2s var(--e-ease); }
+@media (min-width: 640px) { .e-tile { padding: 1.9rem 1.75rem 2.4rem; } }
+.e-tile:hover { background: var(--color-surface-alt); }
+.e-tile:focus-visible { outline-offset: -3px; z-index: 1; }
+.e-tile-top { display: flex; width: 100%; align-items: flex-start; justify-content: space-between; margin-bottom: 1.1rem; color: var(--color-secondary); }
+.e-tile .e-ico { width: 2.25rem; height: 2.25rem; transition: color .2s, transform .25s var(--e-ease); }
+.e-tile:hover .e-ico { color: var(--color-primary); }
+.e-nr { font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--color-tertiary); letter-spacing: .04em; }
+.e-tile-title { font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; line-height: 1.25; hyphens: auto; overflow-wrap: anywhere; }
+@media (min-width: 640px) { .e-tile-title { font-size: 1.2rem; } }
+.e-tile-kurz { font-size: .88rem; line-height: 1.45; color: var(--color-tertiary); }
+.e-tile-more { position: absolute; right: 1.1rem; bottom: 1.1rem; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-surface-card); color: var(--color-primary);
+    opacity: 0; transform: translateX(-4px); transition: opacity .2s, transform .2s var(--e-ease); }
+.e-tile-more .e-ico { width: 1.1rem; height: 1.1rem; stroke-width: 2.25; color: inherit !important; }
+.e-tile:hover .e-tile-more, .e-tile:focus-visible .e-tile-more { opacity: 1; transform: none; }
+@media (hover: none) { .e-tile-more { display: none; } }
+.e-tile-badge { display: inline-flex; align-items: center; gap: .3rem; padding: .15rem .55rem .15rem .35rem; border-radius: 999px; background: var(--color-secondary-container); color: var(--color-secondary-dark); font-size: .7rem; font-weight: 700; letter-spacing: .04em; }
+.e-tile-badge .e-ico { width: .9rem !important; height: .9rem !important; stroke-width: 2.25; color: inherit !important; }
+
+/* ---------- 3. Leitsätze-Band ---------- */
+.e-band { background: var(--color-secondary); color: #fff; padding: 4rem 0 4.5rem; }
+.e-band h2 { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-secondary-container); }
+.e-band-list { margin-top: 2rem; display: grid; gap: 2rem; }
+.e-band-list > li { min-width: 0; }
+@media (min-width: 768px) { .e-band-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+    .e-band-list > li { padding: 0 2rem; border-left: 1px solid rgb(255 255 255 / .22); }
+    .e-band-list > li:first-child { padding-left: 0; border-left: 0; } }
+@media (max-width: 767px) { .e-band-list > li + li { padding-top: 2rem; border-top: 1px solid rgb(255 255 255 / .22); } }
+.e-band-list span { display: block; font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; color: var(--color-secondary-container); }
+.e-band-list strong { display: block; font-family: var(--font-display); font-weight: 600; font-size: clamp(2.2rem, 4.2vw, 3.4rem); line-height: 1.05; letter-spacing: -.01em; }
+
+/* ---------- 4. Abschluss ---------- */
+.e-end { padding: 4.5rem 0 5.5rem; }
+.e-end-grid { display: grid; gap: 3rem; }
+.e-end-grid > * { min-width: 0; }
+@media (min-width: 900px) { .e-end-grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 5rem; align-items: start; } }
+.e-end .mk-prose h2 { font-size: 1.4rem; }
+.e-end .mk-prose p { margin-top: .6rem; font-size: .98rem; line-height: 1.7; }
+.e-cta { padding-top: 1.5rem; border-top: 2px solid var(--color-on-surface); }
+.e-cta h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2rem); line-height: 1.15; }
+.e-cta p { margin-top: .5rem; color: var(--color-tertiary); }
+.e-cta-row { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+.e-btn { display: inline-flex; align-items: center; gap: .55rem; padding: .85rem 1.4rem; border-radius: 1rem; font-weight: 700; cursor: pointer;
+    border: 2px solid transparent; transition: background-color .2s, border-color .2s, color .2s; }
+.e-btn .e-ico { width: 1.2rem; height: 1.2rem; stroke-width: 2; }
+.e-btn-primary { background: var(--color-primary); color: #fff; }
+.e-btn-primary:hover { background: var(--color-primary-dark); }
+.e-btn-ghost { border-color: var(--e-line); color: var(--color-on-surface); }
+.e-btn-ghost:hover { border-color: var(--color-on-surface); }
+
+/* ---------- Dialoge ---------- */
+.e-dlg { width: min(40rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); padding: 0; border: 0; border-radius: 1.5rem;
+    background: var(--color-surface-card); color: var(--color-on-surface); box-shadow: var(--shadow-ambient-lg); overscroll-behavior: contain; }
+.e-dlg::backdrop { background: rgb(26 29 21 / .55); }
+.e-dlg[open] { animation: e-in .22s var(--e-ease); }
+.e-dlg[open]::backdrop { animation: e-fade .22s ease-out; }
+@keyframes e-in { from { opacity: 0; transform: translateY(10px) scale(.985); } }
+@keyframes e-fade { from { opacity: 0; } }
+.e-dlg-close { position: absolute; top: 1rem; right: 1rem; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%;
+    color: var(--color-on-surface); background: var(--color-surface-card); cursor: pointer; transition: background-color .2s; z-index: 2; }
+.e-dlg-close:hover { background: var(--color-surface-alt); }
+.e-dlg-close .e-ico { width: 1.35rem; height: 1.35rem; stroke-width: 2; }
+
+.e-sp-body { padding: 2rem 1.5rem 1.75rem; }
+@media (min-width: 640px) { .e-sp-body { padding: 2.5rem 2.75rem 2.25rem; } }
+.e-sp-icon { display: grid; place-items: center; width: 4rem; height: 4rem; border-radius: 1.25rem; background: var(--color-secondary-container); color: var(--color-secondary-dark); }
+.e-sp-icon .e-ico { width: 2.25rem; height: 2.25rem; }
+.e-sp-meta { margin-top: 1.4rem; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-tertiary); }
+.e-sp-title { margin-top: .3rem; padding-right: 2rem; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.1rem); line-height: 1.15; }
+.e-sp-text { margin-top: 1rem; font-size: 1.08rem; line-height: 1.75; color: var(--color-on-surface); max-width: 60ch; }
+.e-sp-body .e-tile-badge { margin-top: 1.1rem; font-size: .78rem; padding: .3rem .8rem .3rem .5rem; }
+.e-sp-nav { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-top: 1px solid var(--e-line); }
+.e-sp-nav button { min-width: 0; display: flex; align-items: center; gap: .6rem; padding: 1rem 1.5rem 1.15rem; text-align: left; cursor: pointer; color: var(--color-on-surface); transition: background-color .2s; }
+.e-sp-nav button:hover { background: var(--color-surface-alt); }
+.e-sp-nav button + button { justify-content: flex-end; text-align: right; border-left: 1px solid var(--e-line); }
+.e-sp-nav small { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-tertiary); }
+.e-sp-nav b { display: block; font-family: var(--font-display); font-weight: 600; font-size: .98rem; line-height: 1.25; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.e-sp-nav span { min-width: 0; }
+.e-sp-nav .e-ico { width: 1.15rem; height: 1.15rem; stroke-width: 2; color: var(--color-primary); }
+.e-sp-nav button:first-child { border-bottom-left-radius: 1.5rem; }
+.e-sp-nav button:last-child { border-bottom-right-radius: 1.5rem; }
+.e-sp-keys { display: none; }
+@media (min-width: 640px) and (hover: hover) { .e-sp-keys { display: block; margin-top: 1.5rem; font-size: .8rem; color: var(--color-tertiary); } }
+.e-kbd { display: inline-block; min-width: 1.6em; padding: 0 .35em; border-radius: .35rem; border: 1px solid var(--e-line); font-size: .9em; font-weight: 700; text-align: center; }
+
+/* Volltext-Dialog */
+.e-full { width: min(46rem, calc(100% - 2rem)); }
+.e-full-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1rem 1rem 1.5rem; background: var(--color-surface-card); border-bottom: 1px solid var(--e-line); }
+@media (min-width: 640px) { .e-full-head { padding-left: 2.75rem; } }
+.e-full-head h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; }
+.e-full-head .e-dlg-close { position: static; }
+.e-full-body { padding: 1.75rem 1.5rem 2.5rem; }
+@media (min-width: 640px) { .e-full-body { padding: 2rem 2.75rem 3rem; } }
+.e-full-body h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; line-height: 1.2; margin-top: 2.25rem; }
+.e-full-body h3:first-child { margin-top: 0; }
+.e-full-body p { margin-top: .75rem; line-height: 1.75; color: var(--color-on-surface); }
+.e-full-body .e-full-motto { margin-top: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; line-height: 1.3; color: var(--color-primary); }
+.e-full-list { margin-top: 1rem; display: grid; gap: 1.25rem; }
+.e-full-list li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .9rem; }
+.e-full-list .e-ico { width: 1.5rem; height: 1.5rem; margin-top: .1rem; color: var(--color-secondary); }
+.e-full-list b { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; }
+.e-full-list p { margin-top: .2rem; font-size: .96rem; line-height: 1.65; color: var(--color-tertiary); }
+.e-full-body .e-full-leit { margin-top: 1rem; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; line-height: 1.5; color: var(--color-secondary); }
+.e-full-foot { margin-top: 2.25rem; padding-top: 1.25rem; border-top: 1px solid var(--e-line); }
+body.e-locked { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+    .e-dlg[open], .e-dlg[open]::backdrop { animation: none; }
+    .e-tile, .e-tile .e-ico, .e-tile-more, .e-btn, .e-seal { transition: none; }
+    .e-tile-more { transform: none; }
+}
+</style></head>
+<body class="bg-surface text-on-surface font-body antialiased overflow-x-hidden" data-nav="flat" data-active="schule" data-variant="E">
+<main class="pt-20" id="page-content"></main>
+<script>window.MOCKUP={schule:'e-schule.html',leitbild:'e-schule.html'};</script>
+<script src="shared/leitbild-data.js"></script><script src="shared/chrome.js"></script>
+<script>
+(function () {
+    const L = window.LEITBILD;
+    const S = L.schwerpunkte;
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+
+    /* ---------- Icon-Set: 24×24, Linie 1.75, runde Enden ---------- */
+    const P = {
+        musik: '<path d="M9 18V5.5l11-2.5v12.5"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M9 9.5l11-2.5"/>',
+        digital: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8.5 20h7M12 16v4"/><path d="M7 12.5l2.5-2.5 2 2 3.5-3.5"/>',
+        lesen: '<path d="M12 6.5C10.3 5 7.8 4.5 3.5 4.5v13.5c4.3 0 6.8.6 8.5 2 1.7-1.4 4.2-2 8.5-2V4.5c-4.3 0-6.8.5-8.5 2z"/><path d="M12 6.5V20"/>',
+        sport: '<circle cx="12" cy="12" r="9"/><path d="M12 8l3.3 2.4-1.3 3.9h-4l-1.3-3.9z"/><path d="M12 3v5M15.3 10.4l4.9-1.6M14 14.3l3 4.1M10 14.3l-3 4.1M8.7 10.4L3.8 8.8"/>',
+        kreativ: '<path d="M19.5 3.5l-8 8.5"/><path d="M13.5 13.8l-3.3-3.3"/><path d="M10.2 12.3c-1.9-.6-3.9.4-4.5 2.4-.5 1.8-1.2 3.3-3.2 4.2 3.4 1.6 7.4.8 8.6-2.3.6-1.6.4-3.2-.9-4.3z"/>',
+        mint: '<path d="M9 3h6M10 3v6.2L4.7 18.4A1.75 1.75 0 0 0 6.2 21h11.6a1.75 1.75 0 0 0 1.5-2.6L14 9.2V3"/><path d="M7.2 15h9.6"/>',
+        sprache: '<path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h8A2.5 2.5 0 0 1 16 6.5v5a2.5 2.5 0 0 1-2.5 2.5H9l-3.5 3v-3a2.5 2.5 0 0 1-2.5-2.5z"/><path d="M19 9a2 2 0 0 1 2 2v4.5a2 2 0 0 1-2 2v2.5l-3-2.5h-3.5a2 2 0 0 1-1.6-.8"/>',
+        inklusion: '<circle cx="5.5" cy="7" r="2.2"/><path d="M2 20v-3a3.5 3.5 0 0 1 7 0v3"/><circle cx="18.5" cy="7" r="2.2"/><path d="M15 20v-3a3.5 3.5 0 0 1 7 0v3"/><circle cx="12" cy="11.2" r="1.7"/><path d="M9.6 20v-2.2a2.4 2.4 0 0 1 4.8 0V20"/>',
+        gemeinschaft: '<circle cx="12" cy="12" r="4"/><circle cx="12" cy="3.6" r="1.6"/><circle cx="19.3" cy="7.8" r="1.6"/><circle cx="19.3" cy="16.2" r="1.6"/><circle cx="12" cy="20.4" r="1.6"/><circle cx="4.7" cy="16.2" r="1.6"/><circle cx="4.7" cy="7.8" r="1.6"/>',
+        glueck: '<circle cx="8.5" cy="7" r="2.6"/><circle cx="15.5" cy="7" r="2.6"/><circle cx="8.5" cy="14" r="2.6"/><circle cx="15.5" cy="14" r="2.6"/><path d="M12 10.5v0M12 17.5c0 1.6.8 2.8 2.4 3.6"/>',
+        natur: '<circle cx="12" cy="9" r="6"/><path d="M12 21v-9M12 14.5l-2.5-2M12 16l2.5-2M8 21h8"/>',
+        oeko: '<path d="M19.6 13.5A7.8 7.8 0 0 1 6 17.6"/><path d="M4.4 10.5A7.8 7.8 0 0 1 18 6.4"/><path d="M18.6 2.8l-.4 3.8-3.8-.4"/><path d="M5.4 21.2l.4-3.8 3.8.4"/>',
+        x: '<path d="M6 6l12 12M18 6L6 18"/>',
+        prev: '<path d="M15 5l-7 7 7 7"/>',
+        next: '<path d="M9 5l7 7-7 7"/>',
+        arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+        doc: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+        download: '<path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/>'
+    };
+    const icon = (k, label) => `<svg class="e-ico" viewBox="0 0 24 24" ${label ? `role="img" aria-label="${label}"` : 'aria-hidden="true"'}>${P[k]}</svg>`;
+    const nr2 = n => String(n).padStart(2, '0');
+    const glueck = S.find(s => s.id === 'glueck');
+
+    /* ---------- Seite ---------- */
+    const hero = window.pageHero({
+        icon: '🏫', eyebrow: 'Unsere Schule', title: L.titel,
+        crumbs: [['Schule']], waveFill: 'fill-surface'
+    });
+
+    const intro = `
+<section class="e-intro" aria-labelledby="e-motto">
+    <div class="container-page e-intro-grid">
+        <div>
+            <p class="e-label">Unser Motto</p>
+            <h2 class="e-motto" id="e-motto">${L.motto.map(m => `<span>${esc(m)}</span>`).join('')}</h2>
+        </div>
+        <div class="e-intro-side">
+            <p class="e-kicker">${esc(L.mittelpunkt.titel)}</p>
+            <p class="e-quote">${esc(L.mittelpunkt.absaetze[0].split('. ')[0])}.</p>
+            <button type="button" class="e-seal" data-open="${glueck.id}" aria-label="${esc(glueck.kurz)} – mehr zu ${esc(glueck.titel)}">
+                <span class="e-seal-mark">${icon('glueck')}</span>
+                <span><small>Gütesiegel</small><b>${esc(glueck.kurz)}</b></span>
+            </button>
+        </div>
+    </div>
+</section>`;
+
+    const tiles = S.map(s => `
+        <li class="e-cell"><button type="button" class="e-tile" id="${s.id}" data-open="${s.id}" aria-haspopup="dialog">
+            <span class="e-tile-top">${icon(s.id)}<span class="e-nr"><span class="e-sr">Schwerpunkt </span>${nr2(s.nr)}</span></span>
+            <span class="e-tile-title">${esc(s.titel)}</span>
+            ${s.id === 'glueck'
+                ? `<span class="e-tile-badge">${icon('glueck')}${esc(s.kurz)}</span>`
+                : `<span class="e-tile-kurz">${esc(s.kurz)}</span>`}
+            <span class="e-tile-more" aria-hidden="true">${icon('arrow')}</span>
+        </button></li>`).join('');
+
+    const areas = `
+<section class="e-areas" aria-labelledby="e-areas-h">
+    <div class="container-page">
+        <div class="e-areas-head">
+            <h2 id="e-areas-h">Unsere ${S.length} Schwerpunkte</h2>
+            <p>Ein Klick auf einen Schwerpunkt zeigt, was dahintersteht.</p>
+        </div>
+        <ul class="e-grid" role="list">${tiles}</ul>
+    </div>
+</section>`;
+
+    const band = `
+<section class="e-band" aria-labelledby="e-band-h">
+    <div class="container-page">
+        <h2 id="e-band-h">${esc(L.ziel.titel)}</h2>
+        <ul class="e-band-list" role="list">
+            ${L.ziel.leitsaetze.map(t => {
+                const m = t.match(/^(Jedes Kind)\s(.+)$/);
+                return m ? `<li><span>${m[1]}</span><strong>${esc(m[2])}</strong></li>` : `<li><strong>${esc(t)}</strong></li>`;
+            }).join('')}
+        </ul>
+    </div>
+</section>`;
+
+    const end = `
+<section class="e-end">
+    <div class="container-page e-end-grid">
+        ${window.schulprofilIntro}
+        <div class="e-cta">
+            <h2>Das ganze Leitbild</h2>
+            <p>Alle Texte im Wortlaut – vom Kind im Mittelpunkt bis zu unserem gemeinsamen Ziel.</p>
+            <div class="e-cta-row">
+                <button type="button" class="e-btn e-btn-primary" data-open-full aria-haspopup="dialog">${icon('doc')} Ganzes Leitbild lesen</button>
+                <a href="#" class="e-btn e-btn-ghost" data-mk-dummy>${icon('download')} Leitbild als PDF</a>
+            </div>
+        </div>
+    </div>
+</section>`;
+
+    /* ---------- Dialoge ---------- */
+    const spDialog = `
+<dialog class="e-dlg m-auto" id="e-sp" aria-labelledby="e-sp-title">
+    <button type="button" class="e-dlg-close" data-close aria-label="Schließen">${icon('x')}</button>
+    <div class="e-sp-body">
+        <div class="e-sp-icon" data-sp-icon></div>
+        <p class="e-sp-meta" data-sp-meta></p>
+        <h2 class="e-sp-title" id="e-sp-title" data-sp-title></h2>
+        <div data-sp-badge></div>
+        <p class="e-sp-text" data-sp-text></p>
+        <p class="e-sp-keys" aria-hidden="true"><span class="e-kbd">←</span> <span class="e-kbd">→</span> blättern · <span class="e-kbd">Esc</span> schließen</p>
+    </div>
+    <div class="e-sp-nav">
+        <button type="button" data-step="-1">${icon('prev')}<span><small>Zurück</small><b data-sp-prev></b></span></button>
+        <button type="button" data-step="1"><span><small>Weiter</small><b data-sp-next></b></span>${icon('next')}</button>
+    </div>
+</dialog>`;
+
+    const fullDialog = `
+<dialog class="e-dlg e-full m-auto" id="e-full" aria-labelledby="e-full-title">
+    <div class="e-full-head">
+        <h2 id="e-full-title">${esc(L.titel)}</h2>
+        <button type="button" class="e-dlg-close" data-close aria-label="Schließen">${icon('x')}</button>
+    </div>
+    <div class="e-full-body">
+        <p class="e-full-motto">${L.motto.map(esc).join(' ')}</p>
+        <h3>${esc(L.mittelpunkt.titel)}</h3>
+        ${L.mittelpunkt.absaetze.map(p => `<p>${esc(p)}</p>`).join('')}
+        <h3>Unsere Schwerpunkte</h3>
+        <ol class="e-full-list">
+            ${S.map(s => `<li>${icon(s.id)}<div><b>${s.nr}. ${esc(s.titel)}</b><p>${esc(s.text)}</p></div></li>`).join('')}
+        </ol>
+        <h3>${esc(L.ziel.titel)}</h3>
+        ${L.ziel.absaetze.map(p => `<p>${esc(p)}</p>`).join('')}
+        <p class="e-full-leit">${L.ziel.leitsaetze.map(esc).join('<br>')}</p>
+        <p>${esc(L.ziel.schluss)}</p>
+        <div class="e-full-foot"><a href="#" class="e-btn e-btn-ghost" data-mk-dummy>${icon('download')} Leitbild als PDF</a></div>
+    </div>
+</dialog>`;
+
+    document.getElementById('page-content').innerHTML = hero + intro + areas + band + end + spDialog + fullDialog;
+
+    /* ---------- Verhalten ---------- */
+    const dlg = document.getElementById('e-sp');
+    const full = document.getElementById('e-full');
+    const $ = sel => dlg.querySelector(sel);
+    let current = -1, opener = null;
+
+    function fill(i) {
+        current = (i + S.length) % S.length;
+        const s = S[current];
+        const prev = S[(current - 1 + S.length) % S.length];
+        const next = S[(current + 1) % S.length];
+        $('[data-sp-icon]').innerHTML = icon(s.id);
+        $('[data-sp-meta]').textContent = `Schwerpunkt ${s.nr} von ${S.length}`;
+        $('[data-sp-title]').textContent = s.titel;
+        $('[data-sp-text]').textContent = s.text;
+        $('[data-sp-badge]').innerHTML = s.id === 'glueck' ? `<span class="e-tile-badge">${icon('glueck')}${esc(s.kurz)}</span>` : '';
+        $('[data-sp-prev]').textContent = prev.titel;
+        $('[data-sp-next]').textContent = next.titel;
+        $('[data-step="-1"]').setAttribute('aria-label', `Zurück: ${prev.titel}`);
+        $('[data-step="1"]').setAttribute('aria-label', `Weiter: ${next.titel}`);
+        history.replaceState(null, '', '#' + s.id);
+    }
+
+    function openSp(id, from) {
+        const i = S.findIndex(s => s.id === id);
+        if (i < 0) return;
+        opener = from || document.getElementById(id);
+        fill(i);
+        if (!dlg.open) { if (full.open) full.close(); dlg.showModal(); document.body.classList.add('e-locked'); }
+        $('[data-close]').focus();
+    }
+
+    dlg.addEventListener('close', () => {
+        document.body.classList.remove('e-locked');
+        history.replaceState(null, '', location.pathname + location.search);
+        /* Fokus zurück: auf die Kachel des zuletzt gezeigten Schwerpunkts (nach Blättern),
+           sonst auf das auslösende Element (z. B. Gütesiegel). */
+        const tile = document.getElementById(S[current].id);
+        const target = (opener && opener.classList.contains('e-tile')) ? tile : opener;
+        if (target) target.focus({ preventScroll: false });
+    });
+    full.addEventListener('close', () => {
+        document.body.classList.remove('e-locked');
+        if (opener) opener.focus();
+    });
+
+    dlg.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); fill(current + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); fill(current - 1); }
+    });
+    dlg.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => fill(current + +b.dataset.step)));
+
+    /* Klick auf den Hintergrund schließt */
+    [dlg, full].forEach(d => {
+        d.addEventListener('click', e => { if (e.target === d) d.close(); });
+        d.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => d.close()));
+    });
+
+    document.addEventListener('click', e => {
+        const t = e.target.closest('[data-open]');
+        if (t) { openSp(t.dataset.open, t); return; }
+        const f = e.target.closest('[data-open-full]');
+        if (f) { opener = f; full.showModal(); document.body.classList.add('e-locked'); full.querySelector('.e-full-body').scrollTop = 0; full.scrollTop = 0; }
+    });
+
+    /* Deep-Link: #musik usw. */
+    const fromHash = () => {
+        const id = decodeURIComponent(location.hash.slice(1));
+        if (S.some(s => s.id === id)) openSp(id);
+    };
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
+})();
+</script></body></html>

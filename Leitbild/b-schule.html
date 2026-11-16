@@ -1,0 +1,555 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schule – Variante B | VS Puch bei Weiz</title>
+<meta name="description" content="Variante B: Schulprofil und Leitbild der VS Puch bei Weiz auf einer Seite.">
+<link rel="icon" href="img/favicon.svg"><link rel="stylesheet" href="css/site.css"><link rel="stylesheet" href="shared/chrome.css">
+<style>
+/* =====================================================================
+   Variante B – "Alles auf einer Seite"
+   Nur Theme-Tokens aus css/site.css; Gruppenfarben als lokale Tokens.
+   ===================================================================== */
+:root {
+    --b-radius: 1.5rem;
+    --b-ease: cubic-bezier(.22, .61, .36, 1);
+    --b-ink-soft: var(--color-tertiary);
+    --b-line: color-mix(in oklch, var(--color-secondary) 14%, transparent);
+    /* Gruppen: weiche Flaechen + kraeftige Schriftfarbe (AA auf der Flaeche) */
+    --g-herz-bg: color-mix(in oklch, var(--color-primary) 9%, white);
+    --g-herz-fg: var(--color-primary-dark);
+    --g-kopf-bg: color-mix(in oklch, var(--color-secondary-container) 70%, white);
+    --g-kopf-fg: var(--color-secondary-dark);
+    --g-hand-bg: #fdf0cf;
+    --g-hand-fg: #7a4d00;
+    --g-welt-bg: color-mix(in oklch, var(--color-secondary) 13%, white);
+    --g-welt-fg: var(--color-secondary-dark);
+    --subnav-h: 3.75rem;
+}
+html { scroll-padding-top: calc(5rem + var(--subnav-h) + 1.25rem); }
+.b-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Hero-Zusatz ---------- */
+.b-hero-motto { margin-top: 1rem; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.35rem, 2.6vw, 1.9rem); color: var(--color-secondary-container); }
+
+/* ---------- Sticky In-Page-Navigation ---------- */
+.b-subnav {
+    position: sticky; top: 5rem; z-index: 40;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--b-line);
+    transition: box-shadow .2s var(--b-ease);
+}
+.b-subnav.is-stuck { box-shadow: 0 8px 20px -14px rgb(77 102 34 / .45); }
+.b-subnav-inner { display: flex; align-items: center; gap: 1rem; height: var(--subnav-h); }
+.b-subnav-label { flex: none; font-family: var(--font-display); font-weight: 600; font-size: .95rem; color: var(--b-ink-soft); }
+.b-subnav-list {
+    display: flex; gap: .35rem; margin: 0; padding: 0; list-style: none;
+    overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity;
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 1.5rem), transparent);
+            mask-image: linear-gradient(90deg, #000 calc(100% - 1.5rem), transparent);
+    padding-right: 1.5rem; min-width: 0;
+}
+.b-subnav-list::-webkit-scrollbar { display: none; }
+.b-subnav-list li { flex: none; scroll-snap-align: start; }
+.b-subnav a {
+    display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap;
+    padding: .5rem 1rem; border-radius: 999px; font-weight: 700; font-size: .9rem;
+    color: var(--color-on-surface); transition: background-color .18s, color .18s;
+}
+.b-subnav a:hover { background: var(--color-surface-alt); color: var(--color-primary); }
+.b-subnav a[aria-current] { background: var(--color-primary); color: #fff; }
+.b-subnav a:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+@media (max-width: 767px) { .b-subnav-label { display: none; } .b-subnav-list { margin-inline: -.25rem; } }
+
+/* ---------- Gemeinsame Typo ---------- */
+.b-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--color-primary); }
+.b-h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.1rem, 4.2vw, 3.25rem); line-height: 1.08; margin-top: .6rem; text-wrap: balance; }
+.b-lead { font-size: 1.125rem; line-height: 1.75; color: var(--b-ink-soft); max-width: 60ch; }
+
+/* ---------- 1  Ueber uns ---------- */
+.b-about { display: grid; gap: 3rem; align-items: start; }
+@media (min-width: 1024px) { .b-about { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 5rem; } }
+.b-about .mk-prose h2 { font-size: clamp(2.1rem, 4.2vw, 3.25rem); line-height: 1.08; margin-top: .6rem; }
+.b-about .mk-prose p { font-size: 1.075rem; }
+.b-about-link { display: inline-flex; align-items: center; gap: .5rem; margin-top: 2rem; font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--color-primary); border-radius: .5rem; }
+.b-about-link span.arr { transition: transform .2s var(--b-ease); }
+.b-about-link:hover span.arr { transform: translateY(3px); }
+.b-facts { display: grid; grid-template-columns: 1fr 1fr; background: var(--color-surface-card); border-radius: var(--b-radius); box-shadow: var(--shadow-ambient); overflow: hidden; }
+.b-fact { padding: 1.6rem 1.5rem 1.5rem; }
+.b-fact:nth-child(odd) { border-right: 1px solid var(--b-line); }
+.b-fact:nth-child(-n+2) { border-bottom: 1px solid var(--b-line); }
+.b-fact-val { font-family: var(--font-display); font-weight: 600; font-size: 2.6rem; line-height: 1; color: var(--color-secondary); }
+.b-fact-val.is-emoji { font-size: 2.2rem; }
+.b-fact-key { margin-top: .6rem; font-weight: 800; font-size: 1rem; }
+.b-fact-sub { margin-top: .2rem; font-size: .875rem; line-height: 1.45; color: var(--b-ink-soft); }
+.b-facts-note { grid-column: 1 / -1; padding: 1rem 1.5rem; background: var(--color-secondary-container); color: var(--color-secondary-dark); font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; text-align: center; }
+@media (max-width: 420px) { .b-fact { padding: 1.25rem 1rem; } .b-fact-val { font-size: 2.1rem; } }
+
+/* ---------- 2  Kind im Mittelpunkt ---------- */
+.b-center { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 1024px) { .b-center { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 4rem; } }
+.b-center-quote {
+    margin-top: 1.75rem; font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(1.45rem, 2.6vw, 2.05rem); line-height: 1.32; color: var(--color-on-surface); text-wrap: pretty;
+}
+.b-center-quote b { font-weight: 600; color: var(--color-primary); }
+.b-center-body { margin-top: 1.75rem; padding-top: 1.75rem; border-top: 2px dotted color-mix(in oklch, var(--color-secondary) 35%, transparent); font-size: 1.075rem; line-height: 1.8; color: var(--b-ink-soft); max-width: 62ch; }
+
+.b-orbit { position: relative; width: min(100% - 4.5rem, 26rem); aspect-ratio: 1; margin-inline: auto; }
+.b-orbit-ring { position: absolute; border-radius: 50%; inset: var(--i); border: 2px dashed color-mix(in oklch, var(--color-secondary) var(--a), transparent); }
+.b-orbit-core {
+    position: absolute; inset: 32%; border-radius: 50%; display: grid; place-items: center; text-align: center;
+    background: var(--color-primary); color: #fff; box-shadow: 0 18px 40px -12px rgb(187 6 0 / .45);
+}
+.b-orbit-core span { display: block; font-size: clamp(2.2rem, 7vw, 3rem); line-height: 1; }
+.b-orbit-core small { display: block; margin-top: .25rem; font-family: var(--font-display); font-weight: 600; font-size: clamp(.8rem, 2.4vw, 1rem); }
+.b-orbit-node {
+    position: absolute; left: var(--x); top: var(--y); translate: -50% -50%;
+    display: flex; flex-direction: column; align-items: center; gap: .15rem;
+    padding: .6rem .8rem .5rem; min-width: 5.2rem; border-radius: 1.1rem;
+    background: var(--color-surface-card); box-shadow: var(--shadow-ambient);
+    color: var(--color-on-surface); transition: transform .2s var(--b-ease), box-shadow .2s;
+}
+.b-orbit-node:hover { transform: translateY(-3px); box-shadow: var(--shadow-ambient-lg); }
+.b-orbit-node .ic { font-size: 1.6rem; line-height: 1; }
+.b-orbit-node .lb { font-family: var(--font-display); font-weight: 600; font-size: .95rem; }
+.b-orbit-node .ds { font-size: .7rem; font-weight: 700; color: var(--b-ink-soft); white-space: nowrap; }
+@media (max-width: 479px) { .b-orbit-node { min-width: 4.4rem; padding: .5rem .6rem .45rem; } .b-orbit-node .ds { display: none; } }
+.b-orbit-caption { margin-top: 2.25rem; text-align: center; font-size: .9rem; color: var(--b-ink-soft); }
+
+/* ---------- 3  Schwerpunkte ---------- */
+.b-sp-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1.5rem 3rem; }
+.b-sp-head .b-lead { margin-top: 1rem; }
+.b-filter { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2.25rem; }
+.b-filter button {
+    position: relative; display: inline-flex; align-items: center; gap: .45rem; cursor: pointer;
+    padding: .55rem 1.05rem; border-radius: 999px; border: 2px solid var(--b-line);
+    background: var(--color-surface-card); font: inherit; font-weight: 700; font-size: .95rem; color: var(--color-on-surface);
+    transition: background-color .18s, border-color .18s, color .18s;
+}
+.b-filter button:hover { border-color: color-mix(in oklch, var(--color-secondary) 40%, transparent); }
+.b-filter button[aria-pressed="true"] { background: var(--color-secondary); border-color: var(--color-secondary); color: #fff; }
+.b-filter .n { font-size: .78rem; font-weight: 800; padding: .05rem .45rem; border-radius: 999px; background: var(--color-surface-alt); color: var(--b-ink-soft); }
+.b-filter button[aria-pressed="true"] .n { background: rgb(255 255 255 / .2); color: #fff; }
+@media (max-width: 639px) {
+    .b-filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -1.5rem; padding: .25rem 1.5rem; }
+    .b-filter::-webkit-scrollbar { display: none; }
+    .b-filter button { flex: none; }
+}
+.b-filter-desc { margin-top: .9rem; min-height: 1.5rem; font-size: .95rem; color: var(--b-ink-soft); }
+.b-filter-desc b { color: var(--color-on-surface); }
+
+.b-sp { display: grid; gap: 2rem; margin-top: 1.5rem; align-items: start; }
+@media (min-width: 1024px) { .b-sp { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2.5rem; } }
+.b-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .b-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; } }
+.b-grid > li.is-hidden { display: none; }
+.b-tile {
+    position: relative; width: 100%; height: 100%; min-height: 8.5rem; text-align: left; cursor: pointer;
+    display: flex; flex-direction: column; align-items: flex-start; gap: .55rem;
+    padding: 1rem 1rem 1.1rem; border-radius: 1.25rem; border: 2px solid transparent;
+    background: var(--g-bg); color: var(--color-on-surface); font: inherit;
+    transition: transform .2s var(--b-ease), border-color .18s, background-color .18s, box-shadow .2s;
+}
+.b-tile:hover { transform: translateY(-2px); box-shadow: var(--shadow-ambient); }
+.b-tile[aria-expanded="true"] { background: var(--color-surface-card); border-color: var(--g-fg); box-shadow: var(--shadow-ambient); }
+.b-tile:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
+.b-tile-ic { font-size: 1.85rem; line-height: 1; }
+.b-tile-nr { position: absolute; top: .85rem; right: 1rem; font-family: var(--font-display); font-weight: 600; font-size: .85rem; color: var(--g-fg); }
+.b-tile-t { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; line-height: 1.2; hyphens: auto; }
+.b-tile-k { margin-top: auto; font-size: .8rem; font-weight: 700; line-height: 1.35; color: var(--g-fg); }
+@media (max-width: 420px) { .b-tile { min-height: 7.75rem; padding: .85rem .85rem .95rem; } .b-tile-t { font-size: .98rem; } }
+
+[data-g="herz"] { --g-bg: var(--g-herz-bg); --g-fg: var(--g-herz-fg); }
+[data-g="kopf"] { --g-bg: var(--g-kopf-bg); --g-fg: var(--g-kopf-fg); }
+[data-g="hand"] { --g-bg: var(--g-hand-bg); --g-fg: var(--g-hand-fg); }
+[data-g="welt"] { --g-bg: var(--g-welt-bg); --g-fg: var(--g-welt-fg); }
+
+/* Detail-Panel */
+.b-detail-slot { align-self: stretch; }
+.b-detail-slot > .b-detail { position: sticky; top: calc(5rem + var(--subnav-h) + 1.25rem); }
+.b-detail {
+    border-radius: var(--b-radius); background: var(--color-surface-card); box-shadow: var(--shadow-ambient-lg);
+    padding: 2rem 2rem 1.75rem; position: relative; overflow: hidden;
+}
+.b-detail::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 7.5rem; background: var(--g-bg); }
+.b-detail > * { position: relative; }
+.b-grid .b-detail-meta .desc { display: none; }
+.b-detail-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.b-detail-ic { width: 4.5rem; height: 4.5rem; display: grid; place-items: center; font-size: 2.5rem; border-radius: 1.25rem; background: var(--color-surface-card); box-shadow: var(--shadow-ambient); }
+.b-detail-meta { text-align: right; font-size: .8rem; font-weight: 800; color: var(--g-fg); line-height: 1.4; }
+.b-detail-meta .big { display: block; font-family: var(--font-display); font-weight: 600; font-size: 2.2rem; line-height: 1; }
+.b-detail h3 { margin-top: 1.75rem; font-family: var(--font-display); font-weight: 600; font-size: 1.75rem; line-height: 1.15; text-wrap: balance; }
+.b-detail-k { margin-top: .4rem; font-weight: 800; color: var(--g-fg); }
+.b-detail p.txt { margin-top: 1rem; font-size: 1.05rem; line-height: 1.75; color: var(--color-on-surface); }
+.b-detail-nav { display: flex; justify-content: space-between; gap: .75rem; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--b-line); }
+.b-detail-nav button {
+    display: inline-flex; align-items: center; gap: .35rem; cursor: pointer; padding: .55rem .9rem; border-radius: .9rem;
+    border: 0; background: var(--color-surface-alt); font: inherit; font-weight: 700; font-size: .9rem; color: var(--color-on-surface);
+    transition: background-color .18s, color .18s;
+}
+.b-detail-nav button:hover { background: color-mix(in oklch, var(--color-secondary) 16%, white); color: var(--color-secondary-dark); }
+.b-detail.is-swapping > :not(.b-detail-nav) { animation: b-fade .32s var(--b-ease); }
+@keyframes b-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* Mobile: Panel inline im Raster */
+.b-grid > li.b-inline { grid-column: 1 / -1; }
+.b-grid .b-detail { padding: 1.5rem 1.35rem 1.25rem; box-shadow: var(--shadow-ambient); }
+.b-grid .b-detail::before { height: 5.5rem; }
+.b-grid .b-detail-ic { width: 3.5rem; height: 3.5rem; font-size: 2rem; }
+.b-grid .b-detail h3 { font-size: 1.45rem; margin-top: 1.25rem; }
+.b-grid .b-detail-nav { display: none; }
+
+/* ---------- 4  Ziel ---------- */
+.b-goal { position: relative; background: var(--color-secondary); color: #fff; }
+.b-goal-wave { display: block; width: 100%; height: 64px; background: var(--color-surface); }
+.b-goal-wave path { fill: var(--color-secondary); }
+.b-goal .b-eyebrow { color: var(--color-secondary-container); }
+.b-goal .b-h2 { color: #fff; }
+.b-goal-grid { display: grid; gap: 1.5rem; }
+@media (min-width: 1024px) { .b-goal-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 5rem; align-items: end; } }
+.b-goal-text p { font-size: 1.1rem; line-height: 1.8; color: rgb(255 255 255 / .9); max-width: 56ch; }
+.b-goal-text p + p { margin-top: 1rem; }
+.b-leitsaetze { margin: 3.5rem 0 0; padding: 0; list-style: none; }
+.b-leitsaetze li {
+    padding: .2em 0 .25em; border-top: 2px solid rgb(255 255 255 / .16);
+    font-family: var(--font-display); font-weight: 600; font-size: clamp(2.2rem, 6.4vw, 5.5rem); line-height: 1.02; letter-spacing: -.01em;
+}
+.b-leitsaetze li:last-child { border-bottom: 2px solid rgb(255 255 255 / .16); }
+.b-leitsaetze li:nth-child(2) { padding-left: clamp(0rem, 6vw, 6rem); }
+.b-leitsaetze li:nth-child(3) { padding-left: clamp(0rem, 12vw, 12rem); }
+.b-leitsaetze .verb { color: var(--color-secondary-container); }
+.b-goal-close { margin-top: 2.5rem; max-width: 34ch; margin-left: auto; text-align: right; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.3rem, 2.4vw, 1.75rem); line-height: 1.35; text-wrap: balance; }
+@media (max-width: 639px) { .b-goal-close { text-align: left; margin-left: 0; } .b-leitsaetze li:nth-child(n) { padding-left: 0; } }
+.b-goal-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: 4rem; padding-top: 1.75rem; border-top: 1px solid rgb(255 255 255 / .2); }
+.b-goal-motto { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; color: rgb(255 255 255 / .85); }
+.b-pdf { display: inline-flex; align-items: center; gap: .75rem; padding: .35rem .35rem .35rem .45rem; border-radius: 1rem; color: #fff; transition: background-color .18s; }
+.b-pdf:hover { background: rgb(255 255 255 / .1); }
+.b-pdf .ic { width: 2.6rem; height: 2.6rem; display: grid; place-items: center; border-radius: .8rem; background: rgb(255 255 255 / .14); font-size: 1.25rem; }
+.b-pdf .t { font-weight: 800; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(255 255 255 / .45); }
+.b-pdf .m { display: block; font-size: .8rem; color: rgb(255 255 255 / .75); font-weight: 600; text-decoration: none; }
+.b-goal a:focus-visible { outline-color: #fff; }
+
+/* ---------- Bewegung reduzieren ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .b-tile:hover, .b-orbit-node:hover { transform: none; }
+}
+</style></head>
+<body class="bg-surface text-on-surface font-body antialiased overflow-x-hidden" data-nav="flat" data-active="schule" data-variant="B">
+<main class="pt-20" id="page-content"></main>
+<script>window.MOCKUP={schule:'b-schule.html',leitbild:'b-schule.html#leitbild'};</script>
+<script src="shared/leitbild-data.js"></script><script src="shared/chrome.js"></script>
+<script>
+(function () {
+    'use strict';
+    const L = window.LEITBILD;
+    const G = L.gruppen;
+    const SP = L.schwerpunkte;
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const wide = window.matchMedia('(min-width: 1024px)');
+
+    /* ---------- Markup ---------- */
+    const hero = window.pageHero({
+        icon: '🏫',
+        eyebrow: 'Unsere Schule',
+        title: `${esc(L.motto[0])}<br>${esc(L.motto[1])}`,
+        crumbs: [['Schule', 'b-schule.html']],
+        waveFill: 'fill-surface',
+        extra: `<p class="b-hero-motto">${esc(L.motto[2])}</p>`
+    });
+
+    const sections = [
+        ['ueber-uns', '🏫', 'Über uns'],
+        ['mittelpunkt', '🧒', 'Das Kind im Mittelpunkt'],
+        ['schwerpunkte', '✨', '12 Schwerpunkte'],
+        ['ziel', '🌱', 'Unser Ziel']
+    ];
+    const subnav = `
+<nav class="b-subnav" aria-label="Auf dieser Seite" data-subnav>
+    <div class="container-page b-subnav-inner">
+        <span class="b-subnav-label">Auf dieser Seite:</span>
+        <ul class="b-subnav-list" data-subnav-list>
+            ${sections.map(s => `<li><a href="#${s[0]}" data-sec="${s[0]}"><span aria-hidden="true">${s[1]}</span>${s[2]}</a></li>`).join('')}
+        </ul>
+    </div>
+</nav>`;
+
+    const about = `
+<section id="ueber-uns" class="section" aria-labelledby="ueber-uns-h">
+    <div class="container-page b-about">
+        <div>
+            <span class="b-eyebrow"><span aria-hidden="true">🏫</span> Über uns</span>
+            ${window.schulprofilIntro.replace('<h2>', '<h2 id="ueber-uns-h">')}
+            <a href="#mittelpunkt" class="b-about-link">Was uns dabei leitet <span class="arr" aria-hidden="true">↓</span></a>
+        </div>
+        <div class="b-facts" role="list" aria-label="Kurz und bündig">
+            <div class="b-fact" role="listitem"><div class="b-fact-val">4</div><div class="b-fact-key">Schulstufen</div><div class="b-fact-sub">Eine kleine Schule – bei uns kennt man sich.</div></div>
+            <div class="b-fact" role="listitem"><div class="b-fact-val">12</div><div class="b-fact-key">Schwerpunkte</div><div class="b-fact-sub">Von Musik bis Nachhaltigkeit.</div></div>
+            <div class="b-fact" role="listitem"><div class="b-fact-val is-emoji" aria-hidden="true">🍀</div><div class="b-fact-key">Glücksschule</div><div class="b-fact-sub">Zertifiziert – Wohlbefinden zählt.</div></div>
+            <div class="b-fact" role="listitem"><div class="b-fact-val">07:40</div><div class="b-fact-key">Schulbeginn</div><div class="b-fact-sub">Puch 104, mitten im Ort.</div></div>
+            <p class="b-facts-note">${L.motto.map(esc).join(' ')}</p>
+        </div>
+    </div>
+</section>`;
+
+    // erstes Satzglied des ersten Absatzes typografisch hervorheben
+    const p1 = esc(L.mittelpunkt.absaetze[0]).replace(/^([^.]+\.)/, '<b>$1</b>');
+    const orbitNodes = [['herz', '50%', '6%'], ['kopf', '94%', '50%'], ['hand', '50%', '94%'], ['welt', '6%', '50%']];
+    const center = `
+<div id="leitbild">
+<section id="mittelpunkt" class="section section-alt b-mid" aria-labelledby="mittelpunkt-h">
+    <div class="container-page b-center">
+        <div>
+            <span class="b-eyebrow"><span aria-hidden="true">🌱</span> ${esc(L.titel)}</span>
+            <h2 id="mittelpunkt-h" class="b-h2">${esc(L.mittelpunkt.titel)}</h2>
+            <p class="b-center-quote">${p1}</p>
+            <p class="b-center-body">${esc(L.mittelpunkt.absaetze[1])}</p>
+        </div>
+        <figure>
+            <div class="b-orbit">
+                <span class="b-orbit-ring" style="--i:0;--a:22%" aria-hidden="true"></span>
+                <span class="b-orbit-ring" style="--i:16%;--a:32%" aria-hidden="true"></span>
+                <div class="b-orbit-core" aria-hidden="true"><div><span>🧒</span><small>Das Kind</small></div></div>
+                ${orbitNodes.map(([g, x, y]) => `
+                <a href="#schwerpunkte" class="b-orbit-node" style="--x:${x};--y:${y}" data-goto-filter="${g}">
+                    <span class="ic" aria-hidden="true">${G[g].icon}</span><span class="lb">${G[g].label}</span><span class="ds">${G[g].beschreibung}</span>
+                </a>`).join('')}
+            </div>
+            <figcaption class="b-orbit-caption">Unsere 12 Schwerpunkte stärken Herz, Kopf und Hand – und den Blick auf die Welt.</figcaption>
+        </figure>
+    </div>
+</section>`;
+
+    const groupKeys = Object.keys(G);
+    const count = g => SP.filter(s => s.gruppe === g).length;
+    const filterBtns = [`<button type="button" aria-pressed="true" data-filter="alle">Alle <span class="n">${SP.length}</span></button>`]
+        .concat(groupKeys.map(g => `<button type="button" aria-pressed="false" data-filter="${g}"><span aria-hidden="true">${G[g].icon}</span> ${G[g].label} <span class="n"><span class="b-sr">, </span>${count(g)}</span></button>`)).join('');
+
+    const tiles = SP.map(s => `
+<li id="${s.id}" data-g="${s.gruppe}" data-tile-li>
+    <button type="button" class="b-tile" data-g="${s.gruppe}" data-sp="${s.id}" aria-expanded="false" aria-controls="sp-detail">
+        <span class="b-tile-nr" aria-hidden="true">${String(s.nr).padStart(2, '0')}</span>
+        <span class="b-tile-ic" aria-hidden="true">${s.icon}</span>
+        <span class="b-tile-t">${esc(s.titel)}</span>
+        <span class="b-tile-k">${esc(s.kurz)}</span>
+    </button>
+</li>`).join('');
+
+    const schwerpunkte = `
+<section id="schwerpunkte" class="section" aria-labelledby="schwerpunkte-h">
+    <div class="container-page">
+        <div class="b-sp-head">
+            <div>
+                <span class="b-eyebrow"><span aria-hidden="true">✨</span> Was uns ausmacht</span>
+                <h2 id="schwerpunkte-h" class="b-h2">Unsere 12 Schwerpunkte</h2>
+                <p class="b-lead">Tippen Sie auf einen Schwerpunkt, um mehr zu erfahren – oder filtern Sie nach Herz, Kopf, Hand und Welt.</p>
+            </div>
+        </div>
+        <div class="b-filter" role="group" aria-label="Schwerpunkte nach Bereich filtern">${filterBtns}</div>
+        <p class="b-filter-desc" aria-live="polite" data-filter-desc></p>
+        <div class="b-sp">
+            <ul class="b-grid" data-grid>${tiles}</ul>
+            <div class="b-detail-slot" data-slot></div>
+        </div>
+    </div>
+</section>`;
+
+    const z = L.ziel;
+    const leitsatz = t => { const i = t.lastIndexOf(' '); return `${esc(t.slice(0, i))} <span class="verb">${esc(t.slice(i + 1))}</span>`; };
+    const ziel = `
+<section id="ziel" class="b-goal" aria-labelledby="ziel-h">
+    <svg class="b-goal-wave" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,40 C260,4 560,64 860,30 C1100,4 1290,18 1440,34 L1440,64 L0,64 Z"/></svg>
+    <div class="container-page" style="padding-block: 3.5rem 5rem;">
+        <div class="b-goal-grid">
+            <div>
+                <span class="b-eyebrow"><span aria-hidden="true">🌱</span> Wohin wir wollen</span>
+                <h2 id="ziel-h" class="b-h2">${esc(z.titel)}</h2>
+            </div>
+            <div class="b-goal-text">${z.absaetze.map(p => `<p>${esc(p)}</p>`).join('')}</div>
+        </div>
+        <ul class="b-leitsaetze">${z.leitsaetze.map(t => `<li>${leitsatz(t)}</li>`).join('')}</ul>
+        <p class="b-goal-close">${esc(z.schluss)}</p>
+        <div class="b-goal-foot">
+            <p class="b-goal-motto">${L.motto.map(esc).join(' · ')}</p>
+            <a href="#" class="b-pdf" data-mk-dummy>
+                <span class="ic" aria-hidden="true">📄</span>
+                <span><span class="t">Leitbild als PDF</span><span class="m">Zum Ausdrucken und Weitergeben · PDF</span></span>
+            </a>
+        </div>
+    </div>
+</section>
+</div>`;
+
+    const main = document.getElementById('page-content');
+    main.innerHTML = hero + subnav + about + center + schwerpunkte + ziel;
+
+    /* ---------- Sticky-Navigation: aktiven Abschnitt markieren ---------- */
+    const subnavEl = main.querySelector('[data-subnav]');
+    const list = main.querySelector('[data-subnav-list]');
+    const links = [...list.querySelectorAll('a')];
+    const setActive = id => {
+        links.forEach(a => {
+            const on = a.dataset.sec === id;
+            if (on) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+            if (on && list.scrollWidth > list.clientWidth) {
+                const left = a.parentElement.offsetLeft - 8;
+                list.scrollTo({ left, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+            }
+        });
+    };
+    const visible = new Map();
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => visible.set(e.target.id, e.isIntersecting));
+        const current = sections.map(s => s[0]).filter(id => visible.get(id));
+        setActive(current.length ? current[current.length - 1] : null);
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => io.observe(document.getElementById(s[0])));
+    // Schatten, sobald die Leiste klebt
+    const sentinel = document.createElement('div');
+    subnavEl.before(sentinel);
+    new IntersectionObserver(([e]) => subnavEl.classList.toggle('is-stuck', !e.isIntersecting), { rootMargin: '-81px 0px 0px 0px' }).observe(sentinel);
+
+    /* ---------- Schwerpunkte: Filter + Detail ---------- */
+    const grid = main.querySelector('[data-grid]');
+    const slot = main.querySelector('[data-slot]');
+    const btns = [...grid.querySelectorAll('[data-sp]')];
+    const filterEls = [...main.querySelectorAll('[data-filter]')];
+    const descEl = main.querySelector('[data-filter-desc]');
+    const byId = Object.fromEntries(SP.map(s => [s.id, s]));
+    let activeId = null;
+    let filter = 'alle';
+
+    const panel = document.createElement('div');
+    panel.className = 'b-detail';
+    panel.id = 'sp-detail';
+    panel.setAttribute('role', 'region');
+    panel.setAttribute('aria-labelledby', 'sp-detail-h');
+    const inlineLi = document.createElement('li');
+    inlineLi.className = 'b-inline';
+
+    const visibleIds = () => btns.filter(b => !b.closest('li').classList.contains('is-hidden')).map(b => b.dataset.sp);
+
+    function renderPanel(s) {
+        const g = G[s.gruppe];
+        panel.dataset.g = s.gruppe;
+        panel.innerHTML = `
+<div class="b-detail-top">
+    <span class="b-detail-ic" aria-hidden="true">${s.icon}</span>
+    <span class="b-detail-meta"><span class="big">${String(s.nr).padStart(2, '0')}</span><span aria-hidden="true">${g.icon}</span> ${g.label}<span class="desc"> · ${g.beschreibung}</span></span>
+</div>
+<h3 id="sp-detail-h"><span class="b-sr">Schwerpunkt ${s.nr}: </span>${esc(s.titel)}</h3>
+<p class="b-detail-k">${esc(s.kurz)}</p>
+<p class="txt">${esc(s.text)}</p>
+<div class="b-detail-nav">
+    <button type="button" data-step="-1"><span aria-hidden="true">←</span> Vorheriger</button>
+    <button type="button" data-step="1">Nächster <span aria-hidden="true">→</span></button>
+</div>`;
+        if (!reduceMotion.matches) { panel.classList.remove('is-swapping'); void panel.offsetWidth; panel.classList.add('is-swapping'); }
+    }
+
+    function place() {
+        if (!activeId) { panel.remove(); inlineLi.remove(); return; }
+        if (wide.matches) {
+            inlineLi.remove();
+            if (panel.parentElement !== slot) slot.appendChild(panel);
+        } else {
+            // nach der letzten sichtbaren Kachel derselben Rasterzeile einfuegen
+            const li = document.getElementById(activeId);
+            const top = li.offsetTop;
+            let last = li;
+            let n = li.nextElementSibling;
+            while (n) {
+                if (n !== inlineLi && !n.classList.contains('is-hidden')) { if (n.offsetTop !== top) break; last = n; }
+                n = n.nextElementSibling;
+            }
+            if (panel.parentElement !== inlineLi) inlineLi.appendChild(panel);
+            if (last.nextElementSibling !== inlineLi) last.after(inlineLi);
+        }
+    }
+
+    function select(id, opts = {}) {
+        activeId = id;
+        btns.forEach(b => b.setAttribute('aria-expanded', String(b.dataset.sp === id)));
+        if (id) renderPanel(byId[id]);
+        place();
+        if (opts.hash !== false) {
+            const url = id ? `#${id}` : location.pathname + location.search;
+            history.replaceState(null, '', url);
+        }
+    }
+
+    function applyFilter(f) {
+        filter = f;
+        filterEls.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === f)));
+        inlineLi.remove();
+        grid.querySelectorAll('[data-tile-li]').forEach(li => li.classList.toggle('is-hidden', f !== 'alle' && li.dataset.g !== f));
+        descEl.innerHTML = f === 'alle'
+            ? `Alle ${SP.length} Schwerpunkte unseres Leitbilds.`
+            : `<b>${G[f].icon} ${G[f].label}</b> – ${G[f].beschreibung}: ${count(f)} Schwerpunkte.`;
+        const ids = visibleIds();
+        if (activeId && !ids.includes(activeId)) select(wide.matches ? ids[0] : null);
+        else place();
+    }
+
+    grid.addEventListener('click', e => {
+        const b = e.target.closest('[data-sp]');
+        if (!b) return;
+        const id = b.dataset.sp;
+        if (id === activeId && !wide.matches) { select(null); return; }
+        select(id);
+    });
+    panel.addEventListener('click', e => {
+        const b = e.target.closest('[data-step]');
+        if (!b) return;
+        const ids = visibleIds();
+        const i = ids.indexOf(activeId);
+        const next = ids[(i + Number(b.dataset.step) + ids.length) % ids.length];
+        select(next);
+        grid.querySelector(`[data-sp="${next}"]`).focus({ preventScroll: true });
+    });
+    filterEls.forEach(b => b.addEventListener('click', () => applyFilter(b.dataset.filter)));
+    main.querySelectorAll('[data-goto-filter]').forEach(a => a.addEventListener('click', () => applyFilter(a.dataset.gotoFilter)));
+
+    // Pfeiltasten im Raster
+    grid.addEventListener('keydown', e => {
+        if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) return;
+        const vis = btns.filter(b => !b.closest('li').classList.contains('is-hidden'));
+        const i = vis.indexOf(document.activeElement);
+        if (i < 0) return;
+        const cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+        const step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: cols, ArrowUp: -cols, Home: -i, End: vis.length - 1 - i }[e.key];
+        const t = vis[i + step];
+        if (t) { e.preventDefault(); t.focus(); }
+    });
+
+    wide.addEventListener('change', () => {
+        if (!activeId && wide.matches) select(visibleIds()[0], { hash: false });
+        else place();
+    });
+    let rt;
+    window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(place, 120); });
+
+    /* ---------- Deep-Link per Hash ---------- */
+    function fromHash(scroll) {
+        const id = decodeURIComponent(location.hash.slice(1));
+        if (!byId[id]) return false;
+        if (filter !== 'alle' && byId[id].gruppe !== filter) applyFilter('alle');
+        select(id, { hash: false });
+        if (scroll) document.getElementById(id).scrollIntoView({ block: wide.matches ? 'center' : 'start', behavior: 'instant' });
+        return true;
+    }
+    window.addEventListener('hashchange', () => fromHash(true));
+
+    applyFilter('alle');
+    if (!fromHash(false) && wide.matches) select(SP[0].id, { hash: false });
+    // nach dem Laden der Webfonts erneut zum Anker springen (Layout verschiebt sich sonst)
+    if (location.hash) {
+        const jump = () => {
+            const id = decodeURIComponent(location.hash.slice(1));
+            const t = document.getElementById(id);
+            if (t) t.scrollIntoView({ block: byId[id] && wide.matches ? 'center' : 'start', behavior: 'instant' });
+        };
+        (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(jump));
+    }
+})();
+</script></body></html>

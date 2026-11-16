@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Schule – Variante A | VS Puch bei Weiz</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="shared/chrome.css">
+    <style>
+        /* ---------- Hero-Motto ---------- */
+        .a-motto { margin-top: 1.25rem; color: var(--color-secondary-container); font-family: var(--font-display); font-weight: 500; font-size: clamp(1.1rem, 2.4vw, 1.5rem); }
+        .a-motto span + span::before { content: "·"; margin: 0 .6rem; opacity: .6; }
+
+        /* ---------- Einstieg: Schulprofil + Inhaltsverzeichnis ---------- */
+        .a-intro { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr); padding-block: 3.5rem 0; }
+        @media (min-width: 1024px) { .a-intro { grid-template-columns: 1fr 22rem; gap: 5rem; align-items: start; padding-top: 4.5rem; } }
+        .a-toc { display: grid; gap: .2rem; padding: 1.4rem; border-radius: 1.5rem; background: var(--color-surface-alt); }
+        .a-toc .eyebrow { margin-bottom: .5rem; }
+        .a-toc a { display: flex; gap: .7rem; align-items: center; padding: .6rem .75rem; border-radius: .9rem; font-weight: 700; color: var(--color-on-surface); transition: background .15s, color .15s; }
+        .a-toc a:hover { background: var(--color-surface-card); color: var(--color-primary); }
+        .a-center-wrap { border-top: 2px dashed color-mix(in oklch, var(--color-secondary) 22%, transparent); margin-top: 3.5rem; }
+
+        /* ---------- Mittelpunkt ---------- */
+        .a-center { display: grid; gap: 2.5rem; align-items: start; padding-block: 4rem 5rem; }
+        @media (min-width: 1024px) { .a-center { grid-template-columns: 5fr 6fr; gap: 5rem; padding-block: 5rem 7rem; } }
+        .a-center-kicker { display: inline-flex; align-items: center; gap: .5rem; }
+        .a-center-big { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 5vw, 3.9rem); line-height: 1.05; margin-top: 1rem; letter-spacing: -.01em; }
+        .a-center-big em { font-style: normal; color: var(--color-primary); }
+        .a-center-text p { font-size: 1.15rem; line-height: 1.8; color: var(--color-tertiary); }
+        .a-center-text p:first-child { font-size: 1.35rem; line-height: 1.6; color: var(--color-on-surface); font-weight: 600; }
+        .a-center-text p + p { margin-top: 1.25rem; }
+
+        /* ---------- 12 Schwerpunkte ---------- */
+        .a-band { background: var(--color-surface-alt); padding-block: 4.5rem 5rem; }
+        @media (min-width: 1024px) { .a-band { padding-block: 6rem; } }
+        .a-layout { display: grid; gap: 2.5rem; grid-template-columns: minmax(0, 1fr); }
+        .a-layout > *, .a-list > * { min-width: 0; }
+        @media (min-width: 1024px) { .a-layout { grid-template-columns: 17rem 1fr; gap: 4.5rem; } }
+        .a-aside { align-self: start; }
+        @media (min-width: 1024px) { .a-aside { position: sticky; top: 7rem; } }
+        .a-aside h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.1; margin-top: .5rem; }
+        .a-aside > p { margin-top: 1rem; color: var(--color-tertiary); line-height: 1.7; }
+        .a-index { display: none; margin-top: 1.75rem; counter-reset: idx; }
+        @media (min-width: 1024px) { .a-index { display: block; } }
+        .a-index a { display: flex; gap: .75rem; align-items: baseline; padding: .32rem .5rem; margin-inline: -.5rem; border-radius: .6rem; font-size: .9rem; font-weight: 600; color: var(--color-tertiary); transition: color .15s, background .15s; }
+        .a-index a:hover { color: var(--color-on-surface); background: color-mix(in oklch, var(--color-secondary) 8%, transparent); }
+        .a-index a.is-current { color: var(--color-primary); background: var(--color-surface-card); }
+        .a-index b { font-family: var(--font-display); font-weight: 600; min-width: 1.4rem; color: color-mix(in oklch, var(--color-primary) 60%, var(--color-tertiary)); }
+        .a-chips { display: flex; gap: .4rem; overflow-x: auto; margin-top: 1.25rem; padding-bottom: .25rem; scrollbar-width: none; }
+        @media (min-width: 1024px) { .a-chips { display: none; } }
+        .a-chips a { flex: none; padding: .45rem .8rem; border-radius: 999px; background: var(--color-surface-card); font-size: .85rem; font-weight: 700; color: var(--color-tertiary); }
+
+        .a-list { display: grid; gap: 0; }
+        @media (min-width: 768px) { .a-list { grid-template-columns: 1fr 1fr; column-gap: 3.5rem; } }
+        .a-item { position: relative; padding: 2rem 0 2.25rem; border-top: 2px solid color-mix(in oklch, var(--color-secondary) 16%, transparent); scroll-margin-top: 7rem; }
+        .a-item-head { display: flex; align-items: center; gap: .9rem; }
+        .a-num { font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; line-height: 1; color: var(--color-primary); font-variant-numeric: tabular-nums; min-width: 3.2rem; }
+        .a-icon { font-size: 1.6rem; width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: 1rem; background: var(--color-surface-card); box-shadow: var(--shadow-ambient); }
+        .a-item h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; line-height: 1.25; margin-top: 1.1rem; }
+        .a-item p { margin-top: .6rem; line-height: 1.75; color: var(--color-tertiary); max-width: 60ch; }
+        .a-item:target .a-num, .a-item.is-flash .a-num { color: var(--color-secondary); }
+
+        /* Glücksschule als hervorgehobener, breiter Eintrag */
+        .a-item.is-feature { border-top: 0; margin-block: 1rem; padding: 2.25rem 2rem 2.5rem; border-radius: 1.75rem; background: var(--color-secondary); color: #fff; }
+        @media (min-width: 768px) { .a-item.is-feature { margin-inline: -1.25rem; } }
+        .a-item.is-feature .a-num { color: var(--color-secondary-container); }
+        .a-item.is-feature .a-icon { background: var(--color-secondary-container); box-shadow: none; }
+        .a-item.is-feature h3 { color: #fff; }
+        .a-item.is-feature p { color: rgb(255 255 255 / .86); max-width: 70ch; }
+        .a-badge { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.1rem; padding: .35rem .8rem; border-radius: 999px; background: rgb(255 255 255 / .14); font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+
+        /* ---------- Ziel ---------- */
+        .a-goal { padding-block: 5rem 4rem; }
+        @media (min-width: 1024px) { .a-goal { padding-block: 7rem 5rem; } }
+        .a-goal-grid { display: grid; gap: 2.5rem; }
+        @media (min-width: 1024px) { .a-goal-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; } }
+        .a-goal h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.1; margin-top: .5rem; }
+        .a-goal-text p { margin-top: 1.1rem; font-size: 1.1rem; line-height: 1.8; color: var(--color-tertiary); }
+        .a-claims { list-style: none; padding: 0; margin: 0; }
+        .a-claims li { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 4.2vw, 2.9rem); line-height: 1.12; letter-spacing: -.01em; }
+        .a-claims li span { color: var(--color-primary); }
+        .a-claims li:nth-child(2) span { color: var(--color-secondary); }
+        .a-claims li:nth-child(3) span { color: #c27a00; }
+        .a-claims li + li { margin-top: .35rem; }
+        .a-closing { margin-top: 3.5rem; padding-top: 2rem; border-top: 2px dashed color-mix(in oklch, var(--color-secondary) 25%, transparent); display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; align-items: center; justify-content: space-between; }
+        .a-closing p { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--color-on-surface); max-width: 40ch; }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .a-item.is-flash { animation: a-flash 1.4s ease-out; }
+            @keyframes a-flash { from { background: color-mix(in oklch, var(--color-secondary-container) 60%, transparent); } }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased overflow-x-hidden" data-nav="flat" data-active="schule" data-variant="A">
+<main class="pt-20" id="page-content"></main>
+
+<script>window.MOCKUP = { schule: 'a-schule.html', leitbild: 'a-schule.html#mittelpunkt' };</script>
+<script src="shared/leitbild-data.js"></script>
+<script src="shared/chrome.js"></script>
+<script>
+(function () {
+    const L = window.LEITBILD;
+    const pad = n => String(n).padStart(2, '0');
+    const highlight = s => s.replace('Jedes Kind ist einzigartig.', '');
+
+    const items = L.schwerpunkte.map(s => {
+        const feature = s.id === 'glueck';
+        return `
+        <article id="${s.id}" class="a-item${feature ? ' is-feature' : ''}" aria-labelledby="${s.id}-t">
+            <div class="a-item-head">
+                <span class="a-num" aria-hidden="true">${pad(s.nr)}</span>
+                <span class="a-icon" aria-hidden="true">${s.icon}</span>
+            </div>
+            <div>
+                ${feature ? '<span class="a-badge">🏅 Zertifizierte Glücksschule</span>' : ''}
+                <h3 id="${s.id}-t"><span class="sr-only">${s.nr}. </span>${s.titel}</h3>
+                <p>${s.text}</p>
+            </div>
+        </article>`;
+    }).join('');
+
+    document.getElementById('page-content').innerHTML = `
+        ${pageHero({
+            icon: '🏫', eyebrow: 'Unsere Schule', title: 'Wofür wir stehen',
+            crumbs: [['Schule']],
+            extra: `<p class="a-motto">${L.motto.map(m => `<span>${m}</span>`).join('')}</p>`
+        })}
+
+        <section class="container-page a-intro" aria-label="Unsere Schule">
+            ${schulprofilIntro}
+            <nav class="a-toc" aria-label="Unser Leitbild – Inhalt">
+                <p class="eyebrow">Unser Leitbild</p>
+                <a href="#mittelpunkt"><span aria-hidden="true">🧒</span> Das Kind steht im Mittelpunkt</a>
+                <a href="#schwerpunkte"><span aria-hidden="true">🌱</span> Unsere 12 Schwerpunkte</a>
+                <a href="#ziel"><span aria-hidden="true">🎯</span> Unser gemeinsames Ziel</a>
+                <a href="#" data-mk-dummy><span aria-hidden="true">📄</span> Leitbild als PDF</a>
+            </nav>
+        </section>
+
+        <section class="container-page" aria-labelledby="mittelpunkt">
+            <div class="a-center a-center-wrap">
+                <div>
+                    <span class="chip a-center-kicker"><span aria-hidden="true">🧒</span> ${L.mittelpunkt.titel}</span>
+                    <h2 id="mittelpunkt" class="a-center-big">Jedes Kind ist <em>einzigartig.</em></h2>
+                </div>
+                <div class="a-center-text">
+                    <p>${highlight(L.mittelpunkt.absaetze[0]).trim()}</p>
+                    <p>${L.mittelpunkt.absaetze[1]}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="a-band" aria-labelledby="schwerpunkte">
+            <div class="container-page a-layout">
+                <aside class="a-aside">
+                    <p class="eyebrow">Was uns ausmacht</p>
+                    <h2 id="schwerpunkte">Unsere 12 Schwerpunkte</h2>
+                    <p>Zwölf Bereiche, in denen wir Kinder besonders stärken – im Unterricht, in freiwilligen Angeboten und im Schulalltag.</p>
+                    <nav class="a-index" aria-label="Schwerpunkte">
+                        ${L.schwerpunkte.map(s => `<a href="#${s.id}"><b>${pad(s.nr)}</b>${s.titel.replace(' – Forschen und Entdecken', '')}</a>`).join('')}
+                    </nav>
+                    <nav class="a-chips" aria-label="Schwerpunkte (Kurzwahl)">
+                        ${L.schwerpunkte.map(s => `<a href="#${s.id}"><span aria-hidden="true">${s.icon}</span> ${pad(s.nr)}</a>`).join('')}
+                    </nav>
+                </aside>
+                <div class="a-list">${items}</div>
+            </div>
+        </section>
+
+        <section class="container-page a-goal" aria-labelledby="ziel">
+            <div class="a-goal-grid">
+                <div class="a-goal-text">
+                    <p class="eyebrow">Wohin wir wollen</p>
+                    <h2 id="ziel">${L.ziel.titel}</h2>
+                    ${L.ziel.absaetze.map(p => `<p>${p}</p>`).join('')}
+                </div>
+                <ul class="a-claims">
+                    <li>Jedes Kind <span>zählt.</span></li>
+                    <li>Jedes Kind <span>hat Stärken.</span></li>
+                    <li>Jedes Kind <span>darf wachsen.</span></li>
+                </ul>
+            </div>
+            <div class="a-closing">
+                <p>${L.ziel.schluss}</p>
+                <a href="#" class="btn-ghost" data-mk-dummy><span aria-hidden="true">📄</span> Leitbild als PDF</a>
+            </div>
+        </section>`;
+
+    /* Aktiven Schwerpunkt im Seitenindex markieren */
+    const links = [...document.querySelectorAll('.a-index a')];
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+            if (!en.isIntersecting) return;
+            links.forEach(a => a.classList.toggle('is-current', a.hash === '#' + en.target.id));
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('.a-item').forEach(el => io.observe(el));
+
+    /* Sprung zu einem Schwerpunkt kurz hervorheben (auch bei Deep-Link) */
+    function flash() {
+        const el = location.hash && document.getElementById(location.hash.slice(1));
+        if (!el || !el.classList.contains('a-item')) return;
+        el.classList.remove('is-flash'); void el.offsetWidth; el.classList.add('is-flash');
+    }
+    window.addEventListener('hashchange', flash);
+    if (location.hash) { const el = document.getElementById(location.hash.slice(1)); if (el) { el.scrollIntoView(); flash(); } }
+})();
+</script>
+</body>
+</html>
